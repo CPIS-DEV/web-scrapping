@@ -182,4 +182,7 @@ def executar_busca():
         return jsonify({"status": "Nenhum resultado encontrado."})
     
 if __name__ == "__main__":
+    from pyngrok import ngrok
+    public_url = ngrok.connect(5000)
+    print(f" * ngrok tunnel: {public_url}")
     app.run(debug=True)
