@@ -180,3 +180,6 @@ def executar_busca():
         with open("registro.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write("Não foram encontrados resultado para essa busca.\n\n")
         return jsonify({"status": "Nenhum resultado encontrado."})
+    
+if __name__ == "__main__":
+    app.run(debug=True)
