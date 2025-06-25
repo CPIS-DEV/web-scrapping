@@ -24,7 +24,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'noreplycpis@gmail.com'
 mail = Mail(app)
 
 def enviar_email(assunto, anexo=None):
-    msg = Message(assunto, recipients=["notificacoes@cpis.com.br"])
+    msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
     if anexo:
         msg.body = f'Segue em anexo arquivo do Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {assunto}, onde foram encontrados os termos solicitados.'
         with open(f"./downloads/{anexo}", "rb") as fp:
@@ -182,8 +182,4 @@ def executar_busca():
         return jsonify({"status": "Nenhum resultado encontrado."})
     
 if __name__ == "__main__":
-    from pyngrok import ngrok
-    ngrok.set_auth_token("2z0X0gBL5YQOdt2AXZCwmSgAbMl_2qEqGpA28fepZLYL2oboP")
-    public_url = ngrok.connect(5000)
-    print(f" * ngrok tunnel: {public_url}")
-    app.run(debug=True)
+    app.run(port=5000, debug=True)
