@@ -183,6 +183,7 @@ def executar_busca():
     
 if __name__ == "__main__":
     from pyngrok import ngrok
+    ngrok.set_auth_token("2z0X0gBL5YQOdt2AXZCwmSgAbMl_2qEqGpA28fepZLYL2oboP")
     public_url = ngrok.connect(5000)
     print(f" * ngrok tunnel: {public_url}")
     app.run(debug=True)
