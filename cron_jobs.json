@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "search_query": "Companhia Paulista de Infraestrutura Social",
+    "from_date": "2025-03-01",
+    "to_date": "2025-06-23",
+    "schedule": "09:00",
+    "active": true
+  },
+  {
+    "id": 2,
+    "search_query": "ANEEL",
+    "from_date": "2024-07-01",
+    "to_date": "2025-06-23",
+    "schedule": "14:30",
+    "active": false
+  }
+]
