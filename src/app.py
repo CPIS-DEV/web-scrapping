@@ -100,6 +100,11 @@ def baixar_pdf_diretamente(url_pdf, download_dir):
     except Exception as e:
         logging.error(f"Erro no download do PDF: {str(e)}")
         return None
+    
+def apagar_todos_agendamentos():
+    """Remove todos os agendamentos do scheduler em memória."""
+    schedule.clear()
+    logging.info("Todos os agendamentos foram removidos do scheduler.")
 
 def renomear_pdf(download_dir):
     """Função para renomear PDFs."""
@@ -240,6 +245,64 @@ def run_scheduler():
         schedule.run_pending()
         time.sleep(1)
 
+@app.route('/cron', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def gerencia_crons():
+    """Endpoint para gerenciar jobs agendados (CRUD)."""
+    if request.method == 'GET':
+        # Lista todos os jobs
+        return jsonify(load_cron_jobs())
+
+    elif request.method == 'POST':
+        # Cria novo job
+        new_job = request.json
+        required_fields = ['search_query', 'from_date', 'to_date', 'schedule']
+        if not all(field in new_job for field in required_fields):
+            return jsonify({"status": "error", "message": "Campos obrigatórios faltando"}), 400
+
+        jobs = load_cron_jobs()
+        new_id = max([job.get('id', 0) for job in jobs] or [0]) + 1
+        new_job['id'] = new_id
+        new_job['active'] = new_job.get('active', True)
+        jobs.append(new_job)
+        save_cron_jobs(jobs)
+        apagar_todos_agendamentos()
+        schedule_jobs()
+        return jsonify({"status": "success", "id": new_id}), 201
+
+    elif request.method == 'PUT':
+        # Atualiza um job existente
+        update_job = request.json
+        if 'id' not in update_job:
+            return jsonify({"status": "error", "message": "ID do job não fornecido"}), 400
+
+        jobs = load_cron_jobs()
+        for idx, job in enumerate(jobs):
+            if job.get('id') == update_job['id']:
+                jobs[idx].update(update_job)
+                break
+        else:
+            return jsonify({"status": "error", "message": "Job não encontrado"}), 404
+
+        save_cron_jobs(jobs)
+        apagar_todos_agendamentos()
+        schedule_jobs()
+        return jsonify({"status": "success", "message": "Job atualizado"})
+
+    elif request.method == 'DELETE':
+        # Deleta um job pelo ID
+        job_id = request.json.get('id')
+        if not job_id:
+            return jsonify({"status": "error", "message": "ID do job não fornecido"}), 400
+
+        jobs = load_cron_jobs()
+        jobs = [job for job in jobs if job.get('id') != job_id]
+        save_cron_jobs(jobs)
+        apagar_todos_agendamentos()
+        schedule_jobs()
+        return jsonify({"status": "success", "message": "Job removido"})
+
+    return jsonify({"status": "error", "message": "Método não suportado"}), 405
+
 @app.route('/executar-busca', methods=['POST'])
 def executar_busca():
     """Endpoint para busca manual."""
@@ -254,45 +317,6 @@ def executar_busca():
     # Dispara a busca diretamente
     trigger_search(search_query, from_date, to_date)
     return jsonify({"status": "success", "message": "Busca iniciada"})
-
-@app.route('/cron', methods=['GET', 'POST', 'DELETE'])
-def gerencia_crons():
-    """Endpoint para gerenciar jobs agendados."""
-    if request.method == 'POST':
-        new_job = request.json
-        
-        # Validação dos campos obrigatórios
-        required_fields = ['search_query', 'from_date', 'to_date', 'schedule']
-        if not all(field in new_job for field in required_fields):
-            return jsonify({"status": "error", "message": "Campos obrigatórios faltando"}), 400
-        
-        jobs = load_cron_jobs()
-        
-        # Gera um ID único
-        new_id = max(job['id'] for job in jobs) + 1 if jobs else 1
-        new_job['id'] = new_id
-        new_job['active'] = new_job.get('active', True)
-        
-        jobs.append(new_job)
-        save_cron_jobs(jobs)
-        schedule_jobs()  # Reagenda tudo
-        
-        return jsonify({"status": "success", "id": new_id}), 201
-    
-    elif request.method == 'DELETE':
-        job_id = request.json.get('id')
-        if not job_id:
-            return jsonify({"status": "error", "message": "ID do job não fornecido"}), 400
-            
-        jobs = load_cron_jobs()
-        jobs = [job for job in jobs if job['id'] != job_id]
-        save_cron_jobs(jobs)
-        schedule_jobs()  # Reagenda tudo
-        
-        return jsonify({"status": "success", "message": "Job removido"})
-    
-    # GET request
-    return jsonify(load_cron_jobs())
 
 if __name__ == "__main__":
     # Cria diretório de downloads se não existir

@@ -4,8 +4,10 @@
     "search_query": "Companhia Paulista de Infraestrutura Social",
     "from_date": "2025-03-01",
     "to_date": "2025-06-23",
-    "schedule": "15:00",
-    "weekdays": ["tuesday"],
+    "schedule": "15:08",
+    "weekdays": [
+      "tuesday"
+    ],
     "active": true
   },
   {
@@ -14,16 +16,12 @@
     "from_date": "2025-03-01",
     "to_date": "2025-06-23",
     "schedule": "09:00",
-    "weekdays": ["monday", "wednesday", "friday"],
+    "weekdays": [
+      "monday",
+      "wednesday",
+      "friday"
+    ],
     "active": true
-  },
-  {
-    "id": 3,
-    "search_query": "ANEEL",
-    "from_date": "2024-07-01",
-    "to_date": "2025-06-23",
-    "schedule": "14:30",
-    "active": false
   },
   {
     "id": 4,
@@ -31,7 +29,20 @@
     "from_date": "2025-03-01",
     "to_date": "2025-06-23",
     "schedule": "15:05",
-    "weekdays": ["wednesday"],
+    "weekdays": [
+      "wednesday"
+    ],
+    "active": true
+  },
+  {
+    "id": 5,
+    "search_query": "Companhia Paulista de Infraestrutura Social",
+    "from_date": "2025-03-01",
+    "to_date": "2025-06-23",
+    "schedule": "08:00",
+    "weekdays": [
+      "wednesday"
+    ],
     "active": true
   }
 ]

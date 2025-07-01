@@ -326,3 +326,50 @@ with app.app_context(). See the documentation for more information.
 2025-07-01 17:35:04,453 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
 2025-07-01 17:35:04,456 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
 2025-07-01 17:35:07,615 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 18:03:44,655 - INFO - Iniciando scheduler...
+2025-07-01 18:03:44,686 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:00 UTC em Tuesday (original: 15:00 BRT)
+2025-07-01 18:03:44,687 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-01 18:03:44,687 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-01 18:03:44,687 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-01 18:03:44,688 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-01 18:03:44,688 - INFO - Agendados 3 jobs
+2025-07-01 18:03:44,703 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 18:03:44,703 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 18:05:47,435 - INFO - 127.0.0.1 - - [01/Jul/2025 18:05:47] "[33mPUT /cron/1 HTTP/1.1[0m" 404 -
+2025-07-01 18:05:55,560 - INFO - 127.0.0.1 - - [01/Jul/2025 18:05:55] "[33mPUT /cron/1/ HTTP/1.1[0m" 404 -
+2025-07-01 18:06:13,854 - INFO - 127.0.0.1 - - [01/Jul/2025 18:06:13] "[33mPUT /cron/ HTTP/1.1[0m" 404 -
+2025-07-01 18:06:20,754 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-01 18:06:20,755 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:08 UTC em Tuesday (original: 15:08 BRT)
+2025-07-01 18:06:20,756 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-01 18:06:20,757 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-01 18:06:20,757 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-01 18:06:20,758 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-01 18:06:20,758 - INFO - Agendados 3 jobs
+2025-07-01 18:06:20,758 - INFO - 127.0.0.1 - - [01/Jul/2025 18:06:20] "PUT /cron HTTP/1.1" 200 -
+2025-07-01 18:08:00,828 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 18:08:00,968 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 18:08:00,970 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 18:08:04,488 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 18:08:04,553 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 18:08:04,554 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 18:08:08,437 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 18:09:40,848 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-01 18:09:40,849 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:08 UTC em Tuesday (original: 15:08 BRT)
+2025-07-01 18:09:40,849 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-01 18:09:40,850 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-01 18:09:40,850 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-01 18:09:40,850 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-01 18:09:40,851 - INFO - Agendados 3 jobs
+2025-07-01 18:09:40,851 - INFO - 127.0.0.1 - - [01/Jul/2025 18:09:40] "DELETE /cron HTTP/1.1" 200 -
+2025-07-01 18:10:57,143 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-01 18:10:57,145 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:08 UTC em Tuesday (original: 15:08 BRT)
+2025-07-01 18:10:57,146 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-01 18:10:57,147 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-01 18:10:57,148 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-01 18:10:57,149 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-01 18:10:57,150 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:00 UTC em Wednesday (original: 08:00 BRT)
+2025-07-01 18:10:57,151 - INFO - Agendados 4 jobs
+2025-07-01 18:10:57,152 - INFO - 127.0.0.1 - - [01/Jul/2025 18:10:57] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
