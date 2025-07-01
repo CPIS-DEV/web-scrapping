@@ -1,0 +1,297 @@
+2025-07-01 15:45:47,477 - INFO - Iniciando scheduler...
+2025-07-01 15:45:47,504 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:47 UTC (original: 15:47 BRT)
+2025-07-01 15:45:47,505 - INFO - Agendados 1 jobs
+2025-07-01 15:45:47,545 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 15:45:47,546 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 15:45:47,548 - INFO -  * Restarting with stat
+2025-07-01 15:45:48,100 - INFO - Iniciando scheduler...
+2025-07-01 15:45:48,127 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:47 UTC (original: 15:47 BRT)
+2025-07-01 15:45:48,129 - INFO - Agendados 1 jobs
+2025-07-01 15:45:48,140 - WARNING -  * Debugger is active!
+2025-07-01 15:45:48,144 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 15:51:23,876 - INFO - Iniciando scheduler...
+2025-07-01 15:51:23,908 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 19:00 UTC (original: 16:00 BRT)
+2025-07-01 15:51:23,909 - INFO - Agendados 1 jobs
+2025-07-01 15:51:23,936 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 15:51:23,936 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 15:51:23,937 - INFO -  * Restarting with stat
+2025-07-01 15:51:24,434 - INFO - Iniciando scheduler...
+2025-07-01 15:51:24,466 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 19:00 UTC (original: 16:00 BRT)
+2025-07-01 15:51:24,467 - INFO - Agendados 1 jobs
+2025-07-01 15:51:24,479 - WARNING -  * Debugger is active!
+2025-07-01 15:51:24,481 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:08:25,785 - INFO - Iniciando scheduler...
+2025-07-01 16:08:25,814 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 19:12 UTC (original: 16:12 BRT)
+2025-07-01 16:08:25,814 - INFO - Agendados 1 jobs
+2025-07-01 16:08:25,837 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:08:25,837 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:08:25,838 - INFO -  * Restarting with stat
+2025-07-01 16:08:26,313 - INFO - Iniciando scheduler...
+2025-07-01 16:08:26,362 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 19:12 UTC (original: 16:12 BRT)
+2025-07-01 16:08:26,362 - INFO - Agendados 1 jobs
+2025-07-01 16:08:26,382 - WARNING -  * Debugger is active!
+2025-07-01 16:08:26,384 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:09:45,874 - INFO - Iniciando scheduler...
+2025-07-01 16:09:45,903 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:12 UTC (original: 13:12 BRT)
+2025-07-01 16:09:45,903 - INFO - Agendados 1 jobs
+2025-07-01 16:09:45,927 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:09:45,927 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:09:45,929 - INFO -  * Restarting with stat
+2025-07-01 16:09:46,399 - INFO - Iniciando scheduler...
+2025-07-01 16:09:46,427 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:12 UTC (original: 13:12 BRT)
+2025-07-01 16:09:46,427 - INFO - Agendados 1 jobs
+2025-07-01 16:09:46,438 - WARNING -  * Debugger is active!
+2025-07-01 16:09:46,440 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:12:00,498 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:12:00,774 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:12:00,777 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:12:00,778 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:12:00,840 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:12:00,846 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:12:00,847 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:12:00,958 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:12:01,780 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:12:01,783 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:12:01,784 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:12:01,855 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:12:01,857 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:12:01,858 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:14:24,579 - INFO - Iniciando scheduler...
+2025-07-01 16:14:24,608 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:17 UTC (original: 13:17 BRT)
+2025-07-01 16:14:24,608 - INFO - Agendados 1 jobs
+2025-07-01 16:14:24,636 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:14:24,636 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:14:24,637 - INFO -  * Restarting with stat
+2025-07-01 16:14:25,123 - INFO - Iniciando scheduler...
+2025-07-01 16:14:25,148 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:17 UTC (original: 13:17 BRT)
+2025-07-01 16:14:25,148 - INFO - Agendados 1 jobs
+2025-07-01 16:14:25,161 - WARNING -  * Debugger is active!
+2025-07-01 16:14:25,163 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:17:00,257 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:17:00,474 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:17:00,476 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:17:00,477 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:17:00,541 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:17:00,543 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:17:00,544 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:17:00,699 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:17:00,907 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:17:00,910 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:17:00,910 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:17:01,001 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:17:01,003 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:17:01,003 - ERROR - Erro ao enviar e-mail: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-01 16:17:37,381 - INFO - 127.0.0.1 - - [01/Jul/2025 16:17:37] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-01 16:17:37,463 - INFO - 127.0.0.1 - - [01/Jul/2025 16:17:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-01 16:17:51,991 - INFO - Iniciando busca agendada para: ['Companhia Paulista de Infraestrutura Social']
+2025-07-01 16:17:52,258 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:17:52,261 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:17:55,701 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:17:55,766 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:17:55,771 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:17:59,001 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:17:59,002 - INFO - 127.0.0.1 - - [01/Jul/2025 16:17:59] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-01 16:26:17,223 - INFO - Iniciando busca agendada para: ['Companhia Paulista de Infraestrutura Social']
+2025-07-01 16:26:17,383 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:26:17,384 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:26:20,819 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:26:20,898 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:26:20,900 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:26:24,375 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:26:24,378 - INFO - 127.0.0.1 - - [01/Jul/2025 16:26:24] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-01 16:27:50,005 - INFO - Iniciando scheduler...
+2025-07-01 16:27:50,033 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:29 UTC (original: 13:29 BRT)
+2025-07-01 16:27:50,033 - INFO - Agendados 1 jobs
+2025-07-01 16:27:50,056 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:27:50,057 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:27:50,058 - INFO -  * Restarting with stat
+2025-07-01 16:27:50,525 - INFO - Iniciando scheduler...
+2025-07-01 16:27:50,551 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:29 UTC (original: 13:29 BRT)
+2025-07-01 16:27:50,552 - INFO - Agendados 1 jobs
+2025-07-01 16:27:50,564 - WARNING -  * Debugger is active!
+2025-07-01 16:27:50,567 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:29:00,061 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:29:00,251 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:29:00,253 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:29:00,589 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:29:00,755 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:29:00,757 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:29:04,110 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:29:04,217 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:29:04,221 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:29:04,303 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:29:04,357 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:29:04,361 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:29:07,324 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:29:08,012 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:31:03,965 - INFO - Iniciando scheduler...
+2025-07-01 16:31:03,991 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:32 UTC (original: 13:32 BRT)
+2025-07-01 16:31:03,992 - INFO - Agendados 1 jobs
+2025-07-01 16:31:04,019 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:31:04,020 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:31:04,021 - INFO -  * Restarting with stat
+2025-07-01 16:31:04,492 - INFO - Iniciando scheduler...
+2025-07-01 16:31:04,517 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:32 UTC (original: 13:32 BRT)
+2025-07-01 16:31:04,517 - INFO - Agendados 1 jobs
+2025-07-01 16:31:04,530 - WARNING -  * Debugger is active!
+2025-07-01 16:31:04,532 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:32:00,035 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:32:00,227 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:32:00,231 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:32:00,551 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:32:00,725 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:32:00,729 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:32:03,989 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:32:04,092 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:32:04,112 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:32:04,328 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:32:04,392 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:32:04,394 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:32:07,405 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:32:07,716 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:33:09,232 - INFO - Iniciando scheduler...
+2025-07-01 16:33:09,260 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:32 UTC (original: 13:32 BRT)
+2025-07-01 16:33:09,261 - INFO - Agendados 1 jobs
+2025-07-01 16:33:09,285 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:33:09,286 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:33:09,286 - INFO -  * Restarting with stat
+2025-07-01 16:33:09,753 - INFO - Iniciando scheduler...
+2025-07-01 16:33:09,780 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:32 UTC (original: 13:32 BRT)
+2025-07-01 16:33:09,786 - INFO - Agendados 1 jobs
+2025-07-01 16:33:09,799 - WARNING -  * Debugger is active!
+2025-07-01 16:33:09,802 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:33:14,106 - INFO - Iniciando busca agendada para: ['Companhia Paulista de Infraestrutura Social']
+2025-07-01 16:33:14,291 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:33:14,294 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:33:18,152 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:33:18,279 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:33:18,281 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:33:21,535 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:33:21,536 - INFO - 127.0.0.1 - - [01/Jul/2025 16:33:21] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-01 16:36:05,472 - INFO - Iniciando scheduler...
+2025-07-01 16:36:05,500 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:37 UTC (original: 13:37 BRT)
+2025-07-01 16:36:05,501 - INFO - Agendados 1 jobs
+2025-07-01 16:36:05,525 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:36:05,526 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:36:05,528 - INFO -  * Restarting with stat
+2025-07-01 16:36:06,006 - INFO - Iniciando scheduler...
+2025-07-01 16:36:06,031 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:37 UTC (original: 13:37 BRT)
+2025-07-01 16:36:06,032 - INFO - Agendados 1 jobs
+2025-07-01 16:36:06,044 - WARNING -  * Debugger is active!
+2025-07-01 16:36:06,046 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:37:00,045 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:37:00,259 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:37:00,262 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:37:00,505 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:37:00,750 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:37:00,752 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:37:04,054 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:37:04,113 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:37:04,116 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:37:04,453 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:37:04,538 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:37:04,541 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:37:07,251 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:37:07,652 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:39:42,287 - INFO - Iniciando scheduler...
+2025-07-01 16:39:42,310 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:41 UTC (original: 13:41 BRT)
+2025-07-01 16:39:42,311 - INFO - Agendados 1 jobs
+2025-07-01 16:39:42,333 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:39:42,333 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:39:42,334 - INFO -  * Restarting with stat
+2025-07-01 16:39:42,799 - INFO - Iniciando scheduler...
+2025-07-01 16:39:42,825 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:41 UTC (original: 13:41 BRT)
+2025-07-01 16:39:42,826 - INFO - Agendados 1 jobs
+2025-07-01 16:39:42,838 - WARNING -  * Debugger is active!
+2025-07-01 16:39:42,841 - INFO -  * Debugger PIN: 529-863-155
+2025-07-01 16:41:00,344 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:41:00,555 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:41:00,559 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:41:00,860 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:41:01,063 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:41:01,065 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:41:03,729 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:41:03,794 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:41:03,795 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:41:04,837 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:41:04,889 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:41:04,891 - INFO - Arquivo renomeado para 2025-07-01_2.pdf
+2025-07-01 16:41:07,094 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:41:08,016 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 16:43:55,366 - INFO - Iniciando scheduler...
+2025-07-01 16:43:55,392 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:45 UTC (original: 13:45 BRT)
+2025-07-01 16:43:55,392 - INFO - Agendados 1 jobs
+2025-07-01 16:43:55,406 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 16:43:55,407 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 16:45:00,428 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 16:45:00,644 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 16:45:00,647 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 16:45:04,111 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 16:45:04,216 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 16:45:04,220 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 16:45:08,082 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025

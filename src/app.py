@@ -11,6 +11,7 @@ import shutil
 from datetime import datetime
 from urllib.parse import urljoin
 import logging
+import pytz  # Adicionado para conversão de timezone
 
 # Configuração básica de logging
 logging.basicConfig(
@@ -39,16 +40,19 @@ file_lock = threading.Lock()
 
 def enviar_email(assunto, anexo=None):
     """Função para envio de e-mails."""
+    from flask import current_app
     try:
-        msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
-        if anexo:
-            msg.body = f'Segue em anexo arquivo do Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {assunto}, onde foram encontrados os termos solicitados.'
-            with open(f"./downloads/{anexo}", "rb") as fp:
-                msg.attach(anexo, "application/pdf", fp.read())
-        else:
-            msg.body = f'Mensagem enviada para registro de encontro dos termos solicitados no Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {assunto}. IMPORTANTE: O arquivo não foi enviado por erro do sistema ao anexa-lo. O administrador do sistema deve ser comunicado.'
-        mail.send(msg)
-        logging.info(f"E-mail enviado com sucesso: {assunto}")
+        # Garante contexto de aplicação
+        with app.app_context():
+            msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
+            if anexo:
+                msg.body = f'Segue em anexo arquivo do Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {assunto}, onde foram encontrados os termos solicitados.'
+                with open(f"./downloads/{anexo}", "rb") as fp:
+                    msg.attach(anexo, "application/pdf", fp.read())
+            else:
+                msg.body = f'Mensagem enviada para registro de encontro dos termos solicitados no Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {assunto}. IMPORTANTE: O arquivo não foi enviado por erro do sistema ao anexa-lo. O administrador do sistema deve ser comunicado.'
+            mail.send(msg)
+            logging.info(f"E-mail enviado com sucesso: {assunto}")
     except Exception as e:
         logging.error(f"Erro ao enviar e-mail: {str(e)}")
 
@@ -142,8 +146,21 @@ def save_cron_jobs(jobs):
     except Exception as e:
         logging.error(f"Erro ao salvar cron jobs: {str(e)}")
 
+def converter_horario_brasilia_para_utc(hora_brasilia: str) -> str:
+    """
+    Recebe uma string 'HH:MM' no horário de Brasília e retorna uma string 'HH:MM' em UTC.
+    """
+    tz_brasilia = pytz.timezone("America/Sao_Paulo")
+    tz_utc = pytz.utc
+    hoje = datetime.now(tz_brasilia).date()
+    hora, minuto = map(int, hora_brasilia.split(":"))
+    dt_brasilia = tz_brasilia.localize(datetime(hoje.year, hoje.month, hoje.day, hora, minuto))
+    dt_utc = dt_brasilia.astimezone(tz_utc)
+    return dt_utc.strftime("%H:%M")
+
 def trigger_search(search_query, from_date, to_date):
     """Dispara a busca diretamente sem fazer HTTP request."""
+    print("chamando trigger_search")
     logging.info(f"Iniciando busca agendada para: {search_query}")
     
     # Garante que search_query é uma lista
@@ -195,20 +212,23 @@ def schedule_jobs():
     
     for job in jobs:
         if job.get('active', True):
-            schedule.every().day.at(job['schedule']).do(
+            # Conversão do horário de Brasília para UTC
+            horario_utc = converter_horario_brasilia_para_utc(job['schedule'])
+            logging.info(f"Agendando job '{job['search_query']}' para {horario_utc} UTC (original: {job['schedule']} BRT)")
+            schedule.every().day.at(horario_utc).do(
                 trigger_search,
                 search_query=job['search_query'],
                 from_date=job['from_date'],
                 to_date=job['to_date']
             )
-    logging.info(f"Agendados {len(jobs)} jobs")
+    logging.info(f"Agendados {len([j for j in jobs if j.get('active', True)])} jobs")
 
 def run_scheduler():
     """Executa o agendador em segundo plano."""
     logging.info("Iniciando scheduler...")
     while True:
         schedule.run_pending()
-        time.sleep(60)
+        time.sleep(1)
 
 @app.route('/executar-busca', methods=['POST'])
 def executar_busca():
@@ -267,13 +287,12 @@ def gerencia_crons():
 if __name__ == "__main__":
     # Cria diretório de downloads se não existir
     os.makedirs("./downloads", exist_ok=True)
-    
-    # Inicia o scheduler em uma thread separada
-    scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
-    scheduler_thread.start()
-    
-    # Carrega e agenda os jobs existentes
-    schedule_jobs()
-    
-    # Inicia o servidor Flask
-    app.run(host="0.0.0.0", port=5000, debug=True)
+
+    # Só inicia o scheduler se não for o reloader do Flask
+    import os
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true" or not app.debug:
+        scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
+        scheduler_thread.start()
+        schedule_jobs()
+
+    app.run(host="0.0.0.0", port=5000, debug=False)
