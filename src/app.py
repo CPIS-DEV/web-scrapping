@@ -207,20 +207,30 @@ def trigger_search(search_query, from_date, to_date):
 
 def schedule_jobs():
     """Agenda os jobs baseado no arquivo JSON."""
-    schedule.clear()  # Limpa todos os jobs existentes
+    schedule.clear()
     jobs = load_cron_jobs()
-    
     for job in jobs:
         if job.get('active', True):
-            # Conversão do horário de Brasília para UTC
             horario_utc = converter_horario_brasilia_para_utc(job['schedule'])
-            logging.info(f"Agendando job '{job['search_query']}' para {horario_utc} UTC (original: {job['schedule']} BRT)")
-            schedule.every().day.at(horario_utc).do(
-                trigger_search,
-                search_query=job['search_query'],
-                from_date=job['from_date'],
-                to_date=job['to_date']
-            )
+            weekdays = job.get('weekdays')
+            if weekdays:
+                for day in weekdays:
+                    # Exemplo: schedule.every().monday.at("19:00").do(...)
+                    getattr(schedule.every(), day.lower()).at(horario_utc).do(
+                        trigger_search,
+                        search_query=job['search_query'],
+                        from_date=job['from_date'],
+                        to_date=job['to_date']
+                    )
+                    logging.info(f"Agendando job '{job['search_query']}' para {horario_utc} UTC em {day.capitalize()} (original: {job['schedule']} BRT)")
+            else:
+                schedule.every().day.at(horario_utc).do(
+                    trigger_search,
+                    search_query=job['search_query'],
+                    from_date=job['from_date'],
+                    to_date=job['to_date']
+                )
+                logging.info(f"Agendando job '{job['search_query']}' para {horario_utc} UTC (original: {job['schedule']} BRT)")
     logging.info(f"Agendados {len([j for j in jobs if j.get('active', True)])} jobs")
 
 def run_scheduler():

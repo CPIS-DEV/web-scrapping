@@ -295,3 +295,34 @@ with app.app_context(). See the documentation for more information.
 2025-07-01 16:45:04,216 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
 2025-07-01 16:45:04,220 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
 2025-07-01 16:45:08,082 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-01 17:29:11,150 - INFO - Iniciando scheduler...
+2025-07-01 17:29:11,180 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 20:30 UTC em Tuesday (original: 17:30 BRT)
+2025-07-01 17:29:11,181 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-01 17:29:11,181 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-01 17:29:11,181 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-01 17:29:11,182 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 20:32 UTC em Wednesday (original: 17:32 BRT)
+2025-07-01 17:29:11,182 - INFO - Agendados 3 jobs
+2025-07-01 17:29:11,199 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 17:29:11,199 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 17:34:01,534 - INFO - Iniciando scheduler...
+2025-07-01 17:34:01,561 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:35 UTC em Tuesday (original: 14:35 BRT)
+2025-07-01 17:34:01,562 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-01 17:34:01,562 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-01 17:34:01,563 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-01 17:34:01,563 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:37 UTC em Wednesday (original: 14:37 BRT)
+2025-07-01 17:34:01,564 - INFO - Agendados 3 jobs
+2025-07-01 17:34:01,582 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-01 17:34:01,582 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 17:35:00,592 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-01 17:35:00,778 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711341220951070.pdf
+2025-07-01 17:35:00,780 - INFO - Arquivo renomeado para 2025-07-01.pdf
+2025-07-01 17:35:04,383 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-01 17:35:04,453 - INFO - PDF baixado com sucesso: resolucao-conjunta-spi-seduc-n-001-de-17-de-marco-de-2025-2025031711231220951158.pdf
+2025-07-01 17:35:04,456 - INFO - Arquivo renomeado para 2025-07-01_1.pdf
+2025-07-01 17:35:07,615 - INFO - E-mail enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
