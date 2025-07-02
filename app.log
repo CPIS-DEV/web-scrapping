@@ -373,3 +373,17 @@ with app.app_context(). See the documentation for more information.
 2025-07-01 18:10:57,150 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:00 UTC em Wednesday (original: 08:00 BRT)
 2025-07-01 18:10:57,151 - INFO - Agendados 4 jobs
 2025-07-01 18:10:57,152 - INFO - 127.0.0.1 - - [01/Jul/2025 18:10:57] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-02 08:43:45,093 - INFO - Iniciando scheduler...
+2025-07-02 08:43:45,148 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:08 UTC em Tuesday (original: 15:08 BRT)
+2025-07-02 08:43:45,148 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Monday (original: 09:00 BRT)
+2025-07-02 08:43:45,148 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-02 08:43:45,149 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 UTC em Friday (original: 09:00 BRT)
+2025-07-02 08:43:45,149 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-02 08:43:45,149 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:00 UTC em Wednesday (original: 08:00 BRT)
+2025-07-02 08:43:45,149 - INFO - Agendados 4 jobs
+2025-07-02 08:43:45,173 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-02 08:43:45,173 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 08:44:40,470 - INFO - 127.0.0.1 - - [02/Jul/2025 08:44:40] "GET /registro HTTP/1.1" 200 -

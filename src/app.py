@@ -11,7 +11,7 @@ import shutil
 from datetime import datetime
 from urllib.parse import urljoin
 import logging
-import pytz  # Adicionado para conversão de timezone
+import pytz
 
 # Configuração básica de logging
 logging.basicConfig(
@@ -317,6 +317,15 @@ def executar_busca():
     # Dispara a busca diretamente
     trigger_search(search_query, from_date, to_date)
     return jsonify({"status": "success", "message": "Busca iniciada"})
+
+@app.route('/registro', methods=['GET'])
+def download_registro():
+    """Endpoint para baixar o arquivo registro.txt."""
+    from flask import send_file
+    registro_path = os.path.join(os.path.dirname(__file__), '..', 'registro.txt')
+    if not os.path.exists(registro_path):
+        return jsonify({"status": "error", "message": "Arquivo registro.txt não encontrado"}), 404
+    return send_file(registro_path, as_attachment=True)
 
 if __name__ == "__main__":
     # Cria diretório de downloads se não existir
