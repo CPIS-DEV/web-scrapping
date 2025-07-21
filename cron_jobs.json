@@ -4,9 +4,9 @@
     "search_query": "Companhia Paulista de Infraestrutura Social",
     "from_date": "2025-03-01",
     "to_date": "2025-06-23",
-    "schedule": "15:08",
+    "schedule": "14:52",
     "weekdays": [
-      "tuesday"
+      "wednesday"
     ],
     "active": true
   },
