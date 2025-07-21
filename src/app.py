@@ -183,4 +183,6 @@ def executar_busca():
         return jsonify({"status": "Nenhum resultado encontrado."})
     
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    # Criar diretório de downloads
+    os.makedirs("./downloads", exist_ok=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
