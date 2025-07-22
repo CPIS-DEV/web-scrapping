@@ -116,9 +116,22 @@ def baixar_pdf(url):
     download_dir = os.path.abspath("downloads")
     os.makedirs(download_dir, exist_ok=True)
 
+    # Configurações Chrome otimizadas para AWS/Linux headless
     chrome_options = Options()
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--disable-dev-shm-usage")
+
+    # Opções essenciais para ambiente AWS/Linux sem interface gráfica
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--display=:99")
+    chrome_options.add_argument("--remote-debugging-port=9222")
+    chrome_options.add_argument("--user-data-dir=/tmp/chrome-data")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-background-timer-throttling")
+    chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+    chrome_options.add_argument("--disable-renderer-backgrounding")
+
     chrome_options.add_experimental_option("prefs", {
         "download.default_directory": download_dir,
         "download.prompt_for_download": False,

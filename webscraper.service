@@ -1,16 +1,20 @@
 [Unit]
 Description=Web Scraper Selenium Flask App
-After=network.target
+After=network.target xvfb.service
+Requires=xvfb.service
 
 [Service]
 Type=simple
 User=ubuntu
+Group=ubuntu
 WorkingDirectory=/opt/webscraper
-Environment=PATH=/opt/webscraper/venv/bin
 Environment=DISPLAY=:99
-ExecStart=/opt/webscraper/venv/bin/gunicorn --bind 127.0.0.1:5000 --workers 1 --timeout 300 src.app:app
+Environment=HOME=/home/ubuntu
+ExecStart=/opt/webscraper/start_app.sh
 Restart=always
 RestartSec=3
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
