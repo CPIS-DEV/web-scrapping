@@ -6,11 +6,27 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import os
+import schedule
 import time
+import threading
+import json
 import requests
 import glob
 import shutil
 from datetime import datetime
+from urllib.parse import urljoin
+import logging
+import pytz
+
+# Configuração básica de logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('app.log'),
+        logging.StreamHandler()
+    ]
+)
 
 app = Flask(__name__)
 
@@ -23,15 +39,71 @@ app.config['MAIL_DEFAULT_SENDER'] = 'noreplycpis@gmail.com'
 
 mail = Mail(app)
 
-def enviar_email(assunto, anexo=None):
+# Lock para operações com arquivos
+file_lock = threading.Lock()
+
+def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None):
     msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
+    data_atual = datetime.now().strftime("%d/%m/%Y")
+    
     if anexo:
-        msg.body = f'Segue em anexo arquivo do Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {assunto}, onde foram encontrados os termos solicitados.'
-        with open(f"./downloads/{anexo}", "rb") as fp:
-            msg.attach(anexo, "application/pdf", fp.read())
+        arquivo_path = f"./downloads/{anexo}"
+        
+        # Verificar se o arquivo existe
+        if not os.path.exists(arquivo_path):
+            msg.body = f'Erro: Arquivo {anexo} não encontrado. Mensagem enviada para registro de encontro dos termos solicitados no Diário Oficial do dia {data_atual}.'
+            logging.error(f"Arquivo não encontrado: {arquivo_path}")
+        else:
+            # Verificar tamanho do arquivo
+            tamanho_bytes = os.path.getsize(arquivo_path)
+            tamanho_mb = tamanho_bytes / (1024 * 1024)  # Converter para MB
+            
+            if tamanho_mb > 25:  # Limite do Gmail
+                # Arquivo muito grande - enviar apenas notificação
+                termo_info = f" para o termo '{termo_busca}'" if termo_busca else ""
+                url_info = f"\n\n🔗 URL direta do documento:\n{url_original}" if url_original else ""
+                
+                msg.body = f'''ATENÇÃO: Arquivo encontrado mas não enviado por exceder limite de tamanho.
+
+📄 Arquivo: {anexo}
+📊 Tamanho: {tamanho_mb:.1f} MB (limite: 25 MB)
+📅 Data da publicação: {data_atual}
+🔍 Termo de busca{termo_info}{url_info}
+
+Para acessar o arquivo, você pode:
+
+OPÇÃO 1 - Acesso direto:{url_info if url_original else ""}
+
+OPÇÃO 2 - Busca manual no site oficial:
+🌐 https://www.doe.sp.gov.br/
+1. Acesse o site oficial
+2. Use a busca avançada{termo_info if termo_busca else ""}
+3. Selecione a data: {data_atual}
+4. Localize a publicação: {assunto}
+
+O arquivo está salvo localmente como: {anexo}'''
+                
+                logging.warning(f"Arquivo {anexo} muito grande ({tamanho_mb:.1f}MB) - enviando apenas notificação")
+            else:
+                # Arquivo dentro do limite - enviar com anexo
+                url_info = f"\n\n🔗 URL do documento: {url_original}" if url_original else ""
+                msg.body = f'Segue em anexo arquivo do Diário Oficial do dia {data_atual}, de nome {assunto}, onde foram encontrados os termos solicitados.{url_info}'
+                try:
+                    with open(arquivo_path, "rb") as fp:
+                        msg.attach(anexo, "application/pdf", fp.read())
+                    logging.info(f"Anexo {anexo} adicionado ({tamanho_mb:.1f}MB)")
+                except Exception as e:
+                    msg.body = f'Erro ao anexar arquivo {anexo}. Mensagem enviada para registro de encontro dos termos no Diário Oficial do dia {data_atual}. Erro: {str(e)}'
+                    logging.error(f"Erro ao anexar arquivo {anexo}: {str(e)}")
     else:
-        msg.body = f'Mensagem enviada para registro de encontro dos termos solicitados no Diario Oficial do dia {datetime.now().strftime("%d/%m/%Y")}, de nome {anexo}. IMPORTANTE: O arquivo não foi enviado por erro do sistema ao anexa-lo. O administrador do sistema deve ser comunicado.'
-    mail.send(msg)
+        url_info = f"\n\n🔗 URL do documento: {url_original}" if url_original else ""
+        msg.body = f'Mensagem enviada para registro de encontro dos termos solicitados no Diário Oficial do dia {data_atual}, de nome {assunto}. IMPORTANTE: O arquivo não foi enviado por erro do sistema ao anexá-lo. O administrador do sistema deve ser comunicado.{url_info}'
+    
+    try:
+        mail.send(msg)
+        logging.info(f"Email enviado com sucesso: {assunto}")
+    except Exception as e:
+        logging.error(f"Erro ao enviar email: {str(e)}")
 
 def search_website(search_query, from_date, to_date, page_number=1, page_size=20):
     url = "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
@@ -82,6 +154,127 @@ def renomear_pdf(download_dir):
     else:
         print("Nenhum PDF encontrado para renomear.")
         return None
+    
+def load_cron_jobs():
+    """Carrega os jobs agendados do arquivo JSON."""
+    try:
+        with file_lock:
+            with open('cron_jobs.json', 'r') as f:
+                return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+    except Exception as e:
+        logging.error(f"Erro ao carregar cron jobs: {str(e)}")
+        return []
+
+def save_cron_jobs(jobs):
+    """Salva os jobs agendados no arquivo JSON."""
+    try:
+        with file_lock:
+            with open('cron_jobs.json', 'w') as f:
+                json.dump(jobs, f, indent=2)
+    except Exception as e:
+        logging.error(f"Erro ao salvar cron jobs: {str(e)}")
+
+def apagar_todos_agendamentos():
+    """Remove todos os agendamentos do scheduler em memória."""
+    schedule.clear()
+    logging.info("Todos os agendamentos foram removidos do scheduler.")
+
+def trigger_search(search_query, from_date, to_date):
+    """Dispara a busca diretamente sem fazer HTTP request."""
+    print("chamando trigger_search")
+    logging.info(f"Iniciando busca agendada para: {search_query}")
+    
+    with app.app_context():
+        # Garante que search_query é uma lista
+        if isinstance(search_query, str):
+            search_query = [search_query]
+
+        # NOVA FUNCIONALIDADE: Para tarefas agendadas, sempre usar data atual
+        data_atual_str = datetime.now().strftime("%d-%m-%Y")
+        data_atual_iso = datetime.now().strftime("%Y-%m-%d")  # Formato ISO para API
+        
+        # Usar data atual em vez dos parâmetros from_date e to_date
+        from_date_atual = data_atual_iso
+        to_date_atual = data_atual_iso
+        
+        logging.info(f"Busca agendada usando data atual: {data_atual_iso} (ignorando datas do JSON)")
+        
+        results = []
+
+        try:
+            with file_lock:
+                with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                    arquivo.write(f"\n\n\nBusca agendada realizada no dia {data_atual_str} (buscando publicações do dia {data_atual_iso}):\n\n")
+
+            for termo in search_query:
+                # Usar as datas atuais em vez dos parâmetros
+                results += search_website(termo, from_date_atual, to_date_atual)
+
+            if results:
+                with file_lock:
+                    with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                        arquivo.write(f"Foram encontrados {len(results)} resultados. Os nomes dos arquivos são:\n")
+                
+                for result in results:
+                    with file_lock:
+                        with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                            arquivo.write(f"\t{result['title']}\n")
+                    
+                    url_documento = f"https://doe.sp.gov.br/{result['slug']}"
+                    nome_arquivo = baixar_pdf(url_documento)
+
+                    if nome_arquivo:
+                        nome_renomeado = renomear_pdf("./downloads")
+                        # ATUALIZADO: Passar termo, URL
+                        enviar_email(result['title'], nome_renomeado, termo, url_documento)
+                    else:
+                        # ATUALIZADO: Passar termo, URL mesmo sem arquivo
+                        enviar_email(result['title'], None, termo, url_documento)
+                        
+            else:
+                with file_lock:
+                    with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                        arquivo.write("Não foram encontrados resultados para essa busca.\n\n")
+                        
+        except Exception as e:
+            logging.error(f"Erro durante busca agendada: {str(e)}")
+
+def schedule_jobs():
+    """Agenda os jobs baseado no arquivo JSON."""
+    schedule.clear()
+    jobs = load_cron_jobs()
+    for job in jobs:
+        if job.get('active', True):
+            horario_utc = job['schedule']
+            weekdays = job.get('weekdays', [])
+            if weekdays:
+                for day in weekdays:
+                    # Passar None para from_date e to_date já que serão ignorados
+                    getattr(schedule.every(), day.lower()).at(horario_utc).do(
+                        trigger_search,
+                        search_query=job['search_query'],
+                        from_date=None,  # ← Será ignorado na função trigger_search
+                        to_date=None
+                    )
+                    logging.info(f"Agendando job '{job['search_query']}' para {horario_utc} em {day.capitalize()}")
+            else:
+                schedule.every().day.at(horario_utc).do(
+                    trigger_search,
+                    search_query=job['search_query'],
+                    from_date=None,
+                    to_date=None     
+                )
+                logging.info(f"Agendando job '{job['search_query']}' para {horario_utc} diariamente")
+    logging.info(f"Agendados {len([j for j in jobs if j.get('active', True)])} jobs")
+
+def run_scheduler():
+    """Executa o agendador em segundo plano."""
+    logging.info("Iniciando scheduler...")
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
     
 def aguardar_download(download_dir, timeout=120):
     """Aguarda até que não haja arquivos .crdownload e o PDF esteja pronto."""
@@ -187,15 +380,97 @@ def executar_busca():
         for result in results:
             with open("registro.txt", "a", encoding="utf-8") as arquivo:
                 arquivo.write(f"\t{result['title']}\n")
-            nome_arquivo = baixar_pdf(f"https://doe.sp.gov.br/{result['slug']}")
-            enviar_email(result['title'], nome_arquivo)
+            url_documento = f"https://doe.sp.gov.br/{result['slug']}"
+            nome_arquivo = baixar_pdf(url_documento)
+            enviar_email(result['title'], nome_arquivo, termo, url_documento)
         return jsonify({"status": "Busca e Envio executados com sucesso!", "resultados": len(results)})
     else:
         with open("registro.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write("Não foram encontrados resultado para essa busca.\n\n")
         return jsonify({"status": "Nenhum resultado encontrado."})
     
+@app.route('/cron', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def gerencia_crons():
+    """Endpoint para gerenciar jobs agendados (CRUD)."""
+    if request.method == 'GET':
+        # Lista todos os jobs
+        return jsonify(load_cron_jobs())
+
+    elif request.method == 'POST':
+        # Cria novo job
+        new_job = request.json
+        required_fields = ['search_query', 'schedule']
+        if not all(field in new_job for field in required_fields):
+            return jsonify({"status": "error", "message": "Campos obrigatórios faltando"}), 400
+
+        jobs = load_cron_jobs()
+        new_id = max([job.get('id', 0) for job in jobs] or [0]) + 1
+        new_job['id'] = new_id
+        new_job['active'] = new_job.get('active', True)
+        # Garantir que weekdays existe (opcional)
+        if 'weekdays' not in new_job:
+            new_job['weekdays'] = []
+        jobs.append(new_job)
+        save_cron_jobs(jobs)
+        apagar_todos_agendamentos()
+        schedule_jobs()
+        return jsonify({"status": "success", "id": new_id}), 201
+
+    elif request.method == 'PUT':
+        # Atualiza um job existente
+        update_job = request.json
+        if 'id' not in update_job:
+            return jsonify({"status": "error", "message": "ID do job não fornecido"}), 400
+
+        jobs = load_cron_jobs()
+        for idx, job in enumerate(jobs):
+            if job.get('id') == update_job['id']:
+                jobs[idx].update(update_job)
+                break
+        else:
+            return jsonify({"status": "error", "message": "Job não encontrado"}), 404
+
+        save_cron_jobs(jobs)
+        apagar_todos_agendamentos()
+        schedule_jobs()
+        return jsonify({"status": "success", "message": "Job atualizado"})
+
+    elif request.method == 'DELETE':
+        # Deleta um job pelo ID
+        job_id = request.json.get('id')
+        if not job_id:
+            return jsonify({"status": "error", "message": "ID do job não fornecido"}), 400
+
+        jobs = load_cron_jobs()
+        jobs = [job for job in jobs if job.get('id') != job_id]
+        save_cron_jobs(jobs)
+        apagar_todos_agendamentos()
+        schedule_jobs()
+        return jsonify({"status": "success", "message": "Job removido"})
+
+    return jsonify({"status": "error", "message": "Método não suportado"}), 405
+
+@app.route('/registro', methods=['GET'])
+def download_registro():
+    """Endpoint para baixar o arquivo registro.txt."""
+    from flask import send_file
+    registro_path = os.path.abspath('registro.txt')
+    if not os.path.exists(registro_path):
+        return jsonify({"status": "error", "message": "Arquivo registro.txt não encontrado"}), 404
+    return send_file(registro_path, as_attachment=True)
+    
 if __name__ == "__main__":
     # Criar diretório de downloads
     os.makedirs("./downloads", exist_ok=True)
+    
+    # Carregar e agendar os jobs do JSON
+    schedule_jobs()
+    
+    # Iniciar o scheduler em uma thread separada (background)
+    scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
+    scheduler_thread.start()
+    
+    logging.info("Aplicação iniciada com scheduler ativo")
+    
+    # Iniciar aplicação Flask
     app.run(host="0.0.0.0", port=5000, debug=False)

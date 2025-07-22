@@ -1039,3 +1039,272 @@ with app.app_context(). See the documentation for more information.
 2025-07-21 15:34:05,513 - INFO - Get LATEST chromedriver version for google-chrome
 2025-07-21 15:34:05,572 - INFO - Get LATEST chromedriver version for google-chrome
 2025-07-21 15:34:05,607 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.157\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 16:43:17,607 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:45 UTC em Tuesday (original: 16:45 BRT)
+2025-07-22 16:43:17,607 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 16:43:17,608 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 16:43:17,608 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 16:43:17,608 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 16:43:17,608 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 08:00 UTC em Wednesday (original: 08:00 BRT)
+2025-07-22 16:43:17,608 - INFO - Agendados 4 jobs
+2025-07-22 16:43:17,609 - INFO - Iniciando scheduler...
+2025-07-22 16:43:17,609 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-22 16:43:17,628 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-22 16:43:17,628 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-22 16:45:00,682 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-22 16:45:00,827 - INFO - ====== WebDriver manager ======
+2025-07-22 16:45:01,636 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 16:45:01,660 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 16:45:01,694 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.157\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 16:45:10,038 - ERROR - Erro durante busca agendada: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-22 16:48:32,093 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:50 UTC em Tuesday (original: 16:50 BRT)
+2025-07-22 16:48:32,093 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 16:48:32,094 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 16:48:32,094 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 16:48:32,094 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 16:48:32,094 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 08:00 UTC em Wednesday (original: 08:00 BRT)
+2025-07-22 16:48:32,094 - INFO - Agendados 4 jobs
+2025-07-22 16:48:32,095 - INFO - Iniciando scheduler...
+2025-07-22 16:48:32,095 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-22 16:48:32,107 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-22 16:48:32,107 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-22 16:50:00,146 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-22 16:50:00,237 - INFO - ====== WebDriver manager ======
+2025-07-22 16:50:01,021 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 16:50:01,055 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 16:50:01,091 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.157\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 16:50:13,985 - INFO - ====== WebDriver manager ======
+2025-07-22 16:50:14,779 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 16:50:14,807 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 16:50:14,834 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.157\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 16:57:29,071 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 16:50 UTC em Tuesday (original: 16:50 BRT)
+2025-07-22 16:57:29,071 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 16:57:29,072 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 16:57:29,072 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 16:57:29,072 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 16:57:29,072 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 08:00 UTC em Wednesday (original: 08:00 BRT)
+2025-07-22 16:57:29,072 - INFO - Agendados 4 jobs
+2025-07-22 16:57:29,072 - INFO - Iniciando scheduler...
+2025-07-22 16:57:29,073 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-22 16:57:29,081 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-22 16:57:29,081 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-22 16:58:47,189 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 16:58:47,203 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 16:58:47,203 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 16:58:47,204 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 16:58:47,207 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 16:58:47,208 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 16:58:47,210 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 08:00 UTC em Wednesday (original: 08:00 BRT)
+2025-07-22 16:58:47,210 - INFO - Agendados 4 jobs
+2025-07-22 16:58:47,212 - INFO - 127.0.0.1 - - [22/Jul/2025 16:58:47] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 17:00:00,179 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-22 17:00:00,291 - INFO - ====== WebDriver manager ======
+2025-07-22 17:00:01,090 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 17:00:01,145 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 17:00:01,176 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.157\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 17:00:13,905 - INFO - ====== WebDriver manager ======
+2025-07-22 17:00:14,742 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 17:00:14,768 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 17:00:14,801 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.157\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 17:01:05,871 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:01:05,886 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:01:05,887 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:01:05,887 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:01:05,888 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:01:05,888 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:01:05,889 - INFO - Agendados 3 jobs
+2025-07-22 17:01:05,889 - INFO - 127.0.0.1 - - [22/Jul/2025 17:01:05] "DELETE /cron HTTP/1.1" 200 -
+2025-07-22 17:53:59,456 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:53:59,479 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:53:59,479 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:53:59,480 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:53:59,481 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:53:59,481 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:53:59,482 - INFO - Agendados 3 jobs
+2025-07-22 17:53:59,483 - INFO - 127.0.0.1 - - [22/Jul/2025 17:53:59] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-22 17:54:26,414 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:54:26,416 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:54:26,416 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:54:26,416 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:54:26,416 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:54:26,417 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:54:26,417 - INFO - Agendados 3 jobs
+2025-07-22 17:54:26,417 - INFO - 127.0.0.1 - - [22/Jul/2025 17:54:26] "DELETE /cron HTTP/1.1" 200 -
+2025-07-22 17:54:46,300 - INFO - 127.0.0.1 - - [22/Jul/2025 17:54:46] "GET /registro HTTP/1.1" 200 -
+2025-07-22 17:56:03,348 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:56:03,363 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:56:03,363 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:56:03,364 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:56:03,364 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:56:03,364 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:56:03,364 - INFO - Agendando job 'Teste' para 10:00 UTC em Monday (original: 10:00 BRT)
+2025-07-22 17:56:03,365 - INFO - Agendados 4 jobs
+2025-07-22 17:56:03,365 - INFO - 127.0.0.1 - - [22/Jul/2025 17:56:03] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-22 17:56:08,978 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:56:08,994 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:56:08,994 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:56:08,995 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:56:08,995 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:56:08,995 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:56:08,995 - INFO - Agendando job 'Teste' para 10:00 UTC em Monday (original: 10:00 BRT)
+2025-07-22 17:56:08,997 - INFO - Agendando job 'Teste' para 10:00 UTC em Monday (original: 10:00 BRT)
+2025-07-22 17:56:08,997 - INFO - Agendados 5 jobs
+2025-07-22 17:56:08,997 - INFO - 127.0.0.1 - - [22/Jul/2025 17:56:08] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-22 17:56:38,672 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:56:38,685 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:56:38,685 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:56:38,686 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:56:38,686 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:56:38,686 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:56:38,687 - INFO - Agendando job 'Teste' para 10:00 UTC em Monday (original: 10:00 BRT)
+2025-07-22 17:56:38,687 - INFO - Agendados 4 jobs
+2025-07-22 17:56:38,687 - INFO - 127.0.0.1 - - [22/Jul/2025 17:56:38] "DELETE /cron HTTP/1.1" 200 -
+2025-07-22 17:56:42,830 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 17:56:42,831 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 UTC em Tuesday (original: 17:00 BRT)
+2025-07-22 17:56:42,832 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Monday (original: 09:00 BRT)
+2025-07-22 17:56:42,832 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Wednesday (original: 09:00 BRT)
+2025-07-22 17:56:42,832 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 UTC em Friday (original: 09:00 BRT)
+2025-07-22 17:56:42,832 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 UTC em Wednesday (original: 15:05 BRT)
+2025-07-22 17:56:42,833 - INFO - Agendados 3 jobs
+2025-07-22 17:56:42,833 - INFO - 127.0.0.1 - - [22/Jul/2025 17:56:42] "DELETE /cron HTTP/1.1" 200 -
+2025-07-22 18:10:46,495 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 17:00 em Tuesday
+2025-07-22 18:10:46,495 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:10:46,496 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:10:46,496 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:10:46,496 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:10:46,496 - INFO - Agendados 3 jobs
+2025-07-22 18:10:46,497 - INFO - Iniciando scheduler...
+2025-07-22 18:10:46,497 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-22 18:10:46,514 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-22 18:10:46,514 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-22 18:11:22,511 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:11:22,529 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:13 em Tuesday
+2025-07-22 18:11:22,529 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:11:22,529 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:11:22,530 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:11:22,530 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:11:22,531 - INFO - Agendados 3 jobs
+2025-07-22 18:11:22,533 - INFO - 127.0.0.1 - - [22/Jul/2025 18:11:22] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 18:13:00,633 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-22 18:13:00,634 - INFO - Busca agendada usando data atual: 2025-07-22 (ignorando datas do JSON)
+2025-07-22 18:13:41,593 - INFO - 127.0.0.1 - - [22/Jul/2025 18:13:41] "[31m[1mPUT /registro HTTP/1.1[0m" 405 -
+2025-07-22 18:13:48,221 - INFO - 127.0.0.1 - - [22/Jul/2025 18:13:48] "GET /registro HTTP/1.1" 200 -
+2025-07-22 18:16:22,534 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:16:22,548 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:13 em Tuesday
+2025-07-22 18:16:22,548 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:16:22,549 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:16:22,549 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:16:22,549 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:16:22,549 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:20 em Tuesday
+2025-07-22 18:16:22,550 - INFO - Agendados 4 jobs
+2025-07-22 18:16:22,550 - INFO - 127.0.0.1 - - [22/Jul/2025 18:16:22] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-22 18:20:00,112 - INFO - Iniciando busca agendada para: Processo Seletivo Simplificado para a função
+2025-07-22 18:20:00,113 - INFO - Busca agendada usando data atual: 2025-07-22 (ignorando datas do JSON)
+2025-07-22 18:20:00,500 - INFO - ====== WebDriver manager ======
+2025-07-22 18:20:01,352 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:20:01,380 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:20:01,405 - INFO - There is no [win64] chromedriver "138.0.7204.168" for browser google-chrome "138.0.7204" in cache
+2025-07-22 18:20:01,406 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:20:01,491 - INFO - WebDriver version 138.0.7204.168 selected
+2025-07-22 18:20:01,494 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.168/win32/chromedriver-win32.zip
+2025-07-22 18:20:01,494 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.168/win32/chromedriver-win32.zip
+2025-07-22 18:20:01,585 - INFO - Driver downloading response is 200
+2025-07-22 18:20:02,355 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:20:03,113 - INFO - Driver has been saved in cache [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168]
+2025-07-22 18:21:01,537 - INFO - ====== WebDriver manager ======
+2025-07-22 18:21:02,745 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:21:02,798 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:21:02,829 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 18:21:33,183 - ERROR - Erro durante busca agendada: (552, b"5.3.4 Your message exceeded Google's message size limits. To view our\n5.3.4 message size guidelines, go to\n5.3.4  https://support.google.com/mail/?p=MaxSizeError d2e1a72fcca58-75f4fc4b6d3sm1856065b3a.67 - gsmtp", 'noreplycpis@gmail.com')
+2025-07-22 18:23:19,288 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:23:19,301 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:25 em Tuesday
+2025-07-22 18:23:19,301 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:23:19,302 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:23:19,302 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:23:19,303 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:23:19,303 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:20 em Tuesday
+2025-07-22 18:23:19,304 - INFO - Agendados 4 jobs
+2025-07-22 18:23:19,304 - INFO - 127.0.0.1 - - [22/Jul/2025 18:23:19] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 18:25:00,366 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-22 18:25:00,368 - INFO - Busca agendada usando data atual: 2025-07-22 (ignorando datas do JSON)
+2025-07-22 18:25:30,592 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:25:30,610 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:30 em Tuesday
+2025-07-22 18:25:30,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:25:30,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:25:30,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:25:30,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:25:30,612 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:20 em Tuesday
+2025-07-22 18:25:30,612 - INFO - Agendados 4 jobs
+2025-07-22 18:25:30,612 - INFO - 127.0.0.1 - - [22/Jul/2025 18:25:30] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 18:27:38,557 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:27:38,577 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:45 em Tuesday
+2025-07-22 18:27:38,577 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:27:38,577 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:27:38,578 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:27:38,578 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:27:38,578 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:20 em Tuesday
+2025-07-22 18:27:38,579 - INFO - Agendados 4 jobs
+2025-07-22 18:27:38,579 - INFO - 127.0.0.1 - - [22/Jul/2025 18:27:38] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 18:31:38,423 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:31:38,442 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:35 em Tuesday
+2025-07-22 18:31:38,442 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:31:38,442 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:31:38,443 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:31:38,443 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:31:38,443 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:20 em Tuesday
+2025-07-22 18:31:38,444 - INFO - Agendados 4 jobs
+2025-07-22 18:31:38,444 - INFO - 127.0.0.1 - - [22/Jul/2025 18:31:38] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 18:32:20,423 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:35 em Tuesday
+2025-07-22 18:32:20,424 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:32:20,424 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:32:20,424 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:32:20,424 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:32:20,424 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:20 em Tuesday
+2025-07-22 18:32:20,424 - INFO - Agendados 4 jobs
+2025-07-22 18:32:20,425 - INFO - Iniciando scheduler...
+2025-07-22 18:32:20,425 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-22 18:32:20,434 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.38:5000
+2025-07-22 18:32:20,434 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-22 18:35:00,545 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-22 18:35:00,546 - INFO - Busca agendada usando data atual: 2025-07-22 (ignorando datas do JSON)
+2025-07-22 18:35:43,984 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-22 18:35:44,005 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:35 em Tuesday
+2025-07-22 18:35:44,005 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Monday
+2025-07-22 18:35:44,006 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Wednesday
+2025-07-22 18:35:44,006 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 09:00 em Friday
+2025-07-22 18:35:44,006 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 15:05 em Wednesday
+2025-07-22 18:35:44,006 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 18:37 em Tuesday
+2025-07-22 18:35:44,007 - INFO - Agendados 4 jobs
+2025-07-22 18:35:44,007 - INFO - 127.0.0.1 - - [22/Jul/2025 18:35:44] "PUT /cron HTTP/1.1" 200 -
+2025-07-22 18:37:00,730 - INFO - Iniciando busca agendada para: Processo Seletivo Simplificado para a função
+2025-07-22 18:37:00,731 - INFO - Busca agendada usando data atual: 2025-07-22 (ignorando datas do JSON)
+2025-07-22 18:37:01,185 - INFO - ====== WebDriver manager ======
+2025-07-22 18:37:01,994 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:37:02,028 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:37:02,054 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 18:37:11,834 - INFO - Anexo 2025-07-22_1.pdf adicionado (7.9MB)
+2025-07-22 18:37:59,951 - INFO - Email enviado com sucesso: EDITAL Nº 05.05, DE 21 DE JULHO DE 2025
+2025-07-22 18:37:59,953 - INFO - ====== WebDriver manager ======
+2025-07-22 18:38:00,809 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:38:00,837 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-22 18:38:00,861 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-22 18:38:21,067 - WARNING - Arquivo 2025-07-22_2.pdf muito grande (59.6MB) - enviando apenas notificação
+2025-07-22 18:38:23,835 - INFO - Email enviado com sucesso: EDITAL DIVERSOS Nº 01.01, DE 21 DE JULHO DE 2025
