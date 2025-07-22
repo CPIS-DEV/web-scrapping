@@ -7,7 +7,7 @@ Type=simple
 User=ubuntu
 WorkingDirectory=/opt/webscraper
 Environment=PATH=/opt/webscraper/venv/bin
-Environment=DISPLAY=:0
+Environment=DISPLAY=:99
 ExecStart=/opt/webscraper/venv/bin/gunicorn --bind 127.0.0.1:5000 --workers 1 --timeout 300 src.app:app
 Restart=always
 RestartSec=3
