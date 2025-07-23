@@ -28,7 +28,7 @@ logging.basicConfig(
     ]
 )
 
-limite_envio_global = 3
+limite_envio_global = 6
 
 app = Flask(__name__)
 
