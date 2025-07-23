@@ -2019,3 +2019,73 @@ with app.app_context(). See the documentation for more information.
 2025-07-23 16:47:25,204 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:25] "GET /config HTTP/1.1" 200 -
 2025-07-23 16:47:33,524 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:33] "[36mGET /registro HTTP/1.1[0m" 304 -
 2025-07-23 16:48:39,284 - INFO - 127.0.0.1 - - [23/Jul/2025 16:48:39] "GET /cron HTTP/1.1" 200 -
+2025-07-23 17:37:36,461 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 17:37:36,461 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 17:37:36,462 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 17:37:36,462 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 17:37:36,462 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 17:37:36,462 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 17:37:36,462 - INFO - Agendados 3 jobs
+2025-07-23 17:37:36,463 - INFO - Iniciando scheduler...
+2025-07-23 17:37:36,463 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 17:37:36,471 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 17:37:36,472 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 17:38:11,668 - INFO - Última execução atualizada: 2025-07-23T17:38:11.667230Z
+2025-07-23 17:38:11,750 - INFO - ====== WebDriver manager ======
+2025-07-23 17:38:12,599 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:38:12,630 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:38:12,658 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 17:38:23,845 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: DECRETO Nº 69.743, DE 22 DE JULHO DE 2025
+2025-07-23 17:38:23,846 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 17:38:23,847 - INFO - ====== WebDriver manager ======
+2025-07-23 17:38:24,723 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:38:24,746 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:38:24,805 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 17:38:36,382 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: PROGRAMA DE DESEMBOLSO PAGA - JUNHO/2025.
+2025-07-23 17:38:36,382 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 17:38:36,383 - INFO - ====== WebDriver manager ======
+2025-07-23 17:38:37,303 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:38:37,327 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:38:37,353 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 17:38:48,041 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: ATA DA 32ª (TRIGÉSIMA SEGUNDA) ASSEMBLEIA GERAL ORDINÁRIA E 71ª (SEPTUAGÉSIMA PRIMEIRA) ASSEMBLEIA EXTRAORDINÁRIA DE 30 DE ABRIL DE 2025
+2025-07-23 17:38:48,042 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 17:38:50,658 - INFO - Email informativo de resultados enviado para ti@cpis.com.br - Termo: 'Companhia Paulista' | Tipo: manual | Resultados: 3
+2025-07-23 17:38:50,660 - INFO - 127.0.0.1 - - [23/Jul/2025 17:38:50] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 17:43:22,716 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 17:43:22,717 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 17:43:22,717 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 17:43:22,717 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 17:43:22,717 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 17:43:22,717 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 17:43:22,717 - INFO - Agendados 3 jobs
+2025-07-23 17:43:22,718 - INFO - Iniciando scheduler...
+2025-07-23 17:43:22,718 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 17:43:22,729 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 17:43:22,730 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 17:43:27,414 - INFO - Última execução atualizada: 2025-07-23T17:43:27.413996Z
+2025-07-23 17:43:27,485 - INFO - ====== WebDriver manager ======
+2025-07-23 17:43:28,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:43:28,413 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:43:28,471 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 17:43:40,626 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: DECRETO Nº 69.743, DE 22 DE JULHO DE 2025
+2025-07-23 17:43:40,627 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 17:43:40,628 - INFO - ====== WebDriver manager ======
+2025-07-23 17:43:41,458 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:43:41,535 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:43:41,562 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 17:43:55,218 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: PROGRAMA DE DESEMBOLSO PAGA - JUNHO/2025.
+2025-07-23 17:43:55,219 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 17:43:55,220 - INFO - ====== WebDriver manager ======
+2025-07-23 17:43:56,066 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:43:56,092 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 17:43:56,182 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 17:44:11,356 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: ATA DA 32ª (TRIGÉSIMA SEGUNDA) ASSEMBLEIA GERAL ORDINÁRIA E 71ª (SEPTUAGÉSIMA PRIMEIRA) ASSEMBLEIA EXTRAORDINÁRIA DE 30 DE ABRIL DE 2025
+2025-07-23 17:44:11,357 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 17:44:14,594 - INFO - Email informativo de resultados enviado para ti@cpis.com.br - Termo: 'Companhia Paulista' | Tipo: manual | Resultados: 3
+2025-07-23 17:44:14,595 - INFO - 127.0.0.1 - - [23/Jul/2025 17:44:14] "POST /executar-busca HTTP/1.1" 200 -

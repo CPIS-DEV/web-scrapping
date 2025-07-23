@@ -103,7 +103,54 @@ def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None, delet
     msg = Message(assunto, recipients=[email_principal])
     data_atual = datetime.now().strftime("%d/%m/%Y")
     
-    # ... resto do código permanece igual até o final da função ...
+    if anexo:
+        # Email com anexo
+        msg.body = f'''Prezado(a),
+
+Segue em anexo o documento "{assunto}" encontrado na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual}.
+
+📋 DETALHES DO DOCUMENTO:
+📄 Título: {assunto}
+🔍 Termo de busca: {termo_busca if termo_busca else 'N/A'}
+📅 Data da consulta: {data_atual}
+
+🌐 LINK DIRETO PARA O DOCUMENTO:
+{url_original if url_original else 'N/A'}
+
+💡 OBSERVAÇÕES:
+• Este documento foi encontrado automaticamente pelo sistema de monitoramento
+• Verifique o anexo para visualizar o conteúdo completo
+• O link direto permite acesso ao documento original no site oficial
+
+Este é um email automático do sistema de monitoramento do Diário Oficial.'''
+
+        try:
+            with open(f"./downloads/{anexo}", "rb") as fp:
+                msg.attach(anexo, "application/pdf", fp.read())
+        except Exception as e:
+            logging.error(f"Erro ao anexar arquivo {anexo}: {str(e)}")
+            # Se falhar o anexo, enviar só com link
+            msg.body += f"\n\n⚠️ AVISO: Não foi possível anexar o arquivo PDF. Use o link direto acima para acessar o documento."
+    else:
+        # Email só com link
+        msg.body = f'''Prezado(a),
+
+Foi encontrado o documento "{assunto}" na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual}.
+
+📋 DETALHES DO DOCUMENTO:
+📄 Título: {assunto}
+🔍 Termo de busca: {termo_busca if termo_busca else 'N/A'}
+📅 Data da consulta: {data_atual}
+
+🌐 ACESSE O DOCUMENTO:
+{url_original if url_original else 'Link não disponível'}
+
+💡 OBSERVAÇÕES:
+• Este documento foi encontrado automaticamente pelo sistema de monitoramento
+• Clique no link acima para visualizar o documento completo no site oficial
+• O documento não pôde ser baixado automaticamente
+
+Este é um email automático do sistema de monitoramento do Diário Oficial.'''
     
     try:
         mail.send(msg)
@@ -137,7 +184,32 @@ def enviar_email_excesso_resultados(termo_busca, total_resultados, results_exced
     
     msg = Message(assunto, recipients=[email_principal])
     
-    # ... resto do corpo do email permanece igual ...
+    msg.body = f'''⚠️ LIMITE DE ENVIOS EXCEDIDO
+
+Prezado(a),
+
+A busca realizada encontrou mais resultados do que o limite configurado para envio de emails com anexos.
+
+📊 RESUMO DA BUSCA:
+📅 Data da busca: {data_atual}
+🔍 Termo pesquisado: {termo_busca}
+📄 Total de resultados encontrados: {total_resultados}
+📧 Enviados por email (com anexo): {limite_envio}
+⏭️ Resultados excedentes (apenas links): {len(results_excedentes)}
+
+📋 LINKS DOS RESULTADOS EXCEDENTES:
+{links_excedentes}
+
+💡 INFORMAÇÕES IMPORTANTES:
+• Os primeiros {limite_envio} resultados foram enviados por email com anexos PDF
+• Os resultados acima são os documentos adicionais encontrados
+• Todos os links direcionam para os documentos originais no site oficial
+• Use os links para acessar diretamente os documentos no Diário Oficial
+
+🌐 ACESSO GERAL:
+Para consultas adicionais, acesse: https://www.doe.sp.gov.br/
+
+Este é um email automático do sistema de monitoramento do Diário Oficial.'''
     
     try:
         mail.send(msg)
@@ -155,7 +227,38 @@ def enviar_email_sem_resultados(termo_busca, data_busca, horario_busca):
     
     msg = Message(assunto, recipients=[email_principal])
     
-    # ... resto do corpo do email permanece igual ...
+    msg.body = f'''🔍 BUSCA AGENDADA SEM RESULTADOS
+
+Prezado(a),
+
+A busca agendada foi executada mas não encontrou nenhum resultado novo para o termo monitorado.
+
+📊 DETALHES DA BUSCA:
+📅 Data da busca: {data_busca}
+🕐 Horário da busca: {horario_busca} (horário de Brasília)
+🔍 Termo pesquisado: {termo_busca}
+📄 Resultados encontrados: 0
+
+✅ AÇÕES REALIZADAS:
+• Sistema executou a busca automaticamente conforme agendamento
+• Verificou o Diário Oficial do Estado de São Paulo na data atual
+• Não foram encontrados documentos correspondentes ao termo pesquisado
+• Esta notificação foi enviada para informar sobre a execução da busca
+
+💡 INFORMAÇÕES ADICIONAIS:
+• O sistema continuará monitorando automaticamente conforme o agendamento
+• Uma nova busca será realizada na próxima data/horário programado
+• Você será notificado caso sejam encontrados resultados futuros
+
+🔄 PRÓXIMAS AÇÕES:
+• O monitoramento permanece ativo
+• Nenhuma ação manual é necessária
+• O sistema enviará email automaticamente quando houver resultados
+
+🌐 CONSULTA MANUAL:
+Para verificação manual, acesse: https://www.doe.sp.gov.br/
+
+Este é um email automático do sistema de monitoramento do Diário Oficial.'''
     
     try:
         mail.send(msg)
