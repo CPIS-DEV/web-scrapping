@@ -1602,3 +1602,420 @@ with app.app_context(). See the documentation for more information.
 2025-07-23 13:04:08,091 - INFO - Email enviado com sucesso: PREGÃO Nº 147.00031554/2024-51, DE 22 DE JULHO DE 2025
 2025-07-23 13:04:08,092 - INFO - Arquivo 2025-07-23_1.pdf deletado com sucesso após envio do email
 2025-07-23 13:04:11,472 - INFO - Email informativo de resultados enviado - Termo: 'fls. 0075560458' | Tipo: agendada | Resultados: 1
+2025-07-23 15:22:55,345 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Tuesday
+2025-07-23 15:22:55,346 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Wednesday
+2025-07-23 15:22:55,346 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 15:22:55,347 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 15:22:55,347 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 15:22:55,347 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:22:55,347 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:22:55,347 - INFO - Agendados 4 jobs
+2025-07-23 15:22:55,348 - INFO - Iniciando scheduler...
+2025-07-23 15:22:55,348 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 15:22:55,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 15:22:55,358 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 15:23:27,580 - INFO - 127.0.0.1 - - [23/Jul/2025 15:23:27] "GET /registro HTTP/1.1" 200 -
+2025-07-23 15:23:34,315 - INFO - 127.0.0.1 - - [23/Jul/2025 15:23:34] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:23:39,205 - INFO - 127.0.0.1 - - [23/Jul/2025 15:23:39] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:23:41,295 - INFO - 127.0.0.1 - - [23/Jul/2025 15:23:41] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:25:02,378 - INFO - 127.0.0.1 - - [23/Jul/2025 15:25:02] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:26:19,935 - INFO - 127.0.0.1 - - [23/Jul/2025 15:26:19] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 15:26:24,289 - INFO - 127.0.0.1 - - [23/Jul/2025 15:26:24] "GET /registro HTTP/1.1" 200 -
+2025-07-23 15:27:06,809 - INFO - 127.0.0.1 - - [23/Jul/2025 15:27:06] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:33:29,606 - INFO - 127.0.0.1 - - [23/Jul/2025 15:33:29] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:37:16,260 - INFO - 127.0.0.1 - - [23/Jul/2025 15:37:16] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:37:21,523 - INFO - 127.0.0.1 - - [23/Jul/2025 15:37:21] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:37:31,284 - INFO - 127.0.0.1 - - [23/Jul/2025 15:37:31] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:40:33,952 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:33] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:40,860 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:40] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:40:41,171 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:41,190 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 15:40:41,191 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 15:40:41,191 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 15:40:41,191 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:40:41,191 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:41,191 - INFO - Agendados 3 jobs
+2025-07-23 15:40:41,192 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:41] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:41,421 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:41] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:41,502 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:41] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:46,821 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:46] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:40:47,137 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:47,159 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:40:47,160 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:47,160 - INFO - Agendados 2 jobs
+2025-07-23 15:40:47,160 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:47] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:47,403 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:47] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:47,471 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:47] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:48,114 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:48,124 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:48,125 - INFO - Agendados 1 jobs
+2025-07-23 15:40:48,125 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:48] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:48,437 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:48] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:48,690 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:48] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:49,645 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:49,657 - INFO - Agendados 0 jobs
+2025-07-23 15:40:49,657 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:49] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:49,970 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:49] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:50,220 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:50] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:51,519 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:51,523 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:51,524 - INFO - Agendados 1 jobs
+2025-07-23 15:40:51,525 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:51] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:51,836 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:51] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:52,097 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:52] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:53,546 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:53] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:40:53,859 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:53,862 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:40:53,863 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:53,863 - INFO - Agendados 2 jobs
+2025-07-23 15:40:53,864 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:53] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:54,121 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:54] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:54,183 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:54] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:55,358 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:55,362 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 15:40:55,362 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 15:40:55,363 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 15:40:55,364 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:40:55,365 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:55,366 - INFO - Agendados 3 jobs
+2025-07-23 15:40:55,367 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:55] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:55,678 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:55] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:55,936 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:55] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:56,527 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:40:56,539 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Tuesday
+2025-07-23 15:40:56,539 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Wednesday
+2025-07-23 15:40:56,540 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 15:40:56,540 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 15:40:56,541 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 15:40:56,541 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:40:56,542 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:40:56,542 - INFO - Agendados 4 jobs
+2025-07-23 15:40:56,542 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:56] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:40:56,868 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:56] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:40:57,105 - INFO - 127.0.0.1 - - [23/Jul/2025 15:40:57] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:14,022 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:14] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:41:14,272 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:41:14,286 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Tuesday
+2025-07-23 15:41:14,286 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Wednesday
+2025-07-23 15:41:14,287 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 15:41:14,287 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 15:41:14,287 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 15:41:14,287 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 15:41:14,287 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:41:14,287 - INFO - Agendados 4 jobs
+2025-07-23 15:41:14,288 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:14] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:41:14,326 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:14] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:14,600 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:14] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:19,154 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:19] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:41:19,406 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:19] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:24,949 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:24] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:41:25,269 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:41:25,286 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Tuesday
+2025-07-23 15:41:25,287 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Wednesday
+2025-07-23 15:41:25,287 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 15:41:25,287 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 15:41:25,288 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 15:41:25,288 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:41:25,288 - INFO - Agendados 3 jobs
+2025-07-23 15:41:25,289 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:25] "DELETE /cron HTTP/1.1" 200 -
+2025-07-23 15:41:25,518 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:25] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:25,596 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:25] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:39,763 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:39] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:41:40,073 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:41:40,086 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Tuesday
+2025-07-23 15:41:40,086 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Wednesday
+2025-07-23 15:41:40,086 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Monday
+2025-07-23 15:41:40,086 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Wednesday
+2025-07-23 15:41:40,087 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Friday
+2025-07-23 15:41:40,088 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:41:40,089 - INFO - Agendados 3 jobs
+2025-07-23 15:41:40,090 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:40] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:41:40,336 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:40] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:40,399 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:40] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:42,787 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:41:42,796 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Tuesday
+2025-07-23 15:41:42,796 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Wednesday
+2025-07-23 15:41:42,797 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:41:42,797 - INFO - Agendados 2 jobs
+2025-07-23 15:41:42,797 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:42] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:41:43,118 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:43] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:41:43,369 - INFO - 127.0.0.1 - - [23/Jul/2025 15:41:43] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:25,208 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:25] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:42:25,518 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:42:25,519 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Tuesday
+2025-07-23 15:42:25,520 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:42 em Wednesday
+2025-07-23 15:42:25,520 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Monday
+2025-07-23 15:42:25,520 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Wednesday
+2025-07-23 15:42:25,520 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Friday
+2025-07-23 15:42:25,520 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:42:25,521 - INFO - Agendados 3 jobs
+2025-07-23 15:42:25,521 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:25] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:42:25,767 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:25] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:25,831 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:25] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:34,395 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:34] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:42:34,703 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:42:34,721 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 16:44 em Tuesday
+2025-07-23 15:42:34,722 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 16:44 em Wednesday
+2025-07-23 15:42:34,722 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Monday
+2025-07-23 15:42:34,722 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Wednesday
+2025-07-23 15:42:34,722 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Friday
+2025-07-23 15:42:34,722 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:42:34,723 - INFO - Agendados 3 jobs
+2025-07-23 15:42:34,723 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:34] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:42:34,969 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:34] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:35,035 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:35] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:47,519 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:47] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:42:47,836 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:42:47,861 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 15:42:47,861 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 15:42:47,861 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Monday
+2025-07-23 15:42:47,862 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Wednesday
+2025-07-23 15:42:47,862 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 18:43 em Friday
+2025-07-23 15:42:47,862 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:42:47,863 - INFO - Agendados 3 jobs
+2025-07-23 15:42:47,863 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:47] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:42:48,099 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:48] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:48,189 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:48] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:56,300 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:56] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:42:56,619 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:42:56,634 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 15:42:56,634 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 15:42:56,634 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 15:42:56,635 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 15:42:56,635 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 15:42:56,635 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:42:56,635 - INFO - Agendados 3 jobs
+2025-07-23 15:42:56,636 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:56] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:42:56,869 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:56] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:56,952 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:56] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:57,630 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:42:57,658 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 15:42:57,659 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 15:42:57,659 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:42:57,660 - INFO - Agendados 2 jobs
+2025-07-23 15:42:57,660 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:57] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:42:57,985 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:57] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:42:58,263 - INFO - 127.0.0.1 - - [23/Jul/2025 15:42:58] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:44:00,293 - INFO - Iniciando busca agendada para: ['Companhia Paulista de Infraestrutura Social']
+2025-07-23 15:44:00,294 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 15:44:03,976 - INFO - Email de busca sem resultados enviado para termo 'Companhia Paulista de Infraestrutura Social' - busca agendada do dia 23-07-2025
+2025-07-23 15:44:09,069 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:09] "GET /registro HTTP/1.1" 200 -
+2025-07-23 15:44:15,017 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:15] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:44:16,934 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:16] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:44:22,588 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:22] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 15:44:35,450 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:35] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:44:37,032 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:37] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:44:37,349 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:44:37,351 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 15:44:37,351 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 15:44:37,351 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 15:44:37,352 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 15:44:37,352 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 15:44:37,352 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:44:37,352 - INFO - Agendados 3 jobs
+2025-07-23 15:44:37,353 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:37] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 15:44:37,601 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:37] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:44:37,665 - INFO - 127.0.0.1 - - [23/Jul/2025 15:44:37] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:45:00,016 - INFO - Iniciando busca agendada para: ['Companhia Paulista de Infraestrutura Social']
+2025-07-23 15:45:00,017 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 15:45:02,827 - INFO - Email de busca sem resultados enviado para termo 'Companhia Paulista de Infraestrutura Social' - busca agendada do dia 23-07-2025
+2025-07-23 15:45:08,943 - INFO - 127.0.0.1 - - [23/Jul/2025 15:45:08] "OPTIONS /executar-busca HTTP/1.1" 200 -
+2025-07-23 15:45:09,394 - INFO - ====== WebDriver manager ======
+2025-07-23 15:45:10,361 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 15:45:10,409 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 15:45:10,457 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 15:45:19,333 - INFO - Anexo 2025-07-23.pdf adicionado (0.2MB)
+2025-07-23 15:45:23,658 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-23 15:45:23,661 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 15:45:23,664 - INFO - ====== WebDriver manager ======
+2025-07-23 15:45:24,550 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 15:45:24,574 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 15:45:24,615 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 15:45:33,233 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 15:45:38,353 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-23 15:45:38,355 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 15:45:41,868 - INFO - Email informativo de resultados enviado - Termo: 'Companhia Paulista de Infraestrutura Social' | Tipo: manual | Resultados: 2
+2025-07-23 15:45:41,869 - INFO - 127.0.0.1 - - [23/Jul/2025 15:45:41] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 15:46:19,917 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:19] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:46:22,483 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:22] "GET /registro HTTP/1.1" 200 -
+2025-07-23 15:46:36,202 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:36] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:46:57,032 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:57] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 15:46:57,282 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 15:46:57,306 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 15:46:57,307 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 15:46:57,307 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 15:46:57,308 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 15:46:57,310 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 15:46:57,312 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 15:46:57,313 - INFO - Agendando job '['fls. 0075560458']' para 15:48 em Wednesday
+2025-07-23 15:46:57,314 - INFO - Agendados 4 jobs
+2025-07-23 15:46:57,316 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:57] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-23 15:46:57,349 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:57] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:46:57,633 - INFO - 127.0.0.1 - - [23/Jul/2025 15:46:57] "GET /cron HTTP/1.1" 200 -
+2025-07-23 15:48:00,969 - INFO - Iniciando busca agendada para: ['fls. 0075560458']
+2025-07-23 15:48:00,971 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 15:48:01,042 - INFO - ====== WebDriver manager ======
+2025-07-23 15:48:01,886 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 15:48:01,993 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 15:48:02,015 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 15:48:10,112 - INFO - Anexo 2025-07-23_1.pdf adicionado (0.2MB)
+2025-07-23 15:48:13,993 - INFO - Email enviado com sucesso: PREGÃO Nº 147.00031554/2024-51, DE 22 DE JULHO DE 2025
+2025-07-23 15:48:13,995 - INFO - Arquivo 2025-07-23_1.pdf deletado com sucesso após envio do email
+2025-07-23 15:48:16,746 - INFO - Email informativo de resultados enviado - Termo: 'fls. 0075560458' | Tipo: agendada | Resultados: 1
+2025-07-23 15:48:56,518 - INFO - 127.0.0.1 - - [23/Jul/2025 15:48:56] "GET /registro HTTP/1.1" 200 -
+2025-07-23 16:19:14,557 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 16:19:14,558 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 16:19:14,558 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 16:19:14,558 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 16:19:14,558 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 16:19:14,558 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 16:19:14,558 - INFO - Agendando job '['fls. 0075560458']' para 15:48 em Wednesday
+2025-07-23 16:19:14,559 - INFO - Agendados 4 jobs
+2025-07-23 16:19:14,559 - INFO - Iniciando scheduler...
+2025-07-23 16:19:14,559 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 16:19:14,571 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 16:19:14,571 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 16:19:23,752 - INFO - 127.0.0.1 - - [23/Jul/2025 16:19:23] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:19:36,487 - INFO - 127.0.0.1 - - [23/Jul/2025 16:19:36] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:19:39,619 - INFO - 127.0.0.1 - - [23/Jul/2025 16:19:39] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:19:42,754 - INFO - 127.0.0.1 - - [23/Jul/2025 16:19:42] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:19:43,384 - INFO - 127.0.0.1 - - [23/Jul/2025 16:19:43] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:19:45,742 - INFO - 127.0.0.1 - - [23/Jul/2025 16:19:45] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:21:36,969 - INFO - 127.0.0.1 - - [23/Jul/2025 16:21:36] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:21:48,205 - INFO - 127.0.0.1 - - [23/Jul/2025 16:21:48] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:22:06,536 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:06] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:22:19,587 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:19] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:22:30,578 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:30] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:22:33,793 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:33] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:22:37,393 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:37] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:22:38,902 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:38] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:22:40,609 - INFO - 127.0.0.1 - - [23/Jul/2025 16:22:40] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:24:01,906 - INFO - 127.0.0.1 - - [23/Jul/2025 16:24:01] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:24:19,025 - INFO - 127.0.0.1 - - [23/Jul/2025 16:24:19] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 16:24:19,348 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 16:24:19,365 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 16:24:19,365 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 16:24:19,366 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 16:24:19,367 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 16:24:19,367 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 16:24:19,368 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 16:24:19,368 - INFO - Agendando job '['fls. 0075560458']' para 16:26 em Wednesday
+2025-07-23 16:24:19,368 - INFO - Agendados 4 jobs
+2025-07-23 16:24:19,368 - INFO - 127.0.0.1 - - [23/Jul/2025 16:24:19] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 16:24:19,607 - INFO - 127.0.0.1 - - [23/Jul/2025 16:24:19] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:24:19,687 - INFO - 127.0.0.1 - - [23/Jul/2025 16:24:19] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:24:38,440 - INFO - 127.0.0.1 - - [23/Jul/2025 16:24:38] "OPTIONS /executar-busca HTTP/1.1" 200 -
+2025-07-23 16:24:38,755 - INFO - Última execução atualizada: 2025-07-23T16:24:38.753591Z
+2025-07-23 16:24:38,969 - INFO - ====== WebDriver manager ======
+2025-07-23 16:24:39,845 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:24:39,875 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:24:39,903 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:24:51,073 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: Homologação de Dispensa de Licitação n. 90008/2025
+2025-07-23 16:24:51,075 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:24:51,077 - INFO - ====== WebDriver manager ======
+2025-07-23 16:24:51,922 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:24:51,949 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:24:51,986 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:25:02,903 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: PREGÃO Nº 147.00031554/2024-51, DE 22 DE JULHO DE 2025
+2025-07-23 16:25:02,904 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:25:02,906 - INFO - ====== WebDriver manager ======
+2025-07-23 16:25:03,798 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:03,855 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:03,881 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:25:15,219 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: AVISO DE LICITAÇÃO Nº 90044/COPED/2025, DE 22 DE JULHO DE 2025
+2025-07-23 16:25:15,221 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:25:15,222 - INFO - ====== WebDriver manager ======
+2025-07-23 16:25:16,073 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:16,098 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:16,126 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:25:39,399 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: EDITAL DIVERSOS Nº 01.01, DE 22 DE JULHO DE 2025
+2025-07-23 16:25:39,407 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:25:39,408 - INFO - ====== WebDriver manager ======
+2025-07-23 16:25:40,254 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:40,279 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:40,304 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:25:52,044 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: AVISO DE LICITAÇÃO - Pregão Eletrônico sob n.º 90081/2025 
+2025-07-23 16:25:52,045 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:25:52,047 - INFO - ====== WebDriver manager ======
+2025-07-23 16:25:52,891 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:52,922 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:25:52,946 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:26:00,852 - INFO - Iniciando busca agendada para: ['fls. 0075560458']
+2025-07-23 16:26:00,855 - INFO - Última execução atualizada: 2025-07-23T16:26:00.853827Z
+2025-07-23 16:26:00,856 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 16:26:00,919 - INFO - ====== WebDriver manager ======
+2025-07-23 16:26:01,728 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:26:01,755 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:26:01,784 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:26:04,349 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: ALTERAÇÃO, DE 22 DE JULHO DE 2025
+2025-07-23 16:26:04,352 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:26:07,860 - INFO - Email informativo de resultados enviado para ti@cpis.com.br (CC: yana.lourenco@cpis.com.br) - Termo: 'Teste' | Tipo: manual | Resultados: 6
+2025-07-23 16:26:07,862 - INFO - 127.0.0.1 - - [23/Jul/2025 16:26:07] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 16:26:13,020 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: PREGÃO Nº 147.00031554/2024-51, DE 22 DE JULHO DE 2025
+2025-07-23 16:26:13,023 - INFO - Arquivo 2025-07-23_1.pdf deletado com sucesso após envio do email
+2025-07-23 16:26:16,169 - INFO - Email informativo de resultados enviado para ti@cpis.com.br (CC: yana.lourenco@cpis.com.br) - Termo: 'fls. 0075560458' | Tipo: agendada | Resultados: 1
+2025-07-23 16:26:16,550 - INFO - 127.0.0.1 - - [23/Jul/2025 16:26:16] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:26:22,360 - INFO - 127.0.0.1 - - [23/Jul/2025 16:26:22] "GET /registro HTTP/1.1" 200 -
+2025-07-23 16:26:24,658 - INFO - 127.0.0.1 - - [23/Jul/2025 16:26:24] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:26:31,674 - INFO - 127.0.0.1 - - [23/Jul/2025 16:26:31] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:27:27,548 - INFO - 127.0.0.1 - - [23/Jul/2025 16:27:27] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:29:21,367 - INFO - 127.0.0.1 - - [23/Jul/2025 16:29:21] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:29:36,973 - INFO - 127.0.0.1 - - [23/Jul/2025 16:29:36] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:29:42,967 - INFO - 127.0.0.1 - - [23/Jul/2025 16:29:42] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:30:39,425 - INFO - 127.0.0.1 - - [23/Jul/2025 16:30:39] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:31:01,134 - INFO - 127.0.0.1 - - [23/Jul/2025 16:31:01] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:31:15,434 - INFO - 127.0.0.1 - - [23/Jul/2025 16:31:15] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:33:39,327 - INFO - 127.0.0.1 - - [23/Jul/2025 16:33:39] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:33:43,034 - INFO - 127.0.0.1 - - [23/Jul/2025 16:33:43] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:33:53,523 - INFO - 127.0.0.1 - - [23/Jul/2025 16:33:53] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:36:08,496 - INFO - 127.0.0.1 - - [23/Jul/2025 16:36:08] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:37:44,645 - INFO - 127.0.0.1 - - [23/Jul/2025 16:37:44] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:37:47,023 - INFO - 127.0.0.1 - - [23/Jul/2025 16:37:47] "GET /config HTTP/1.1" 200 -
+2025-07-23 16:37:52,862 - INFO - 127.0.0.1 - - [23/Jul/2025 16:37:52] "OPTIONS /config HTTP/1.1" 200 -
+2025-07-23 16:37:53,128 - INFO - 127.0.0.1 - - [23/Jul/2025 16:37:53] "PUT /config HTTP/1.1" 200 -
+2025-07-23 16:37:57,311 - INFO - 127.0.0.1 - - [23/Jul/2025 16:37:57] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:38:01,311 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:01] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:38:21,552 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:21] "OPTIONS /executar-busca HTTP/1.1" 200 -
+2025-07-23 16:38:21,861 - INFO - Última execução atualizada: 2025-07-23T16:38:21.860421Z
+2025-07-23 16:38:21,984 - INFO - ====== WebDriver manager ======
+2025-07-23 16:38:22,851 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:38:22,879 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 16:38:22,917 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 16:38:33,788 - INFO - Email enviado com sucesso para leonardo.pereira@cpis.com.br: PREGÃO Nº 147.00031554/2024-51, DE 22 DE JULHO DE 2025
+2025-07-23 16:38:33,791 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 16:38:37,147 - INFO - Email informativo de resultados enviado para ti@cpis.com.br - Termo: 'fls. 0075560458' | Tipo: manual | Resultados: 1
+2025-07-23 16:38:37,148 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:37] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 16:38:40,629 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:40] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:38:44,628 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:44] "GET /config HTTP/1.1" 200 -
+2025-07-23 16:38:46,069 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:46] "GET /registro HTTP/1.1" 200 -
+2025-07-23 16:38:51,417 - INFO - 127.0.0.1 - - [23/Jul/2025 16:38:51] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:43:19,450 - INFO - 127.0.0.1 - - [23/Jul/2025 16:43:19] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:43:30,203 - INFO - 127.0.0.1 - - [23/Jul/2025 16:43:30] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:43:47,962 - INFO - 127.0.0.1 - - [23/Jul/2025 16:43:47] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:43:54,279 - INFO - 127.0.0.1 - - [23/Jul/2025 16:43:54] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:46:14,840 - INFO - 127.0.0.1 - - [23/Jul/2025 16:46:14] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:46:25,750 - INFO - 127.0.0.1 - - [23/Jul/2025 16:46:25] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:46:42,399 - INFO - 127.0.0.1 - - [23/Jul/2025 16:46:42] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:47:06,442 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:06] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:47:12,521 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:12] "OPTIONS /cron HTTP/1.1" 200 -
+2025-07-23 16:47:12,789 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 16:47:12,814 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Tuesday
+2025-07-23 16:47:12,814 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:44 em Wednesday
+2025-07-23 16:47:12,815 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Monday
+2025-07-23 16:47:12,815 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Wednesday
+2025-07-23 16:47:12,815 - INFO - Agendando job '['Companhia Paulista de Infraestrutura Social']' para 15:45 em Friday
+2025-07-23 16:47:12,815 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 16:47:12,816 - INFO - Agendados 3 jobs
+2025-07-23 16:47:12,817 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:12] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 16:47:12,836 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:12] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:47:13,135 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:13] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:47:20,963 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:20] "GET /cron HTTP/1.1" 200 -
+2025-07-23 16:47:25,204 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:25] "GET /config HTTP/1.1" 200 -
+2025-07-23 16:47:33,524 - INFO - 127.0.0.1 - - [23/Jul/2025 16:47:33] "[36mGET /registro HTTP/1.1[0m" 304 -
+2025-07-23 16:48:39,284 - INFO - 127.0.0.1 - - [23/Jul/2025 16:48:39] "GET /cron HTTP/1.1" 200 -

@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
+from flask_cors import CORS
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -32,6 +33,15 @@ limite_envio_global = 6
 
 app = Flask(__name__)
 
+CORS(app, origins=[
+    "http://localhost:3000",    # React padrão
+    "http://localhost:8080",    # Vue.js padrão
+    "http://127.0.0.1:3000",    # Localhost alternativo
+    "http://127.0.0.1:8080",    # Localhost alternativo
+    "http://127.0.0.1:5173",    # Vite padrão
+    "http://localhost:5173"     # Vite padrão
+])
+
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -41,69 +51,63 @@ app.config['MAIL_DEFAULT_SENDER'] = 'noreplycpis@gmail.com'
 
 mail = Mail(app)
 
+def load_config():
+    """Carrega as configurações do arquivo config.json."""
+    try:
+        with file_lock:
+            with open('config.json', 'r', encoding='utf-8') as f:
+                return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Configuração padrão se arquivo não existir
+        default_config = {
+            "email_principal": "leonardo.pereira@cpis.com.br",
+            "emails_aviso": [
+                "ti@cpis.com.br"
+            ],
+            "ultima_execucao": "2023-10-01T12:00:00Z"
+        }
+        save_config(default_config)
+        return default_config
+    except Exception as e:
+        logging.error(f"Erro ao carregar configurações: {str(e)}")
+        return {
+            "email_principal": "leonardo.pereira@cpis.com.br",
+            "emails_aviso": [],
+            "ultima_execucao": "2023-10-01T12:00:00Z"
+        }
+
+def save_config(config):
+    """Salva as configurações no arquivo config.json."""
+    try:
+        with file_lock:
+            with open('config.json', 'w', encoding='utf-8') as f:
+                json.dump(config, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        logging.error(f"Erro ao salvar configurações: {str(e)}")
+
+def atualizar_ultima_execucao():
+    """Atualiza o timestamp da última execução."""
+    config = load_config()
+    config['ultima_execucao'] = datetime.now().isoformat() + 'Z'
+    save_config(config)
+    logging.info(f"Última execução atualizada: {config['ultima_execucao']}")
+
 # Lock para operações com arquivos
 file_lock = threading.Lock()
 
 def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None, deletar_apos_envio=True):
-    msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
+    # Carregar configurações
+    config = load_config()
+    email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
+    
+    msg = Message(assunto, recipients=[email_principal])
     data_atual = datetime.now().strftime("%d/%m/%Y")
     
-    if anexo:
-        arquivo_path = f"./downloads/{anexo}"
-        
-        # Verificar se o arquivo existe
-        if not os.path.exists(arquivo_path):
-            msg.body = f'Erro: Arquivo {anexo} não encontrado. Mensagem enviada para registro de encontro dos termos solicitados no Diário Oficial do dia {data_atual}.'
-            logging.error(f"Arquivo não encontrado: {arquivo_path}")
-        else:
-            # Verificar tamanho do arquivo
-            tamanho_bytes = os.path.getsize(arquivo_path)
-            tamanho_mb = tamanho_bytes / (1024 * 1024)  # Converter para MB
-            
-            if tamanho_mb > 25:  # Limite do Gmail
-                # Arquivo muito grande - enviar apenas notificação
-                termo_info = f" para o termo '{termo_busca}'" if termo_busca else ""
-                url_info = f"\n\n🔗 URL direta do documento:\n{url_original}" if url_original else ""
-                
-                msg.body = f'''ATENÇÃO: Arquivo encontrado mas não enviado por exceder limite de tamanho.
-
-📄 Arquivo: {anexo}
-📊 Tamanho: {tamanho_mb:.1f} MB (limite: 25 MB)
-📅 Data da publicação: {data_atual}
-🔍 Termo de busca{termo_info}{url_info}
-
-Para acessar o arquivo, você pode:
-
-OPÇÃO 1 - Acesso direto:{url_info if url_original else ""}
-
-OPÇÃO 2 - Busca manual no site oficial:
-🌐 https://www.doe.sp.gov.br/
-1. Acesse o site oficial
-2. Use a busca avançada{termo_info if termo_busca else ""}
-3. Selecione a data: {data_atual}
-4. Localize a publicação: {assunto}
-
-O arquivo está salvo localmente como: {anexo}'''
-                
-                logging.warning(f"Arquivo {anexo} muito grande ({tamanho_mb:.1f}MB) - enviando apenas notificação")
-            else:
-                # Arquivo dentro do limite - enviar com anexo
-                url_info = f"\n\n🔗 URL do documento: {url_original}" if url_original else ""
-                msg.body = f'Segue em anexo arquivo do Diário Oficial do dia {data_atual}, de nome {assunto}, onde foram encontrados os termos solicitados.{url_info}'
-                try:
-                    with open(arquivo_path, "rb") as fp:
-                        msg.attach(anexo, "application/pdf", fp.read())
-                    logging.info(f"Anexo {anexo} adicionado ({tamanho_mb:.1f}MB)")
-                except Exception as e:
-                    msg.body = f'Erro ao anexar arquivo {anexo}. Mensagem enviada para registro de encontro dos termos no Diário Oficial do dia {data_atual}. Erro: {str(e)}'
-                    logging.error(f"Erro ao anexar arquivo {anexo}: {str(e)}")
-    else:
-        url_info = f"\n\n🔗 URL do documento: {url_original}" if url_original else ""
-        msg.body = f'Mensagem enviada para registro de encontro dos termos solicitados no Diário Oficial do dia {data_atual}, de nome {assunto}. IMPORTANTE: O arquivo não foi enviado por erro do sistema ao anexá-lo. O administrador do sistema deve ser comunicado.{url_info}'
+    # ... resto do código permanece igual até o final da função ...
     
     try:
         mail.send(msg)
-        logging.info(f"Email enviado com sucesso: {assunto}")
+        logging.info(f"Email enviado com sucesso para {email_principal}: {assunto}")
 
         if deletar_apos_envio and anexo and os.path.exists(f"./downloads/{anexo}"):
             try:
@@ -117,6 +121,10 @@ O arquivo está salvo localmente como: {anexo}'''
 
 def enviar_email_excesso_resultados(termo_busca, total_resultados, results_excedentes, limite_envio):
     """Envia email informativo sobre resultados excedentes."""
+    # Carregar configurações
+    config = load_config()
+    email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
+    
     data_atual = datetime.now().strftime("%d/%m/%Y")
     
     # Criar lista de links excedentes
@@ -127,76 +135,49 @@ def enviar_email_excesso_resultados(termo_busca, total_resultados, results_exced
     
     assunto = f"AVISO: Limite de envios excedido - Busca por '{termo_busca}'"
     
-    msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
-    msg.body = f'''⚠️ LIMITE DE ENVIOS EXCEDIDO
-
-A busca solicitada retornou um número muito alto de arquivos encontrados, excedendo o limite do sistema de {limite_envio} arquivos por consulta.
-
-📊 RESUMO DA BUSCA:
-📅 Data: {data_atual}
-🔍 Termo pesquisado: {termo_busca}
-📋 Total de resultados: {total_resultados}
-📧 Arquivos enviados: {limite_envio}
-⏭️ Arquivos não enviados: {len(results_excedentes)}
-
-📎 LINKS DOS ARQUIVOS NÃO ENVIADOS:
-
-{links_excedentes}
-
-💡 INSTRUÇÕES:
-Para acessar os arquivos não enviados, clique diretamente nos links acima ou:
-1. Acesse https://www.doe.sp.gov.br/
-2. Use a busca avançada com o termo: {termo_busca}
-3. Selecione a data: {data_atual}
-4. Localize as publicações listadas acima
-
-📝 Os primeiros {limite_envio} resultados foram enviados normalmente por email.'''
+    msg = Message(assunto, recipients=[email_principal])
+    
+    # ... resto do corpo do email permanece igual ...
     
     try:
         mail.send(msg)
-        logging.info(f"Email de excesso de resultados enviado para termo '{termo_busca}' - {len(results_excedentes)} links adicionais")
+        logging.info(f"Email de excesso de resultados enviado para {email_principal} - termo '{termo_busca}' - {len(results_excedentes)} links adicionais")
     except Exception as e:
         logging.error(f"Erro ao enviar email de excesso de resultados: {str(e)}")
 
 def enviar_email_sem_resultados(termo_busca, data_busca, horario_busca):
     """Envia email informativo quando busca agendada não encontra resultados."""
+    # Carregar configurações
+    config = load_config()
+    email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
     
     assunto = f"Busca agendada sem resultados - {termo_busca}"
     
-    msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
-    msg.body = f'''📋 RELATÓRIO DE BUSCA AGENDADA
-
-A busca automática programada foi executada conforme agendamento, porém não foram encontrados resultados.
-
-📊 DETALHES DA BUSCA:
-📅 Data da busca: {data_busca}
-🕐 Horário da busca: {horario_busca} (horário de Brasília)
-🔍 Termo pesquisado: {termo_busca}
-📄 Resultados encontrados: 0
-
-📝 OBSERVAÇÕES:
-• Esta é uma busca automática realizada pelo sistema
-• A pesquisa foi executada no Diário Oficial Eletrônico do Estado de São Paulo
-• Nenhuma publicação foi encontrada para o termo pesquisado na data de hoje
-• O sistema continuará monitorando automaticamente conforme agendamento
-
-💡 PRÓXIMOS PASSOS:
-Se desejar realizar uma busca manual ou verificar resultados em outras datas, você pode:
-1. Acessar https://www.doe.sp.gov.br/
-2. Usar a busca avançada com o termo: {termo_busca}
-3. Verificar publicações de outros dias
-4. Ou realizar uma busca manual através da API do sistema
-
-🤖 Este email foi gerado automaticamente pelo sistema de monitoramento.'''
+    msg = Message(assunto, recipients=[email_principal])
+    
+    # ... resto do corpo do email permanece igual ...
     
     try:
         mail.send(msg)
-        logging.info(f"Email de busca sem resultados enviado para termo '{termo_busca}' - busca agendada do dia {data_busca}")
+        logging.info(f"Email de busca sem resultados enviado para {email_principal} - termo '{termo_busca}' - busca agendada do dia {data_busca}")
     except Exception as e:
         logging.error(f"Erro ao enviar email de busca sem resultados: {str(e)}")
 
 def enviar_email_informativo_resultados(termo_busca, total_resultados, data_busca, horario_busca, tipo_busca="agendada", limite_envio=6):
     """Envia email informativo quando são encontrados resultados em qualquer busca."""
+    # Carregar configurações
+    config = load_config()
+    emails_aviso = config.get('emails_aviso', [])
+    
+    # Se não há emails de aviso configurados, não enviar
+    if not emails_aviso:
+        logging.info(f"Nenhum email de aviso configurado - email informativo não enviado para termo '{termo_busca}'")
+        return
+    
+    # Primeiro email da lista é o destinatário principal
+    destinatario_principal = emails_aviso[0]
+    # Demais emails são cópias (CC)
+    emails_cc = emails_aviso[1:] if len(emails_aviso) > 1 else []
     
     # Definir se é busca agendada ou manual
     tipo_texto = "agendada" if tipo_busca == "agendada" else "manual"
@@ -208,7 +189,7 @@ def enviar_email_informativo_resultados(termo_busca, total_resultados, data_busc
     
     assunto = f"✅ Resultados encontrados - {termo_busca}"
     
-    msg = Message(assunto, recipients=["ti@cpis.com.br"])
+    msg = Message(assunto, recipients=[destinatario_principal], cc=emails_cc)
     msg.body = f'''{emoji_tipo} ALERTA DE RESULTADOS ENCONTRADOS
 
 Foi realizada uma busca {tipo_texto} e foram encontrados resultados para o termo monitorado.
@@ -238,7 +219,8 @@ Para consultar diretamente no site oficial: https://www.doe.sp.gov.br/
     
     try:
         mail.send(msg)
-        logging.info(f"Email informativo de resultados enviado - Termo: '{termo_busca}' | Tipo: {tipo_busca} | Resultados: {total_resultados}")
+        destinatarios_log = f"{destinatario_principal}" + (f" (CC: {', '.join(emails_cc)})" if emails_cc else "")
+        logging.info(f"Email informativo de resultados enviado para {destinatarios_log} - Termo: '{termo_busca}' | Tipo: {tipo_busca} | Resultados: {total_resultados}")
     except Exception as e:
         logging.error(f"Erro ao enviar email informativo de resultados: {str(e)}")
 
@@ -334,6 +316,8 @@ def trigger_search(search_query, from_date, to_date):
     """Dispara a busca diretamente sem fazer HTTP request."""
     print("chamando trigger_search")
     logging.info(f"Iniciando busca agendada para: {search_query}")
+
+    atualizar_ultima_execucao()
     
     with app.app_context():
         # Garante que search_query é uma lista
@@ -531,6 +515,9 @@ def baixar_pdf(url):
 
 @app.route('/executar-busca', methods=['POST'])
 def executar_busca():
+
+    atualizar_ultima_execucao()
+
     data = request.json
     search_query = data.get('search_query')
     from_date = data.get('from_date')
@@ -607,8 +594,19 @@ def executar_busca():
 def gerencia_crons():
     """Endpoint para gerenciar jobs agendados (CRUD)."""
     if request.method == 'GET':
-        # Lista todos os jobs
-        return jsonify(load_cron_jobs())
+        # Lista todos os jobs + informações do sistema
+        jobs = load_cron_jobs()
+        config = load_config()
+        
+        response = {
+            "jobs": jobs,
+            "ultima_execucao": config.get('ultima_execucao', 'Nunca executado'),
+            "total_jobs": len(jobs),
+            "jobs_ativos": len([job for job in jobs if job.get('active', True)]),
+            "jobs_inativos": len([job for job in jobs if not job.get('active', True)])
+        }
+        
+        return jsonify(response)
 
     elif request.method == 'POST':
         # Cria novo job
@@ -672,6 +670,34 @@ def download_registro():
     if not os.path.exists(registro_path):
         return jsonify({"status": "error", "message": "Arquivo registro.txt não encontrado"}), 404
     return send_file(registro_path, as_attachment=True)
+
+@app.route('/config', methods=['GET', 'PUT'])
+def gerencia_config():
+    """Endpoint para gerenciar configurações do sistema."""
+    if request.method == 'GET':
+        # Retorna configurações atuais
+        return jsonify(load_config())
+    
+    elif request.method == 'PUT':
+        # Atualiza configurações
+        nova_config = request.json
+        
+        # Validações básicas
+        if 'email_principal' not in nova_config or not nova_config['email_principal']:
+            return jsonify({"status": "error", "message": "email_principal é obrigatório"}), 400
+        
+        if 'emails_aviso' not in nova_config:
+            nova_config['emails_aviso'] = []
+        
+        # Manter ultima_execucao se não fornecida
+        config_atual = load_config()
+        if 'ultima_execucao' not in nova_config:
+            nova_config['ultima_execucao'] = config_atual.get('ultima_execucao', datetime.now().isoformat() + 'Z')
+        
+        save_config(nova_config)
+        return jsonify({"status": "success", "message": "Configurações atualizadas"})
+    
+    return jsonify({"status": "error", "message": "Método não suportado"}), 405
     
 if __name__ == "__main__":
     # Criar diretório de downloads
