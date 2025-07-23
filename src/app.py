@@ -158,6 +158,43 @@ Para acessar os arquivos não enviados, clique diretamente nos links acima ou:
     except Exception as e:
         logging.error(f"Erro ao enviar email de excesso de resultados: {str(e)}")
 
+def enviar_email_sem_resultados(termo_busca, data_busca, horario_busca):
+    """Envia email informativo quando busca agendada não encontra resultados."""
+    
+    assunto = f"Busca agendada sem resultados - {termo_busca}"
+    
+    msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
+    msg.body = f'''📋 RELATÓRIO DE BUSCA AGENDADA
+
+A busca automática programada foi executada conforme agendamento, porém não foram encontrados resultados.
+
+📊 DETALHES DA BUSCA:
+📅 Data da busca: {data_busca}
+🕐 Horário da busca: {horario_busca} (horário de Brasília)
+🔍 Termo pesquisado: {termo_busca}
+📄 Resultados encontrados: 0
+
+📝 OBSERVAÇÕES:
+• Esta é uma busca automática realizada pelo sistema
+• A pesquisa foi executada no Diário Oficial Eletrônico do Estado de São Paulo
+• Nenhuma publicação foi encontrada para o termo pesquisado na data de hoje
+• O sistema continuará monitorando automaticamente conforme agendamento
+
+💡 PRÓXIMOS PASSOS:
+Se desejar realizar uma busca manual ou verificar resultados em outras datas, você pode:
+1. Acessar https://www.doe.sp.gov.br/
+2. Usar a busca avançada com o termo: {termo_busca}
+3. Verificar publicações de outros dias
+4. Ou realizar uma busca manual através da API do sistema
+
+🤖 Este email foi gerado automaticamente pelo sistema de monitoramento.'''
+    
+    try:
+        mail.send(msg)
+        logging.info(f"Email de busca sem resultados enviado para termo '{termo_busca}' - busca agendada do dia {data_busca}")
+    except Exception as e:
+        logging.error(f"Erro ao enviar email de busca sem resultados: {str(e)}")
+
 def search_website(search_query, from_date, to_date, page_number=1, page_size=20):
     url = "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
     params = {
@@ -288,11 +325,11 @@ def trigger_search(search_query, from_date, to_date):
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
                         arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
                 
-                # NOVA FUNCIONALIDADE: Processar apenas os primeiros 6 resultados
+                # NOVA FUNCIONALIDADE: Processar apenas os primeiros X resultados
                 results_para_envio = results[:limite_envio]
                 results_excedentes = results[limite_envio:]
                 
-                # Processar e enviar os primeiros 6 resultados
+                # Processar e enviar os primeiros X resultados
                 for result in results_para_envio:
                     with file_lock:
                         with open("registro.txt", "a", encoding="utf-8") as arquivo:
@@ -319,9 +356,14 @@ def trigger_search(search_query, from_date, to_date):
                                 arquivo.write(f"\t{i}º: {result['title']}\n")
                         
             else:
+                # NOVA FUNCIONALIDADE: Email para busca agendada sem resultados
                 with file_lock:
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
                         arquivo.write("Não foram encontrados resultados para essa busca.\n\n")
+                
+                # Enviar email informativo sobre busca sem resultados
+                termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
+                enviar_email_sem_resultados(termo_formatado, data_atual_str, horario_brasilia)
                         
         except Exception as e:
             logging.error(f"Erro durante busca agendada: {str(e)}")

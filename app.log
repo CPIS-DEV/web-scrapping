@@ -1485,3 +1485,46 @@ with app.app_context(). See the documentation for more information.
 2025-07-23 12:34:50,191 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
 2025-07-23 12:34:52,924 - INFO - Email de excesso de resultados enviado para termo 'teste' - 17 links adicionais
 2025-07-23 12:34:52,925 - INFO - 127.0.0.1 - - [23/Jul/2025 12:34:52] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 12:42:04,277 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Tuesday
+2025-07-23 12:42:04,278 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Wednesday
+2025-07-23 12:42:04,278 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:42:04,278 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:42:04,278 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:42:04,278 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:42:04,278 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:42:04,279 - INFO - Agendados 4 jobs
+2025-07-23 12:42:04,279 - INFO - Iniciando scheduler...
+2025-07-23 12:42:04,279 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 12:42:04,287 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 12:42:04,288 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 12:44:47,795 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Tuesday
+2025-07-23 12:44:47,796 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Wednesday
+2025-07-23 12:44:47,796 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:44:47,796 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:44:47,796 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:44:47,796 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:44:47,796 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:44:47,797 - INFO - Agendados 4 jobs
+2025-07-23 12:44:47,797 - INFO - Iniciando scheduler...
+2025-07-23 12:44:47,797 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 12:44:47,806 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 12:44:47,806 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 12:46:26,376 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 12:46:26,394 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Tuesday
+2025-07-23 12:46:26,394 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Wednesday
+2025-07-23 12:46:26,395 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:46:26,395 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:46:26,396 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:46:26,396 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:46:26,396 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:46:26,397 - INFO - Agendados 4 jobs
+2025-07-23 12:46:26,397 - INFO - 127.0.0.1 - - [23/Jul/2025 12:46:26] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 12:48:00,936 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-23 12:48:00,945 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 12:48:03,829 - INFO - Email de busca sem resultados enviado para termo 'Companhia Paulista de Infraestrutura Social' - busca agendada do dia 23-07-2025
