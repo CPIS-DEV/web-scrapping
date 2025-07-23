@@ -42,7 +42,7 @@ mail = Mail(app)
 # Lock para operações com arquivos
 file_lock = threading.Lock()
 
-def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None):
+def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None, deletar_apos_envio=True):
     msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
     data_atual = datetime.now().strftime("%d/%m/%Y")
     
@@ -102,6 +102,14 @@ O arquivo está salvo localmente como: {anexo}'''
     try:
         mail.send(msg)
         logging.info(f"Email enviado com sucesso: {assunto}")
+
+        if deletar_apos_envio and anexo and os.path.exists(f"./downloads/{anexo}"):
+            try:
+                os.remove(f"./downloads/{anexo}")
+                logging.info(f"Arquivo {anexo} deletado com sucesso após envio do email")
+            except Exception as e:
+                logging.error(f"Erro ao deletar arquivo {anexo}: {str(e)}")
+
     except Exception as e:
         logging.error(f"Erro ao enviar email: {str(e)}")
 
@@ -154,6 +162,18 @@ def renomear_pdf(download_dir):
     else:
         print("Nenhum PDF encontrado para renomear.")
         return None
+
+def converter_horario_brasilia_para_utc(hora_brasilia: str) -> str:
+    """
+    Recebe uma string 'HH:MM' no horário de Brasília e retorna uma string 'HH:MM' em UTC.
+    """
+    tz_brasilia = pytz.timezone("America/Sao_Paulo")
+    tz_utc = pytz.utc
+    hoje = datetime.now(tz_brasilia).date()
+    hora, minuto = map(int, hora_brasilia.split(":"))
+    dt_brasilia = tz_brasilia.localize(datetime(hoje.year, hoje.month, hoje.day, hora, minuto))
+    dt_utc = dt_brasilia.astimezone(tz_utc)
+    return dt_utc.strftime("%H:%M")
     
 def load_cron_jobs():
     """Carrega os jobs agendados do arquivo JSON."""
@@ -195,6 +215,9 @@ def trigger_search(search_query, from_date, to_date):
         data_atual_str = datetime.now().strftime("%d-%m-%Y")
         data_atual_iso = datetime.now().strftime("%Y-%m-%d")  # Formato ISO para API
         
+        tz_brasilia = pytz.timezone("America/Sao_Paulo")
+        horario_brasilia = datetime.now(tz_brasilia).strftime("%H:%M:%S")
+
         # Usar data atual em vez dos parâmetros from_date e to_date
         from_date_atual = data_atual_iso
         to_date_atual = data_atual_iso
@@ -206,7 +229,7 @@ def trigger_search(search_query, from_date, to_date):
         try:
             with file_lock:
                 with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                    arquivo.write(f"\n\n\nBusca agendada realizada no dia {data_atual_str} (buscando publicações do dia {data_atual_iso}):\n\n")
+                    arquivo.write(f"\n\n\nBusca agendada realizada no dia {data_atual_str} às {horario_brasilia} (horário de Brasília):\n\n")
 
             for termo in search_query:
                 # Usar as datas atuais em vez dos parâmetros
@@ -247,7 +270,7 @@ def schedule_jobs():
     jobs = load_cron_jobs()
     for job in jobs:
         if job.get('active', True):
-            horario_utc = job['schedule']
+            horario_utc = converter_horario_brasilia_para_utc(job['schedule'])
             weekdays = job.get('weekdays', [])
             if weekdays:
                 for day in weekdays:
@@ -366,10 +389,14 @@ def executar_busca():
         search_query = [search_query]
 
     data_atual = datetime.now().strftime("%d-%m-%Y")
+
+    tz_brasilia = pytz.timezone("America/Sao_Paulo")
+    horario_brasilia = datetime.now(tz_brasilia).strftime("%H:%M:%S")
+
     results = []
 
     with open("registro.txt", "a", encoding="utf-8") as arquivo:
-        arquivo.write(f"\n\n\nBusca realizada no dia {data_atual}:\n\n")
+        arquivo.write(f"\n\n\nBusca realizada no dia {data_atual} às {horario_brasilia} (horário de Brasília):\n\n")
 
     for termo in search_query:
         results += search_website(termo, from_date, to_date)

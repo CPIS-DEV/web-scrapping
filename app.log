@@ -1308,3 +1308,83 @@ with app.app_context(). See the documentation for more information.
 2025-07-22 18:38:00,861 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
 2025-07-22 18:38:21,067 - WARNING - Arquivo 2025-07-22_2.pdf muito grande (59.6MB) - enviando apenas notificação
 2025-07-22 18:38:23,835 - INFO - Email enviado com sucesso: EDITAL DIVERSOS Nº 01.01, DE 21 DE JULHO DE 2025
+2025-07-23 11:08:50,514 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 21:35 em Tuesday
+2025-07-23 11:08:50,515 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 11:08:50,515 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 11:08:50,515 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 11:08:50,515 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 11:08:50,515 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 11:08:50,515 - INFO - Agendados 4 jobs
+2025-07-23 11:08:50,515 - INFO - Iniciando scheduler...
+2025-07-23 11:08:50,515 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 11:08:50,540 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 11:08:50,541 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 11:10:40,042 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 11:10:40,057 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 14:12 em Tuesday
+2025-07-23 11:10:40,057 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 11:10:40,057 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 11:10:40,058 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 11:10:40,058 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 11:10:40,059 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 11:10:40,059 - INFO - Agendados 4 jobs
+2025-07-23 11:10:40,060 - INFO - 127.0.0.1 - - [23/Jul/2025 11:10:40] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 11:18:44,854 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 11:18:44,870 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:20 em Tuesday
+2025-07-23 11:18:44,870 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 11:18:44,870 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 11:18:44,871 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 11:18:44,871 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 11:18:44,871 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 11:18:44,872 - INFO - Agendados 4 jobs
+2025-07-23 11:18:44,872 - INFO - 127.0.0.1 - - [23/Jul/2025 11:18:44] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 11:31:29,445 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 11:31:29,480 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Tuesday
+2025-07-23 11:31:29,481 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Wednesday
+2025-07-23 11:31:29,481 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 11:31:29,482 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 11:31:29,482 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 11:31:29,483 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 11:31:29,483 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 11:31:29,483 - INFO - Agendados 4 jobs
+2025-07-23 11:31:29,484 - INFO - 127.0.0.1 - - [23/Jul/2025 11:31:29] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 11:33:00,569 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-23 11:33:00,570 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 12:06:35,026 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Tuesday
+2025-07-23 12:06:35,026 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Wednesday
+2025-07-23 12:06:35,027 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:06:35,027 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:06:35,027 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:06:35,027 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:06:35,027 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:06:35,027 - INFO - Agendados 4 jobs
+2025-07-23 12:06:35,028 - INFO - Iniciando scheduler...
+2025-07-23 12:06:35,028 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 12:06:35,037 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 12:06:35,037 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 12:07:44,233 - INFO - ====== WebDriver manager ======
+2025-07-23 12:07:45,213 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:07:45,294 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:07:45,324 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:07:45,468 - INFO - WebDriver version 138.0.7204.168 selected
+2025-07-23 12:07:45,476 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.168/win32/chromedriver-win32.zip
+2025-07-23 12:07:45,476 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.168/win32/chromedriver-win32.zip
+2025-07-23 12:07:45,585 - INFO - Driver downloading response is 200
+2025-07-23 12:07:45,747 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:07:56,370 - INFO - Driver has been saved in cache [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168]
+2025-07-23 12:08:05,952 - INFO - Anexo 2025-07-23.pdf adicionado (0.2MB)
+2025-07-23 12:08:10,649 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-23 12:08:10,651 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:08:10,652 - INFO - ====== WebDriver manager ======
+2025-07-23 12:08:11,506 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:08:11,576 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:08:11,608 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:08:19,661 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 12:08:24,575 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-23 12:08:24,576 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:08:24,577 - INFO - 127.0.0.1 - - [23/Jul/2025 12:08:24] "POST /executar-busca HTTP/1.1" 200 -

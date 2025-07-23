@@ -2,9 +2,10 @@
   {
     "id": 1,
     "search_query": "Companhia Paulista de Infraestrutura Social",
-    "schedule": "18:35",
+    "schedule": "08:33",
     "weekdays": [
-      "tuesday"
+      "tuesday",
+      "wednesday"
     ],
     "active": true
   },
