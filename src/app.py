@@ -28,6 +28,8 @@ logging.basicConfig(
     ]
 )
 
+limite_envio_global = 3
+
 app = Flask(__name__)
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -112,6 +114,49 @@ O arquivo está salvo localmente como: {anexo}'''
 
     except Exception as e:
         logging.error(f"Erro ao enviar email: {str(e)}")
+
+def enviar_email_excesso_resultados(termo_busca, total_resultados, results_excedentes, limite_envio):
+    """Envia email informativo sobre resultados excedentes."""
+    data_atual = datetime.now().strftime("%d/%m/%Y")
+    
+    # Criar lista de links excedentes
+    links_excedentes = ""
+    for i, result in enumerate(results_excedentes, limite_envio + 1):
+        url_documento = f"https://doe.sp.gov.br/{result['slug']}"
+        links_excedentes += f"{i}º: {result['title']}\n    🔗 {url_documento}\n\n"
+    
+    assunto = f"AVISO: Limite de envios excedido - Busca por '{termo_busca}'"
+    
+    msg = Message(assunto, recipients=["leonardo.pereira@cpis.com.br"])
+    msg.body = f'''⚠️ LIMITE DE ENVIOS EXCEDIDO
+
+A busca solicitada retornou um número muito alto de arquivos encontrados, excedendo o limite do sistema de {limite_envio} arquivos por consulta.
+
+📊 RESUMO DA BUSCA:
+📅 Data: {data_atual}
+🔍 Termo pesquisado: {termo_busca}
+📋 Total de resultados: {total_resultados}
+📧 Arquivos enviados: {limite_envio}
+⏭️ Arquivos não enviados: {len(results_excedentes)}
+
+📎 LINKS DOS ARQUIVOS NÃO ENVIADOS:
+
+{links_excedentes}
+
+💡 INSTRUÇÕES:
+Para acessar os arquivos não enviados, clique diretamente nos links acima ou:
+1. Acesse https://www.doe.sp.gov.br/
+2. Use a busca avançada com o termo: {termo_busca}
+3. Selecione a data: {data_atual}
+4. Localize as publicações listadas acima
+
+📝 Os primeiros {limite_envio} resultados foram enviados normalmente por email.'''
+    
+    try:
+        mail.send(msg)
+        logging.info(f"Email de excesso de resultados enviado para termo '{termo_busca}' - {len(results_excedentes)} links adicionais")
+    except Exception as e:
+        logging.error(f"Erro ao enviar email de excesso de resultados: {str(e)}")
 
 def search_website(search_query, from_date, to_date, page_number=1, page_size=20):
     url = "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
@@ -236,11 +281,19 @@ def trigger_search(search_query, from_date, to_date):
                 results += search_website(termo, from_date_atual, to_date_atual)
 
             if results:
+                total_resultados = len(results)
+                limite_envio = limite_envio_global
+                
                 with file_lock:
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                        arquivo.write(f"Foram encontrados {len(results)} resultados. Os nomes dos arquivos são:\n")
+                        arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
                 
-                for result in results:
+                # NOVA FUNCIONALIDADE: Processar apenas os primeiros 6 resultados
+                results_para_envio = results[:limite_envio]
+                results_excedentes = results[limite_envio:]
+                
+                # Processar e enviar os primeiros 6 resultados
+                for result in results_para_envio:
                     with file_lock:
                         with open("registro.txt", "a", encoding="utf-8") as arquivo:
                             arquivo.write(f"\t{result['title']}\n")
@@ -250,11 +303,20 @@ def trigger_search(search_query, from_date, to_date):
 
                     if nome_arquivo:
                         nome_renomeado = renomear_pdf("./downloads")
-                        # ATUALIZADO: Passar termo, URL
                         enviar_email(result['title'], nome_renomeado, termo, url_documento)
                     else:
-                        # ATUALIZADO: Passar termo, URL mesmo sem arquivo
                         enviar_email(result['title'], None, termo, url_documento)
+                
+                # NOVA FUNCIONALIDADE: Enviar email informativo sobre excesso
+                if results_excedentes:
+                    enviar_email_excesso_resultados(termo, total_resultados, results_excedentes, limite_envio)
+                    
+                    # Registrar os resultados excedentes no arquivo de log
+                    with file_lock:
+                        with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                            arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
+                            for i, result in enumerate(results_excedentes, limite_envio + 1):
+                                arquivo.write(f"\t{i}º: {result['title']}\n")
                         
             else:
                 with file_lock:
@@ -402,15 +464,42 @@ def executar_busca():
         results += search_website(termo, from_date, to_date)
 
     if results:
+        total_resultados = len(results)
+        limite_envio = limite_envio_global
+        
         with open("registro.txt", "a", encoding="utf-8") as arquivo:
-            arquivo.write(f"Foram encontrados {len(results)} resultados.Os nomes dos arquivos são:\n")
-        for result in results:
+            arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
+            
+        # NOVA FUNCIONALIDADE: Processar apenas os primeiros 6 resultados
+        results_para_envio = results[:limite_envio]
+        results_excedentes = results[limite_envio:]
+        
+        # Processar e enviar os primeiros 6 resultados
+        for result in results_para_envio:
             with open("registro.txt", "a", encoding="utf-8") as arquivo:
                 arquivo.write(f"\t{result['title']}\n")
             url_documento = f"https://doe.sp.gov.br/{result['slug']}"
             nome_arquivo = baixar_pdf(url_documento)
             enviar_email(result['title'], nome_arquivo, termo, url_documento)
-        return jsonify({"status": "Busca e Envio executados com sucesso!", "resultados": len(results)})
+            
+        # NOVA FUNCIONALIDADE: Enviar email informativo sobre excesso
+        if results_excedentes:
+            enviar_email_excesso_resultados(termo, total_resultados, results_excedentes, limite_envio)
+            
+            # Registrar os resultados excedentes no arquivo de log
+            with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
+                for i, result in enumerate(results_excedentes, limite_envio + 1):
+                    arquivo.write(f"\t{i}º: {result['title']}\n")
+            
+            return jsonify({
+                "status": "Busca executada com limite de envios!", 
+                "resultados_totais": total_resultados,
+                "enviados": limite_envio,
+                "excedentes": len(results_excedentes)
+            })
+        else:
+            return jsonify({"status": "Busca e Envio executados com sucesso!", "resultados": total_resultados})
     else:
         with open("registro.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write("Não foram encontrados resultado para essa busca.\n\n")

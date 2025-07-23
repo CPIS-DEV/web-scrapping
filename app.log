@@ -1388,3 +1388,100 @@ with app.app_context(). See the documentation for more information.
 2025-07-23 12:08:24,575 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
 2025-07-23 12:08:24,576 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
 2025-07-23 12:08:24,577 - INFO - 127.0.0.1 - - [23/Jul/2025 12:08:24] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 12:24:24,610 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Tuesday
+2025-07-23 12:24:24,610 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Wednesday
+2025-07-23 12:24:24,610 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:24:24,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:24:24,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:24:24,611 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:24:24,611 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:24:24,611 - INFO - Agendados 4 jobs
+2025-07-23 12:24:24,611 - INFO - Iniciando scheduler...
+2025-07-23 12:24:24,611 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 12:24:24,648 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 12:24:24,648 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 12:24:52,039 - INFO - ====== WebDriver manager ======
+2025-07-23 12:24:54,074 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:24:54,122 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:24:54,170 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:25:03,360 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 12:25:09,093 - INFO - Email enviado com sucesso: AVISO DE LICITAÇÃO, DE 20 DE MARÇO DE 2025
+2025-07-23 12:25:09,095 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:25:09,096 - INFO - ====== WebDriver manager ======
+2025-07-23 12:25:09,950 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:25:09,980 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:25:10,016 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:25:18,165 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 12:25:23,852 - INFO - Email enviado com sucesso: COMUNICADO (PROCESSO SELETIVO - PROGRAMA USP-IDPC: MESTRADO) , DE 24 DE MARÇO DE 2025
+2025-07-23 12:25:23,853 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:25:23,855 - INFO - ====== WebDriver manager ======
+2025-07-23 12:25:24,718 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:25:24,765 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:25:24,845 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:25:32,861 - INFO - Anexo 2025-07-23.pdf adicionado (0.8MB)
+2025-07-23 12:25:41,429 - INFO - Email enviado com sucesso: COMUNICADO CENTRO DE ESTÁGIO DO DIA 24 DE MARÇO DE 2025
+2025-07-23 12:25:41,430 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:25:41,432 - INFO - ====== WebDriver manager ======
+2025-07-23 12:25:42,293 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:25:42,383 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:25:42,413 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:25:50,938 - INFO - Anexo 2025-07-23.pdf adicionado (1.1MB)
+2025-07-23 12:26:00,852 - INFO - Email enviado com sucesso: EDITAL Nº 083, DE 17 DE ABRIL DE 2025
+2025-07-23 12:26:00,854 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:26:00,855 - INFO - ====== WebDriver manager ======
+2025-07-23 12:26:01,668 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:26:01,700 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:26:01,732 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:26:10,309 - INFO - Anexo 2025-07-23.pdf adicionado (1.7MB)
+2025-07-23 12:26:24,343 - INFO - Email enviado com sucesso: Comunicado de abertura
+2025-07-23 12:26:24,345 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:26:24,346 - INFO - ====== WebDriver manager ======
+2025-07-23 12:26:25,235 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:26:25,268 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:26:25,333 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:26:35,434 - INFO - Anexo 2025-07-23.pdf adicionado (8.8MB)
+2025-07-23 12:27:33,801 - INFO - Email enviado com sucesso: COMUNICADO DRH Nº 022, DE 7 DE ABRIL DE 2025
+2025-07-23 12:27:33,806 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:27:37,179 - INFO - Email de excesso de resultados enviado para termo 'teste' - 14 links adicionais
+2025-07-23 12:27:37,181 - INFO - 127.0.0.1 - - [23/Jul/2025 12:27:37] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 12:33:54,222 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Tuesday
+2025-07-23 12:33:54,222 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 11:33 em Wednesday
+2025-07-23 12:33:54,222 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:33:54,223 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:33:54,223 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:33:54,223 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:33:54,223 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:33:54,223 - INFO - Agendados 4 jobs
+2025-07-23 12:33:54,224 - INFO - Iniciando scheduler...
+2025-07-23 12:33:54,224 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 12:33:54,232 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 12:33:54,232 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 12:34:03,797 - INFO - ====== WebDriver manager ======
+2025-07-23 12:34:04,678 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:34:04,710 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:34:04,750 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:34:12,788 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 12:34:18,247 - INFO - Email enviado com sucesso: AVISO DE LICITAÇÃO, DE 20 DE MARÇO DE 2025
+2025-07-23 12:34:18,248 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:34:18,249 - INFO - ====== WebDriver manager ======
+2025-07-23 12:34:19,106 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:34:19,142 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:34:19,168 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:34:27,171 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 12:34:32,523 - INFO - Email enviado com sucesso: COMUNICADO (PROCESSO SELETIVO - PROGRAMA USP-IDPC: MESTRADO) , DE 24 DE MARÇO DE 2025
+2025-07-23 12:34:32,524 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:34:32,525 - INFO - ====== WebDriver manager ======
+2025-07-23 12:34:33,422 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:34:33,473 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:34:33,500 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 12:34:42,097 - INFO - Anexo 2025-07-23.pdf adicionado (0.8MB)
+2025-07-23 12:34:50,190 - INFO - Email enviado com sucesso: COMUNICADO CENTRO DE ESTÁGIO DO DIA 24 DE MARÇO DE 2025
+2025-07-23 12:34:50,191 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 12:34:52,924 - INFO - Email de excesso de resultados enviado para termo 'teste' - 17 links adicionais
+2025-07-23 12:34:52,925 - INFO - 127.0.0.1 - - [23/Jul/2025 12:34:52] "POST /executar-busca HTTP/1.1" 200 -
