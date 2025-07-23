@@ -2,7 +2,7 @@
   {
     "id": 1,
     "search_query": "Companhia Paulista de Infraestrutura Social",
-    "schedule": "10:00",
+    "schedule": "09:48",
     "weekdays": [
       "tuesday",
       "wednesday"
@@ -30,14 +30,12 @@
     "active": true
   },
   {
-    "search_query": [
-      "fls. 0075560458"
-    ],
-    "schedule": "10:03",
+    "id": 5,
+    "search_query": "Processo Seletivo Simplificado para a fun\u00e7\u00e3o",
+    "schedule": "18:37",
     "weekdays": [
-      "wednesday"
+      "tuesday"
     ],
-    "active": true,
-    "id": 5
+    "active": true
   }
 ]
