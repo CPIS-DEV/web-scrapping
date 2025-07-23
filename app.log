@@ -1528,3 +1528,77 @@ with app.app_context(). See the documentation for more information.
 2025-07-23 12:48:00,936 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
 2025-07-23 12:48:00,945 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
 2025-07-23 12:48:03,829 - INFO - Email de busca sem resultados enviado para termo 'Companhia Paulista de Infraestrutura Social' - busca agendada do dia 23-07-2025
+2025-07-23 12:58:20,555 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Tuesday
+2025-07-23 12:58:20,556 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:48 em Wednesday
+2025-07-23 12:58:20,556 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:58:20,556 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:58:20,556 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:58:20,556 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:58:20,557 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:58:20,557 - INFO - Agendados 4 jobs
+2025-07-23 12:58:20,557 - INFO - Iniciando scheduler...
+2025-07-23 12:58:20,557 - INFO - Aplicação iniciada com scheduler ativo
+2025-07-23 12:58:20,568 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.15.25:5000
+2025-07-23 12:58:20,568 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 12:58:33,476 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 12:58:33,491 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 13:00 em Tuesday
+2025-07-23 12:58:33,493 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 13:00 em Wednesday
+2025-07-23 12:58:33,494 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 12:58:33,495 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 12:58:33,495 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 12:58:33,495 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 12:58:33,496 - INFO - Agendando job 'Processo Seletivo Simplificado para a função' para 21:37 em Tuesday
+2025-07-23 12:58:33,496 - INFO - Agendados 4 jobs
+2025-07-23 12:58:33,497 - INFO - 127.0.0.1 - - [23/Jul/2025 12:58:33] "PUT /cron HTTP/1.1" 200 -
+2025-07-23 12:59:50,883 - INFO - ====== WebDriver manager ======
+2025-07-23 12:59:51,814 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:59:51,841 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 12:59:51,871 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 13:00:00,192 - INFO - Anexo 2025-07-23.pdf adicionado (0.2MB)
+2025-07-23 13:00:00,618 - INFO - Iniciando busca agendada para: Companhia Paulista de Infraestrutura Social
+2025-07-23 13:00:00,619 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 13:00:03,530 - INFO - Email de busca sem resultados enviado para termo 'Companhia Paulista de Infraestrutura Social' - busca agendada do dia 23-07-2025
+2025-07-23 13:00:05,126 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, de 17 de março de 2025
+2025-07-23 13:00:05,127 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 13:00:05,128 - INFO - ====== WebDriver manager ======
+2025-07-23 13:00:05,945 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 13:00:05,979 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 13:00:06,010 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 13:00:14,060 - INFO - Anexo 2025-07-23.pdf adicionado (0.3MB)
+2025-07-23 13:00:19,167 - INFO - Email enviado com sucesso: RESOLUÇÃO CONJUNTA SPI/SEDUC Nº 001, DE 17 DE MARÇO DE  2025
+2025-07-23 13:00:19,168 - INFO - Arquivo 2025-07-23.pdf deletado com sucesso após envio do email
+2025-07-23 13:00:21,870 - INFO - Email informativo de resultados enviado - Termo: 'Companhia Paulista de Infraestrutura Social' | Tipo: manual | Resultados: 2
+2025-07-23 13:00:21,870 - INFO - 127.0.0.1 - - [23/Jul/2025 13:00:21] "POST /executar-busca HTTP/1.1" 200 -
+2025-07-23 13:01:03,261 - INFO - 127.0.0.1 - - [23/Jul/2025 13:01:03] "[31m[1mDELETE /executar-busca HTTP/1.1[0m" 405 -
+2025-07-23 13:01:08,796 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 13:01:08,811 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 13:00 em Tuesday
+2025-07-23 13:01:08,811 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 13:00 em Wednesday
+2025-07-23 13:01:08,812 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 13:01:08,812 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 13:01:08,812 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 13:01:08,813 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 13:01:08,813 - INFO - Agendados 3 jobs
+2025-07-23 13:01:08,814 - INFO - 127.0.0.1 - - [23/Jul/2025 13:01:08] "DELETE /cron HTTP/1.1" 200 -
+2025-07-23 13:02:09,878 - INFO - Todos os agendamentos foram removidos do scheduler.
+2025-07-23 13:02:09,890 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 13:00 em Tuesday
+2025-07-23 13:02:09,891 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 13:00 em Wednesday
+2025-07-23 13:02:09,891 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Monday
+2025-07-23 13:02:09,892 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Wednesday
+2025-07-23 13:02:09,892 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 12:00 em Friday
+2025-07-23 13:02:09,893 - INFO - Agendando job 'Companhia Paulista de Infraestrutura Social' para 18:05 em Wednesday
+2025-07-23 13:02:09,894 - INFO - Agendando job '['fls. 0075560458']' para 13:03 em Wednesday
+2025-07-23 13:02:09,894 - INFO - Agendados 4 jobs
+2025-07-23 13:02:09,895 - INFO - 127.0.0.1 - - [23/Jul/2025 13:02:09] "[35m[1mPOST /cron HTTP/1.1[0m" 201 -
+2025-07-23 13:03:00,675 - INFO - Iniciando busca agendada para: ['fls. 0075560458']
+2025-07-23 13:03:00,676 - INFO - Busca agendada usando data atual: 2025-07-23 (ignorando datas do JSON)
+2025-07-23 13:03:00,839 - INFO - ====== WebDriver manager ======
+2025-07-23 13:03:01,677 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 13:03:01,720 - INFO - Get LATEST chromedriver version for google-chrome
+2025-07-23 13:03:56,143 - INFO - Driver [C:\Users\Leonardo Pereira\.wdm\drivers\chromedriver\win64\138.0.7204.168\chromedriver-win32/chromedriver.exe] found in cache
+2025-07-23 13:04:04,154 - INFO - Anexo 2025-07-23_1.pdf adicionado (0.2MB)
+2025-07-23 13:04:08,091 - INFO - Email enviado com sucesso: PREGÃO Nº 147.00031554/2024-51, DE 22 DE JULHO DE 2025
+2025-07-23 13:04:08,092 - INFO - Arquivo 2025-07-23_1.pdf deletado com sucesso após envio do email
+2025-07-23 13:04:11,472 - INFO - Email informativo de resultados enviado - Termo: 'fls. 0075560458' | Tipo: agendada | Resultados: 1

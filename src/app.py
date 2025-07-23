@@ -195,6 +195,53 @@ Se desejar realizar uma busca manual ou verificar resultados em outras datas, vo
     except Exception as e:
         logging.error(f"Erro ao enviar email de busca sem resultados: {str(e)}")
 
+def enviar_email_informativo_resultados(termo_busca, total_resultados, data_busca, horario_busca, tipo_busca="agendada", limite_envio=6):
+    """Envia email informativo quando são encontrados resultados em qualquer busca."""
+    
+    # Definir se é busca agendada ou manual
+    tipo_texto = "agendada" if tipo_busca == "agendada" else "manual"
+    emoji_tipo = "🤖" if tipo_busca == "agendada" else "👤"
+    
+    # Calcular quantos foram enviados por email
+    enviados_por_email = min(total_resultados, limite_envio)
+    excedentes = max(0, total_resultados - limite_envio)
+    
+    assunto = f"✅ Resultados encontrados - {termo_busca}"
+    
+    msg = Message(assunto, recipients=["ti@cpis.com.br"])
+    msg.body = f'''{emoji_tipo} ALERTA DE RESULTADOS ENCONTRADOS
+
+Foi realizada uma busca {tipo_texto} e foram encontrados resultados para o termo monitorado.
+
+📊 RESUMO DA BUSCA:
+📅 Data da busca: {data_busca}
+🕐 Horário da busca: {horario_busca} (horário de Brasília)
+🔍 Termo pesquisado: {termo_busca}
+📄 Total de resultados: {total_resultados}
+📧 Enviados por email: {enviados_por_email}
+{"⏭️ Excedentes (apenas links): " + str(excedentes) if excedentes > 0 else ""}
+
+📝 AÇÕES REALIZADAS:
+{"✅ Os primeiros " + str(enviados_por_email) + " resultados foram enviados por email com anexos/links" if enviados_por_email > 0 else ""}
+{"✅ Email adicional enviado com links dos " + str(excedentes) + " resultados excedentes" if excedentes > 0 else ""}
+✅ Todos os resultados foram registrados no arquivo de log do sistema
+
+💡 INFORMAÇÕES ADICIONAIS:
+• {"Esta busca foi executada automaticamente pelo sistema de agendamento" if tipo_busca == "agendada" else "Esta busca foi executada manualmente via API"}
+• Os arquivos PDF foram baixados e {"anexados aos emails" if total_resultados <= limite_envio else "anexados aos primeiros " + str(limite_envio) + " emails"}
+• Verifique sua caixa de entrada para os documentos encontrados
+
+🌐 ACESSO DIRETO:
+Para consultar diretamente no site oficial: https://www.doe.sp.gov.br/
+
+🔔 Este é um email informativo automático do sistema de monitoramento.'''
+    
+    try:
+        mail.send(msg)
+        logging.info(f"Email informativo de resultados enviado - Termo: '{termo_busca}' | Tipo: {tipo_busca} | Resultados: {total_resultados}")
+    except Exception as e:
+        logging.error(f"Erro ao enviar email informativo de resultados: {str(e)}")
+
 def search_website(search_query, from_date, to_date, page_number=1, page_size=20):
     url = "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
     params = {
@@ -319,7 +366,7 @@ def trigger_search(search_query, from_date, to_date):
 
             if results:
                 total_resultados = len(results)
-                limite_envio = limite_envio_global
+                limite_envio = 6  # ou sua variável global
                 
                 with file_lock:
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
@@ -354,6 +401,10 @@ def trigger_search(search_query, from_date, to_date):
                             arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
                             for i, result in enumerate(results_excedentes, limite_envio + 1):
                                 arquivo.write(f"\t{i}º: {result['title']}\n")
+                
+                # NOVA FUNCIONALIDADE: Email informativo de resultados encontrados
+                termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
+                enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual_str, horario_brasilia, "agendada", limite_envio)
                         
             else:
                 # NOVA FUNCIONALIDADE: Email para busca agendada sem resultados
@@ -507,16 +558,16 @@ def executar_busca():
 
     if results:
         total_resultados = len(results)
-        limite_envio = limite_envio_global
+        limite_envio = 6  # ou sua variável global
         
         with open("registro.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
             
-        # NOVA FUNCIONALIDADE: Processar apenas os primeiros 6 resultados
+        # NOVA FUNCIONALIDADE: Processar apenas os primeiros X resultados
         results_para_envio = results[:limite_envio]
         results_excedentes = results[limite_envio:]
         
-        # Processar e enviar os primeiros 6 resultados
+        # Processar e enviar os primeiros X resultados
         for result in results_para_envio:
             with open("registro.txt", "a", encoding="utf-8") as arquivo:
                 arquivo.write(f"\t{result['title']}\n")
@@ -533,7 +584,12 @@ def executar_busca():
                 arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
                 for i, result in enumerate(results_excedentes, limite_envio + 1):
                     arquivo.write(f"\t{i}º: {result['title']}\n")
+        
+        # NOVA FUNCIONALIDADE: Email informativo de resultados encontrados para busca manual
+        termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
+        enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual, horario_brasilia, "manual", limite_envio)
             
+        if results_excedentes:
             return jsonify({
                 "status": "Busca executada com limite de envios!", 
                 "resultados_totais": total_resultados,
