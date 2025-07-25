@@ -9,20 +9,9 @@
       "tuesday",
       "wednesday"
     ],
-    "active": true
-  },
-  {
-    "id": 2,
-    "search_query": [
-      "Companhia Paulista de Infraestrutura Social"
-    ],
-    "schedule": "12:45",
-    "weekdays": [
-      "monday",
-      "wednesday",
-      "friday"
-    ],
-    "active": true
+    "active": false,
+    "atualizado_por": "leonardo",
+    "atualizado_em": "2025-07-25T18:38:19.820481Z"
   },
   {
     "id": 5,
@@ -35,13 +24,18 @@
   },
   {
     "search_query": [
-      "fls. 0075560458"
+      "Companhia Paulista de Infra"
     ],
-    "schedule": "13:26",
+    "schedule": "15:40",
     "weekdays": [
-      "wednesday"
+      "friday",
+      "saturday"
     ],
-    "active": false,
-    "id": 6
+    "active": true,
+    "id": 7,
+    "criado_por": "admin",
+    "criado_em": "2025-07-25T17:55:28.332702Z",
+    "atualizado_por": "leonardo",
+    "atualizado_em": "2025-07-25T18:38:09.210896Z"
   }
 ]

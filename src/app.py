@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -18,6 +19,7 @@ from datetime import datetime
 from urllib.parse import urljoin
 import logging
 import pytz
+import bcrypt
 
 # Configuração básica de logging
 logging.basicConfig(
@@ -50,6 +52,39 @@ app.config['MAIL_PASSWORD'] = 'ssyy cocc mffz uaop'
 app.config['MAIL_DEFAULT_SENDER'] = 'noreplycpis@gmail.com'
 
 mail = Mail(app)
+
+# 🔐 CONFIGURAÇÕES JWT
+app.config['JWT_SECRET_KEY'] = 'cpis-webscraper-jwt-secret-2024-super-seguro'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False  # Token nunca expira
+
+jwt = JWTManager(app)
+
+# 👥 DATABASE DE USUÁRIOS (em produção, usar banco de dados real)
+USERS_DB = {
+    "admin": {
+        "password_hash": bcrypt.hashpw("cpis@2025##".encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
+        "role": "admin"
+    },
+    "leonardo": {
+        "password_hash": bcrypt.hashpw("cpis2025".encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
+        "role": "user"
+    },
+    "cpis": {
+        "password_hash": bcrypt.hashpw("webscraper2025".encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
+        "role": "user"
+    },
+    "ti": {
+        "password_hash": bcrypt.hashpw("ti@cpis2025".encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
+        "role": "user"
+    }
+}
+
+def verificar_credenciais(username, password):
+    """Verifica se usuário e senha estão corretos."""
+    user = USERS_DB.get(username)
+    if user and bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
+        return user
+    return None
 
 def load_config():
     """Carrega as configurações do arquivo config.json."""
@@ -615,9 +650,146 @@ def baixar_pdf(url):
     finally:
         driver.quit()
         return nome_arquivo
+    
+@app.route('/login', methods=['POST'])
+def login():
+    """Endpoint para fazer login e obter token JWT."""
+    try:
+        data = request.json
+        
+        if not data or 'username' not in data or 'password' not in data:
+            return jsonify({
+                "status": "error", 
+                "message": "Username e password são obrigatórios"
+            }), 400
+        
+        username = data['username']
+        password = data['password']
+        
+        user = verificar_credenciais(username, password)
+        
+        if user:
+            # Criar token JWT
+            access_token = create_access_token(
+                identity=username,
+                additional_claims={"role": user["role"]}
+            )
+            
+            logging.info(f"✅ Login realizado com sucesso para usuário: {username}")
+            
+            return jsonify({
+                "status": "success",
+                "message": "Login realizado com sucesso",
+                "access_token": access_token,
+                "user": {
+                    "username": username,
+                    "role": user["role"]
+                }
+            }), 200
+        else:
+            logging.warning(f"❌ Tentativa de login falhada para usuário: {username}")
+            return jsonify({
+                "status": "error",
+                "message": "Credenciais inválidas"
+            }), 401
+            
+    except Exception as e:
+        logging.error(f"❌ Erro no endpoint de login: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": "Erro interno do servidor"
+        }), 500
+
+@app.route('/verify-token', methods=['GET'])
+@jwt_required()
+def verify_token():
+    """Verifica se o token é válido."""
+    try:
+        current_user = get_jwt_identity()
+        user_data = USERS_DB.get(current_user, {})
+        
+        return jsonify({
+            "status": "success",
+            "message": "Token válido",
+            "user": {
+                "username": current_user,
+                "role": user_data.get("role", "user")
+            }
+        }), 200
+    except Exception as e:
+        logging.error(f"❌ Erro na verificação de token: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": "Token inválido"
+        }), 401
+
+@app.route('/change-password', methods=['PUT'])
+@jwt_required()
+def change_password():
+    """Permite ao usuário alterar sua própria senha."""
+    try:
+        current_user = get_jwt_identity()
+        data = request.json
+        
+        if not data or 'current_password' not in data or 'new_password' not in data:
+            return jsonify({
+                "status": "error",
+                "message": "Senha atual e nova senha são obrigatórias"
+            }), 400
+        
+        # Verificar senha atual
+        if not verificar_credenciais(current_user, data['current_password']):
+            return jsonify({
+                "status": "error",
+                "message": "Senha atual incorreta"
+            }), 401
+        
+        # Atualizar senha (em produção, salvar em banco de dados)
+        new_password_hash = bcrypt.hashpw(data['new_password'].encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        USERS_DB[current_user]['password_hash'] = new_password_hash
+        
+        logging.info(f"🔐 Senha alterada com sucesso para usuário: {current_user}")
+        
+        return jsonify({
+            "status": "success",
+            "message": "Senha alterada com sucesso"
+        }), 200
+        
+    except Exception as e:
+        logging.error(f"❌ Erro ao alterar senha: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": "Erro interno do servidor"
+        }), 500
+
+# 🔓 ENDPOINT PÚBLICO PARA STATUS
+@app.route('/status', methods=['GET'])
+def status():
+    """Endpoint público para verificar se API está online."""
+    try:
+        jobs = load_cron_jobs()
+        config = load_config()
+        
+        return jsonify({
+            "status": "online",
+            "message": "Web Scraper API está funcionando",
+            "timestamp": datetime.now().isoformat() + 'Z',
+            "jobs_ativos": len([j for j in jobs if j.get('active', True)]),
+            "jobs_total": len(jobs),
+            "ultima_execucao": config.get('ultima_execucao', 'Nunca executado')
+        }), 200
+    except Exception as e:
+        logging.error(f"❌ Erro no endpoint de status: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": "Erro ao obter status"
+        }), 500
 
 @app.route('/executar-busca', methods=['POST'])
+@jwt_required()
 def executar_busca():
+    current_user = get_jwt_identity()
+    logging.info(f"🔍 Busca manual executada por usuário: {current_user}")
 
     atualizar_ultima_execucao()
 
@@ -627,7 +799,11 @@ def executar_busca():
     to_date = data.get('to_date')
 
     if not search_query or not from_date or not to_date:
-        return jsonify({"status": "Erro", "message": "Parâmetros de busca inválidos."}), 400
+        return jsonify({
+            "status": "Erro", 
+            "message": "Parâmetros de busca inválidos.",
+            "executado_por": current_user
+        }), 400
 
     # Garante que search_query é uma lista
     if isinstance(search_query, str):
@@ -641,7 +817,8 @@ def executar_busca():
     results = []
 
     with open("registro.txt", "a", encoding="utf-8") as arquivo:
-        arquivo.write(f"\n\n\nBusca realizada no dia {data_atual} às {horario_brasilia} (horário de Brasília):\n\n")
+        arquivo.write(f"\n\n\nBusca realizada no dia {data_atual} às {horario_brasilia} (horário de Brasília):\n")
+        arquivo.write(f"Executada por usuário: {current_user}\n\n")
 
     for termo in search_query:
         results += search_website(termo, from_date, to_date)
@@ -684,18 +861,30 @@ def executar_busca():
                 "status": "Busca executada com limite de envios!", 
                 "resultados_totais": total_resultados,
                 "enviados": limite_envio,
-                "excedentes": len(results_excedentes)
+                "excedentes": len(results_excedentes),
+                "executado_por": current_user
             })
         else:
-            return jsonify({"status": "Busca e Envio executados com sucesso!", "resultados": total_resultados})
+            return jsonify({
+                "status": "Busca e Envio executados com sucesso!", 
+                "resultados": total_resultados,
+                "executado_por": current_user
+            })
     else:
         with open("registro.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write("Não foram encontrados resultado para essa busca.\n\n")
-        return jsonify({"status": "Nenhum resultado encontrado."})
+        return jsonify({
+            "status": "Nenhum resultado encontrado.",
+            "executado_por": current_user
+        })
     
 @app.route('/cron', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@jwt_required()
 def gerencia_crons():
     """Endpoint para gerenciar jobs agendados (CRUD)."""
+    current_user = get_jwt_identity()
+    logging.info(f"⚙️ Gerenciamento de crons acessado por usuário: {current_user}")
+
     if request.method == 'GET':
         # Lista todos os jobs + informações do sistema
         jobs = load_cron_jobs()
@@ -706,7 +895,8 @@ def gerencia_crons():
             "ultima_execucao": config.get('ultima_execucao', 'Nunca executado'),
             "total_jobs": len(jobs),
             "jobs_ativos": len([job for job in jobs if job.get('active', True)]),
-            "jobs_inativos": len([job for job in jobs if not job.get('active', True)])
+            "jobs_inativos": len([job for job in jobs if not job.get('active', True)]),
+            "acessado_por": current_user
         }
         
         return jsonify(response)
@@ -722,6 +912,8 @@ def gerencia_crons():
         new_id = max([job.get('id', 0) for job in jobs] or [0]) + 1
         new_job['id'] = new_id
         new_job['active'] = new_job.get('active', True)
+        new_job['criado_por'] = current_user
+        new_job['criado_em'] = datetime.now().isoformat() + 'Z'
         # Garantir que weekdays existe (opcional)
         if 'weekdays' not in new_job:
             new_job['weekdays'] = []
@@ -729,7 +921,9 @@ def gerencia_crons():
         save_cron_jobs(jobs)
         apagar_todos_agendamentos()
         schedule_jobs()
-        return jsonify({"status": "success", "id": new_id}), 201
+        
+        logging.info(f"📅 Job criado por {current_user}: {new_job['search_query']}")
+        return jsonify({"status": "success", "id": new_id, "criado_por": current_user}), 201
 
     elif request.method == 'PUT':
         # Atualiza um job existente
@@ -740,6 +934,8 @@ def gerencia_crons():
         jobs = load_cron_jobs()
         for idx, job in enumerate(jobs):
             if job.get('id') == update_job['id']:
+                update_job['atualizado_por'] = current_user
+                update_job['atualizado_em'] = datetime.now().isoformat() + 'Z'
                 jobs[idx].update(update_job)
                 break
         else:
@@ -748,7 +944,9 @@ def gerencia_crons():
         save_cron_jobs(jobs)
         apagar_todos_agendamentos()
         schedule_jobs()
-        return jsonify({"status": "success", "message": "Job atualizado"})
+        
+        logging.info(f"📝 Job atualizado por {current_user}: ID {update_job['id']}")
+        return jsonify({"status": "success", "message": "Job atualizado", "atualizado_por": current_user})
 
     elif request.method == 'DELETE':
         # Deleta um job pelo ID
@@ -761,46 +959,104 @@ def gerencia_crons():
         save_cron_jobs(jobs)
         apagar_todos_agendamentos()
         schedule_jobs()
-        return jsonify({"status": "success", "message": "Job removido"})
+        
+        logging.info(f"🗑️ Job removido por {current_user}: ID {job_id}")
+        return jsonify({"status": "success", "message": "Job removido", "removido_por": current_user})
 
     return jsonify({"status": "error", "message": "Método não suportado"}), 405
 
 @app.route('/registro', methods=['GET'])
+@jwt_required()
 def download_registro():
     """Endpoint para baixar o arquivo registro.txt."""
-    from flask import send_file
-    registro_path = os.path.abspath('registro.txt')
-    if not os.path.exists(registro_path):
-        return jsonify({"status": "error", "message": "Arquivo registro.txt não encontrado"}), 404
-    return send_file(registro_path, as_attachment=True)
+    current_user = get_jwt_identity()
+    logging.info(f"📄 Download de registro acessado por usuário: {current_user}")
+    
+    try:
+        from flask import send_file
+        registro_path = os.path.abspath('registro.txt')
+        
+        if not os.path.exists(registro_path):
+            logging.warning(f"❌ Arquivo registro.txt não encontrado - solicitado por {current_user}")
+            return jsonify({
+                "status": "error", 
+                "message": "Arquivo registro.txt não encontrado",
+                "solicitado_por": current_user
+            }), 404
+        
+        # Log de sucesso antes do envio
+        logging.info(f"✅ Arquivo registro.txt enviado com sucesso para {current_user}")
+        
+        return send_file(registro_path, as_attachment=True)
+        
+    except Exception as e:
+        logging.error(f"❌ Erro ao processar download de registro para {current_user}: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": "Erro interno ao processar download",
+            "solicitado_por": current_user
+        }), 500
 
 @app.route('/config', methods=['GET', 'PUT'])
+@jwt_required()
 def gerencia_config():
     """Endpoint para gerenciar configurações do sistema."""
+    current_user = get_jwt_identity()
+    logging.info(f"⚙️ Configurações acessadas por usuário: {current_user}")
+
     if request.method == 'GET':
         # Retorna configurações atuais
-        return jsonify(load_config())
+        config = load_config()
+        config['acessado_por'] = current_user
+        return jsonify(config)
     
     elif request.method == 'PUT':
         # Atualiza configurações
-        nova_config = request.json
-        
-        # Validações básicas
-        if 'email_principal' not in nova_config or not nova_config['email_principal']:
-            return jsonify({"status": "error", "message": "email_principal é obrigatório"}), 400
-        
-        if 'emails_aviso' not in nova_config:
-            nova_config['emails_aviso'] = []
-        
-        # Manter ultima_execucao se não fornecida
-        config_atual = load_config()
-        if 'ultima_execucao' not in nova_config:
-            nova_config['ultima_execucao'] = config_atual.get('ultima_execucao', datetime.now().isoformat() + 'Z')
-        
-        save_config(nova_config)
-        return jsonify({"status": "success", "message": "Configurações atualizadas"})
+        try:
+            nova_config = request.json
+            
+            # Validações básicas
+            if 'email_principal' not in nova_config or not nova_config['email_principal']:
+                return jsonify({
+                    "status": "error", 
+                    "message": "email_principal é obrigatório",
+                    "alterado_por": current_user
+                }), 400
+            
+            if 'emails_aviso' not in nova_config:
+                nova_config['emails_aviso'] = []
+            
+            # Manter ultima_execucao se não fornecida
+            config_atual = load_config()
+            if 'ultima_execucao' not in nova_config:
+                nova_config['ultima_execucao'] = config_atual.get('ultima_execucao', datetime.now().isoformat() + 'Z')
+            
+            # AUDITORIA: Adicionar logs de alteração
+            nova_config['ultima_alteracao_por'] = current_user
+            nova_config['ultima_alteracao_em'] = datetime.now().isoformat() + 'Z'
+            
+            save_config(nova_config)
+            logging.info(f"⚙️ Configurações alteradas por {current_user}")
+            
+            return jsonify({
+                "status": "success", 
+                "message": "Configurações atualizadas", 
+                "alterado_por": current_user
+            })
+            
+        except Exception as e:
+            logging.error(f"❌ Erro ao alterar configurações por {current_user}: {str(e)}")
+            return jsonify({
+                "status": "error",
+                "message": "Erro interno ao processar alterações",
+                "alterado_por": current_user
+            }), 500
     
-    return jsonify({"status": "error", "message": "Método não suportado"}), 405
+    return jsonify({
+        "status": "error", 
+        "message": "Método não suportado",
+        "acessado_por": current_user
+    }), 405
     
 if __name__ == "__main__":
     # Criar diretório de downloads
