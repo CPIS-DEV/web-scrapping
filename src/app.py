@@ -42,8 +42,8 @@ CORS(app, origins=[
     "http://127.0.0.1:8080",    # Localhost alternativo
     "http://127.0.0.1:5173",    # Vite padrão
     "http://localhost:5173",    # Vite padrão
-    "https://cpis-monitoramento.pages.dev",
-    "http://cpis-monitoramento.pages.dev",
+    "https://webscrappin-front.pages.dev",
+    "https://webscrappin-front.pages.dev",
     "https://www.monitoramento.cpis.com.br",
     "http://www.monitoramento.cpis.com.br"
 ])
