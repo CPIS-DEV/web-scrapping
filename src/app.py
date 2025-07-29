@@ -129,15 +129,26 @@ def atualizar_ultima_execucao():
 file_lock = threading.Lock()
 
 def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None, deletar_apos_envio=True):
-    # Carregar configurações
+    """
+    Envia email com anexo PDF se o arquivo tiver até 25MB.
+    Se o arquivo for maior, envia apenas o link do documento.
+    """
     config = load_config()
     email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
-    
     msg = Message(assunto, recipients=[email_principal])
     data_atual = datetime.now().strftime("%d/%m/%Y")
-    
-    if anexo:
-        # Email com anexo
+
+    anexo_path = f"./downloads/{anexo}" if anexo else None
+    anexo_grande = False
+    tamanho_mb = 0
+
+    if anexo_path and os.path.exists(anexo_path):
+        tamanho_mb = os.path.getsize(anexo_path) / (1024 * 1024)
+        if tamanho_mb > 25:
+            anexo_grande = True
+
+    if anexo and not anexo_grande:
+        # Email com anexo (até 25MB)
         msg.body = f'''Prezado(a),
 
 Segue em anexo o documento "{assunto}" encontrado na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual}.
@@ -158,40 +169,43 @@ Segue em anexo o documento "{assunto}" encontrado na busca realizada no Diário 
 Este é um email automático do sistema de monitoramento do Diário Oficial.'''
 
         try:
-            with open(f"./downloads/{anexo}", "rb") as fp:
+            with open(anexo_path, "rb") as fp:
                 msg.attach(anexo, "application/pdf", fp.read())
         except Exception as e:
             logging.error(f"Erro ao anexar arquivo {anexo}: {str(e)}")
-            # Se falhar o anexo, enviar só com link
             msg.body += f"\n\n⚠️ AVISO: Não foi possível anexar o arquivo PDF. Use o link direto acima para acessar o documento."
     else:
-        # Email só com link
+        # Email só com link (anexo grande ou não existe)
+        motivo = ""
+        if anexo_grande:
+            motivo = f"O arquivo PDF excede o limite de 25MB do Gmail ({tamanho_mb:.2f}MB)."
+        else:
+            motivo = "O arquivo PDF não pôde ser anexado automaticamente."
         msg.body = f'''Prezado(a),
 
-Foi encontrado o documento "{assunto}" na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual}.
+O documento "{assunto}" encontrado na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual} não pôde ser anexado ao email.
 
 📋 DETALHES DO DOCUMENTO:
 📄 Título: {assunto}
 🔍 Termo de busca: {termo_busca if termo_busca else 'N/A'}
 📅 Data da consulta: {data_atual}
 
-🌐 ACESSE O DOCUMENTO:
-{url_original if url_original else 'Link não disponível'}
+🌐 LINK DIRETO PARA O DOCUMENTO:
+{url_original if url_original else 'N/A'}
 
 💡 OBSERVAÇÕES:
-• Este documento foi encontrado automaticamente pelo sistema de monitoramento
-• Clique no link acima para visualizar o documento completo no site oficial
-• O documento não pôde ser baixado automaticamente
+• {motivo}
+• Para acessar o documento, utilize o link acima
+• Este é um email automático do sistema de monitoramento do Diário Oficial.
+'''
 
-Este é um email automático do sistema de monitoramento do Diário Oficial.'''
-    
     try:
         mail.send(msg)
         logging.info(f"Email enviado com sucesso para {email_principal}: {assunto}")
 
-        if deletar_apos_envio and anexo and os.path.exists(f"./downloads/{anexo}"):
+        if deletar_apos_envio and anexo_path and os.path.exists(anexo_path):
             try:
-                os.remove(f"./downloads/{anexo}")
+                os.remove(anexo_path)
                 logging.info(f"Arquivo {anexo} deletado com sucesso após envio do email")
             except Exception as e:
                 logging.error(f"Erro ao deletar arquivo {anexo}: {str(e)}")
