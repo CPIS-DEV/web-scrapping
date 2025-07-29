@@ -21,6 +21,8 @@ import logging
 import pytz
 import bcrypt
 
+busca_lock = threading.Lock()
+
 # Configuração básica de logging
 logging.basicConfig(
     level=logging.INFO,
@@ -496,91 +498,93 @@ def trigger_search(search_query, from_date, to_date):
     print("chamando trigger_search")
     logging.info(f"Iniciando busca agendada para: {search_query}")
 
-    atualizar_ultima_execucao()
-    
-    with app.app_context():
-        # Garante que search_query é uma lista
-        if isinstance(search_query, str):
-            search_query = [search_query]
+    with busca_lock:
 
-        # NOVA FUNCIONALIDADE: Para tarefas agendadas, sempre usar data atual
-        data_atual_str = datetime.now().strftime("%d-%m-%Y")
-        data_atual_iso = datetime.now().strftime("%Y-%m-%d")  # Formato ISO para API
+        atualizar_ultima_execucao()
         
-        tz_brasilia = pytz.timezone("America/Sao_Paulo")
-        horario_brasilia = datetime.now(tz_brasilia).strftime("%H:%M:%S")
+        with app.app_context():
+            # Garante que search_query é uma lista
+            if isinstance(search_query, str):
+                search_query = [search_query]
 
-        # Usar data atual em vez dos parâmetros from_date e to_date
-        from_date_atual = data_atual_iso
-        to_date_atual = data_atual_iso
-        
-        logging.info(f"Busca agendada usando data atual: {data_atual_iso} (ignorando datas do JSON)")
-        
-        results = []
+            # NOVA FUNCIONALIDADE: Para tarefas agendadas, sempre usar data atual
+            data_atual_str = datetime.now().strftime("%d-%m-%Y")
+            data_atual_iso = datetime.now().strftime("%Y-%m-%d")  # Formato ISO para API
+            
+            tz_brasilia = pytz.timezone("America/Sao_Paulo")
+            horario_brasilia = datetime.now(tz_brasilia).strftime("%H:%M:%S")
 
-        try:
-            with file_lock:
-                with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                    arquivo.write(f"\n\n\nBusca agendada realizada no dia {data_atual_str} às {horario_brasilia} (horário de Brasília):\n\n")
+            # Usar data atual em vez dos parâmetros from_date e to_date
+            from_date_atual = data_atual_iso
+            to_date_atual = data_atual_iso
+            
+            logging.info(f"Busca agendada usando data atual: {data_atual_iso} (ignorando datas do JSON)")
+            
+            results = []
 
-            for termo in search_query:
-                # Usar as datas atuais em vez dos parâmetros
-                results += search_website(termo, from_date_atual, to_date_atual)
-
-            if results:
-                total_resultados = len(results)
-                limite_envio = 6  # ou sua variável global
-                
+            try:
                 with file_lock:
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                        arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
-                
-                # NOVA FUNCIONALIDADE: Processar apenas os primeiros X resultados
-                results_para_envio = results[:limite_envio]
-                results_excedentes = results[limite_envio:]
-                
-                # Processar e enviar os primeiros X resultados
-                for result in results_para_envio:
-                    with file_lock:
-                        with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                            arquivo.write(f"\t{result['title']}\n")
-                    
-                    url_documento = f"https://doe.sp.gov.br/{result['slug']}"
-                    nome_arquivo = baixar_pdf(url_documento)
+                        arquivo.write(f"\n\n\nBusca agendada realizada no dia {data_atual_str} às {horario_brasilia} (horário de Brasília):\n\n")
 
-                    if nome_arquivo:
-                        nome_renomeado = renomear_pdf("./downloads")
-                        enviar_email(result['title'], nome_renomeado, termo, url_documento)
-                    else:
-                        enviar_email(result['title'], None, termo, url_documento)
-                
-                # NOVA FUNCIONALIDADE: Enviar email informativo sobre excesso
-                if results_excedentes:
-                    enviar_email_excesso_resultados(termo, total_resultados, results_excedentes, limite_envio)
+                for termo in search_query:
+                    # Usar as datas atuais em vez dos parâmetros
+                    results += search_website(termo, from_date_atual, to_date_atual)
+
+                if results:
+                    total_resultados = len(results)
+                    limite_envio = 6  # ou sua variável global
                     
-                    # Registrar os resultados excedentes no arquivo de log
                     with file_lock:
                         with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                            arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
-                            for i, result in enumerate(results_excedentes, limite_envio + 1):
-                                arquivo.write(f"\t{i}º: {result['title']}\n")
-                
-                # NOVA FUNCIONALIDADE: Email informativo de resultados encontrados
-                termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
-                enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual_str, horario_brasilia, "agendada", limite_envio)
+                            arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
+                    
+                    # NOVA FUNCIONALIDADE: Processar apenas os primeiros X resultados
+                    results_para_envio = results[:limite_envio]
+                    results_excedentes = results[limite_envio:]
+                    
+                    # Processar e enviar os primeiros X resultados
+                    for result in results_para_envio:
+                        with file_lock:
+                            with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                                arquivo.write(f"\t{result['title']}\n")
                         
-            else:
-                # NOVA FUNCIONALIDADE: Email para busca agendada sem resultados
-                with file_lock:
-                    with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                        arquivo.write("Não foram encontrados resultados para essa busca.\n\n")
-                
-                # Enviar email informativo sobre busca sem resultados
-                termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
-                enviar_email_sem_resultados(termo_formatado, data_atual_str, horario_brasilia)
+                        url_documento = f"https://doe.sp.gov.br/{result['slug']}"
+                        nome_arquivo = baixar_pdf(url_documento)
+
+                        if nome_arquivo:
+                            nome_renomeado = renomear_pdf("./downloads")
+                            enviar_email(result['title'], nome_renomeado, termo, url_documento)
+                        else:
+                            enviar_email(result['title'], None, termo, url_documento)
+                    
+                    # NOVA FUNCIONALIDADE: Enviar email informativo sobre excesso
+                    if results_excedentes:
+                        enviar_email_excesso_resultados(termo, total_resultados, results_excedentes, limite_envio)
                         
-        except Exception as e:
-            logging.error(f"Erro durante busca agendada: {str(e)}")
+                        # Registrar os resultados excedentes no arquivo de log
+                        with file_lock:
+                            with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                                arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
+                                for i, result in enumerate(results_excedentes, limite_envio + 1):
+                                    arquivo.write(f"\t{i}º: {result['title']}\n")
+                    
+                    # NOVA FUNCIONALIDADE: Email informativo de resultados encontrados
+                    termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
+                    enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual_str, horario_brasilia, "agendada", limite_envio)
+                            
+                else:
+                    # NOVA FUNCIONALIDADE: Email para busca agendada sem resultados
+                    with file_lock:
+                        with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                            arquivo.write("Não foram encontrados resultados para essa busca.\n\n")
+                    
+                    # Enviar email informativo sobre busca sem resultados
+                    termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
+                    enviar_email_sem_resultados(termo_formatado, data_atual_str, horario_brasilia)
+                            
+            except Exception as e:
+                logging.error(f"Erro durante busca agendada: {str(e)}")
 
 def schedule_jobs():
     """Agenda os jobs baseado no arquivo JSON."""
@@ -832,92 +836,94 @@ def executar_busca():
     current_user = get_jwt_identity()
     logging.info(f"🔍 Busca manual executada por usuário: {current_user}")
 
-    atualizar_ultima_execucao()
+    with busca_lock:
+        # Atualiza a última execução
+        atualizar_ultima_execucao()
 
-    data = request.json
-    search_query = data.get('search_query')
-    from_date = data.get('from_date')
-    to_date = data.get('to_date')
+        data = request.json
+        search_query = data.get('search_query')
+        from_date = data.get('from_date')
+        to_date = data.get('to_date')
 
-    if not search_query or not from_date or not to_date:
-        return jsonify({
-            "status": "Erro", 
-            "message": "Parâmetros de busca inválidos.",
-            "executado_por": current_user
-        }), 400
-
-    # Garante que search_query é uma lista
-    if isinstance(search_query, str):
-        search_query = [search_query]
-
-    data_atual = datetime.now().strftime("%d-%m-%Y")
-
-    tz_brasilia = pytz.timezone("America/Sao_Paulo")
-    horario_brasilia = datetime.now(tz_brasilia).strftime("%H:%M:%S")
-
-    results = []
-
-    with open("registro.txt", "a", encoding="utf-8") as arquivo:
-        arquivo.write(f"\n\n\nBusca realizada no dia {data_atual} às {horario_brasilia} (horário de Brasília):\n")
-        arquivo.write(f"Executada por usuário: {current_user}\n\n")
-
-    for termo in search_query:
-        results += search_website(termo, from_date, to_date)
-
-    if results:
-        total_resultados = len(results)
-        limite_envio = 6  # ou sua variável global
-        
-        with open("registro.txt", "a", encoding="utf-8") as arquivo:
-            arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
-            
-        # NOVA FUNCIONALIDADE: Processar apenas os primeiros X resultados
-        results_para_envio = results[:limite_envio]
-        results_excedentes = results[limite_envio:]
-        
-        # Processar e enviar os primeiros X resultados
-        for result in results_para_envio:
-            with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                arquivo.write(f"\t{result['title']}\n")
-            url_documento = f"https://doe.sp.gov.br/{result['slug']}"
-            nome_arquivo = baixar_pdf(url_documento)
-            enviar_email(result['title'], nome_arquivo, termo, url_documento)
-            
-        # NOVA FUNCIONALIDADE: Enviar email informativo sobre excesso
-        if results_excedentes:
-            enviar_email_excesso_resultados(termo, total_resultados, results_excedentes, limite_envio)
-            
-            # Registrar os resultados excedentes no arquivo de log
-            with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
-                for i, result in enumerate(results_excedentes, limite_envio + 1):
-                    arquivo.write(f"\t{i}º: {result['title']}\n")
-        
-        # NOVA FUNCIONALIDADE: Email informativo de resultados encontrados para busca manual
-        termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
-        enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual, horario_brasilia, "manual", limite_envio)
-            
-        if results_excedentes:
+        if not search_query or not from_date or not to_date:
             return jsonify({
-                "status": "Busca executada com limite de envios!", 
-                "resultados_totais": total_resultados,
-                "enviados": limite_envio,
-                "excedentes": len(results_excedentes),
+                "status": "Erro", 
+                "message": "Parâmetros de busca inválidos.",
                 "executado_por": current_user
-            })
+            }), 400
+
+        # Garante que search_query é uma lista
+        if isinstance(search_query, str):
+            search_query = [search_query]
+
+        data_atual = datetime.now().strftime("%d-%m-%Y")
+
+        tz_brasilia = pytz.timezone("America/Sao_Paulo")
+        horario_brasilia = datetime.now(tz_brasilia).strftime("%H:%M:%S")
+
+        results = []
+
+        with open("registro.txt", "a", encoding="utf-8") as arquivo:
+            arquivo.write(f"\n\n\nBusca realizada no dia {data_atual} às {horario_brasilia} (horário de Brasília):\n")
+            arquivo.write(f"Executada por usuário: {current_user}\n\n")
+
+        for termo in search_query:
+            results += search_website(termo, from_date, to_date)
+
+        if results:
+            total_resultados = len(results)
+            limite_envio = 6  # ou sua variável global
+            
+            with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
+                
+            # NOVA FUNCIONALIDADE: Processar apenas os primeiros X resultados
+            results_para_envio = results[:limite_envio]
+            results_excedentes = results[limite_envio:]
+            
+            # Processar e enviar os primeiros X resultados
+            for result in results_para_envio:
+                with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                    arquivo.write(f"\t{result['title']}\n")
+                url_documento = f"https://doe.sp.gov.br/{result['slug']}"
+                nome_arquivo = baixar_pdf(url_documento)
+                enviar_email(result['title'], nome_arquivo, termo, url_documento)
+                
+            # NOVA FUNCIONALIDADE: Enviar email informativo sobre excesso
+            if results_excedentes:
+                enviar_email_excesso_resultados(termo, total_resultados, results_excedentes, limite_envio)
+                
+                # Registrar os resultados excedentes no arquivo de log
+                with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                    arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
+                    for i, result in enumerate(results_excedentes, limite_envio + 1):
+                        arquivo.write(f"\t{i}º: {result['title']}\n")
+            
+            # NOVA FUNCIONALIDADE: Email informativo de resultados encontrados para busca manual
+            termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
+            enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual, horario_brasilia, "manual", limite_envio)
+                
+            if results_excedentes:
+                return jsonify({
+                    "status": "Busca executada com limite de envios!", 
+                    "resultados_totais": total_resultados,
+                    "enviados": limite_envio,
+                    "excedentes": len(results_excedentes),
+                    "executado_por": current_user
+                })
+            else:
+                return jsonify({
+                    "status": "Busca e Envio executados com sucesso!", 
+                    "resultados": total_resultados,
+                    "executado_por": current_user
+                })
         else:
+            with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                arquivo.write("Não foram encontrados resultado para essa busca.\n\n")
             return jsonify({
-                "status": "Busca e Envio executados com sucesso!", 
-                "resultados": total_resultados,
+                "status": "Nenhum resultado encontrado.",
                 "executado_por": current_user
             })
-    else:
-        with open("registro.txt", "a", encoding="utf-8") as arquivo:
-            arquivo.write("Não foram encontrados resultado para essa busca.\n\n")
-        return jsonify({
-            "status": "Nenhum resultado encontrado.",
-            "executado_por": current_user
-        })
     
 @app.route('/cron', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @jwt_required()
