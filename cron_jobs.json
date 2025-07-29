@@ -11,7 +11,8 @@
     ],
     "active": false,
     "atualizado_por": "leonardo",
-    "atualizado_em": "2025-07-25T18:38:19.820481Z"
+    "atualizado_em": "2025-07-25T18:38:19.820481Z",
+    "quant_dias": 0
   },
   {
     "id": 5,
@@ -20,7 +21,8 @@
     "weekdays": [
       "tuesday"
     ],
-    "active": true
+    "active": true,
+    "quant_dias": 0
   },
   {
     "search_query": [
@@ -36,6 +38,7 @@
     "criado_por": "admin",
     "criado_em": "2025-07-25T17:55:28.332702Z",
     "atualizado_por": "leonardo",
-    "atualizado_em": "2025-07-25T18:38:09.210896Z"
+    "atualizado_em": "2025-07-25T18:38:09.210896Z",
+    "quant_dias": 0
   }
 ]
