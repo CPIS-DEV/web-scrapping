@@ -35,18 +35,12 @@ limite_envio_global = 6
 
 app = Flask(__name__)
 
-CORS(app, origins=[
-    "http://localhost:3000",    # React padrão
-    "http://localhost:8080",    # Vue.js padrão
-    "http://127.0.0.1:3000",    # Localhost alternativo
-    "http://127.0.0.1:8080",    # Localhost alternativo
-    "http://127.0.0.1:5173",    # Vite padrão
-    "http://localhost:5173",    # Vite padrão
-    "https://webscrappin-front.pages.dev",
-    "https://webscrappin-front.pages.dev",
-    "https://www.monitoramento.cpis.com.br",
-    "http://www.monitoramento.cpis.com.br"
-])
+CORS(app, resources=
+     {r"/*": 
+      {"origins": "https://www.monitoramento.cpis.com.br", 
+       "methods": ["GET", "POST", "PUT", "DELETE"],
+       "allow_headers": ["Content-Type", "Authorization"]
+    }})
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
