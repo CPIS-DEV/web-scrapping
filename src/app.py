@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -35,12 +35,41 @@ limite_envio_global = 6
 
 app = Flask(__name__)
 
-CORS(app, resources=
-     {r"/*": 
-      {"origins": "https://www.monitoramento.cpis.com.br", 
-       "methods": ["GET", "POST", "PUT", "DELETE"],
-       "allow_headers": ["Content-Type", "Authorization"]
-    }})
+CORS(app,
+     resources={r"/*": {
+         "origins": [
+             "https://www.monitoramento.cpis.com.br",
+             "https://api.monitoramento.cpis.com.br"
+         ],
+         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+         "allow_headers": ["Content-Type", "Authorization"]
+     }},
+     supports_credentials=True
+)
+
+@app.errorhandler(400)
+@cross_origin(origins=[
+    "https://www.monitoramento.cpis.com.br",
+    "https://api.monitoramento.cpis.com.br"
+])
+def bad_request(error):
+    return jsonify({"status": "error", "message": "Requisição inválida"}), 400
+
+@app.errorhandler(500)
+@cross_origin(origins=[
+    "https://www.monitoramento.cpis.com.br",
+    "https://api.monitoramento.cpis.com.br"
+])
+def internal_error(error):
+    return jsonify({"status": "error", "message": "Erro interno do servidor"}), 500
+
+@app.errorhandler(504)
+@cross_origin(origins=[
+    "https://www.monitoramento.cpis.com.br",
+    "https://api.monitoramento.cpis.com.br"
+])
+def gateway_timeout(error):
+    return jsonify({"status": "error", "message": "Tempo limite da porta de entrada excedido"}), 504
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -183,7 +212,7 @@ Este é um email automático do sistema de monitoramento do Diário Oficial.'''
             motivo = "O arquivo PDF não pôde ser anexado automaticamente."
         msg.body = f'''Prezado(a),
 
-O documento "{assunto}" encontrado na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual} não pôde ser anexado ao email.
+O documento "{assunto}" encontrado na busca realizada no Diário Oficial do Estado de São Paulo em {data_atual} não pôde ser anexado ao email, devido seu tamanho.
 
 📋 DETALHES DO DOCUMENTO:
 📄 Título: {assunto}
