@@ -471,7 +471,6 @@ def converter_horario_brasilia_para_utc(hora_brasilia: str) -> str:
     return dt_utc.strftime("%H:%M")
 
 def get_dates_for_job(job):
-    """Calcula from_date e to_date para busca agendada usando quant_dias."""
     quant_dias = int(job.get("quant_dias", 0))
     today = datetime.now().date()
     from_date = (today - timedelta(days=quant_dias)).strftime("%Y-%m-%d")
@@ -505,8 +504,7 @@ def apagar_todos_agendamentos():
     logging.info("Todos os agendamentos foram removidos do scheduler.")
 
 def trigger_search(search_query, from_date, to_date):
-    """Dispara a busca diretamente sem fazer HTTP request."""
-    print("chamando trigger_search")
+    """Dispara a busca agendada, calcula datas usando quant_dias e processa resultados."""
     logging.info(f"Iniciando busca agendada para: {search_query}")
 
     with busca_lock:
@@ -514,20 +512,29 @@ def trigger_search(search_query, from_date, to_date):
         with app.app_context():
             # Garante que search_query é uma lista
             if isinstance(search_query, str):
-                search_query = [search_query]
+                search_query_list = [search_query]
+            else:
+                search_query_list = search_query
 
             # Se chamado pelo agendamento, calcula as datas usando quant_dias
-            # from_date e to_date podem ser None no agendamento
             if from_date is None or to_date is None:
-                # Recupera o job correspondente do arquivo JSON
                 jobs = load_cron_jobs()
+                job_encontrado = None
                 for job in jobs:
-                    # Busca pelo search_query igual
-                    if job.get("search_query") == search_query:
-                        from_date, to_date = get_dates_for_job(job)
+                    job_query = job.get("search_query")
+                    # Normaliza para comparar corretamente
+                    if job_query == search_query or job_query == search_query_list:
+                        job_encontrado = job
                         break
+                    if isinstance(job_query, list) and job_query == search_query_list:
+                        job_encontrado = job
+                        break
+                    if isinstance(job_query, str) and [job_query] == search_query_list:
+                        job_encontrado = job
+                        break
+                if job_encontrado:
+                    from_date, to_date = get_dates_for_job(job_encontrado)
                 else:
-                    # Se não encontrar, usa data atual
                     today = datetime.now().strftime("%Y-%m-%d")
                     from_date, to_date = today, today
 
@@ -542,12 +549,37 @@ def trigger_search(search_query, from_date, to_date):
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
                         arquivo.write(f"\n\n\nBusca agendada realizada no dia {data_atual_str} às {horario_brasilia} (horário de Brasília):\n\n")
 
-                for termo in search_query:
+                for termo in search_query_list:
                     results += search_website(termo, from_date, to_date)
 
-                # ...restante do código da busca agendada...
-                # (mantém igual ao seu código atual)
-                # Processa resultados, envia emails, etc.
+                total_resultados = len(results)
+                limite_envio = 6
+                results_para_envio = results[:limite_envio]
+                results_excedentes = results[limite_envio:]
+
+                for result in results_para_envio:
+                    url_documento = f"https://doe.sp.gov.br/{result['slug']}"
+                    nome_arquivo = baixar_pdf(url_documento)
+                    enviar_email(result['title'], nome_arquivo, termo, url_documento)
+
+                if results_excedentes:
+                    enviar_email_excesso_resultados(termo, total_resultados, results, limite_envio)
+                    with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                        arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
+                        for i, result in enumerate(results_excedentes, limite_envio + 1):
+                            arquivo.write(f"\t{i}º: {result['title']}\n")
+
+                termo_formatado = ", ".join(search_query_list)
+                enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual_str, horario_brasilia, "agendada", limite_envio, resultados=results)
+
+                if results:
+                    with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                        arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
+                        for result in results:
+                            arquivo.write(f"\t{result['title']}\n")
+                else:
+                    with open("registro.txt", "a", encoding="utf-8") as arquivo:
+                        arquivo.write("Não foram encontrados resultados para essa busca.\n\n")
 
             except Exception as e:
                 logging.error(f"Erro durante busca agendada: {str(e)}")
