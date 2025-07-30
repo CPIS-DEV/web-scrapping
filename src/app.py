@@ -555,7 +555,7 @@ def trigger_search(search_query, from_date, to_date):
                 total_resultados = len(results)
                 limite_envio = 6
                 results_para_envio = results[:limite_envio]
-                results_excedentes = results[limite_envio:]
+                results_excedentes = results
 
                 for result in results_para_envio:
                     url_documento = f"https://doe.sp.gov.br/{result['slug']}"
@@ -565,19 +565,32 @@ def trigger_search(search_query, from_date, to_date):
                 if results_excedentes:
                     enviar_email_excesso_resultados(termo, total_resultados, results, limite_envio)
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                        arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
-                        for i, result in enumerate(results_excedentes, limite_envio + 1):
+                        arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
+                        for i, result in enumerate(results_excedentes, 1):
                             arquivo.write(f"\t{i}º: {result['title']}\n")
 
                 termo_formatado = ", ".join(search_query_list)
-                enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual_str, horario_brasilia, "agendada", limite_envio, resultados=results)
 
                 if results:
+                    enviar_email_informativo_resultados(
+                        termo_formatado,
+                        total_resultados,
+                        data_atual_str,
+                        horario_brasilia,
+                        "agendada",
+                        limite_envio,
+                        resultados=results
+                    )
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
                         arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
                         for result in results:
                             arquivo.write(f"\t{result['title']}\n")
                 else:
+                    enviar_email_sem_resultados(
+                        termo_formatado,
+                        data_atual_str,
+                        horario_brasilia
+                    )
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
                         arquivo.write("Não foram encontrados resultados para essa busca.\n\n")
 
@@ -868,7 +881,7 @@ def executar_busca():
 
         if results:
             total_resultados = len(results)
-            limite_envio = 6  # ou sua variável global
+            limite_envio = 6
 
             with open("registro.txt", "a", encoding="utf-8") as arquivo:
                 arquivo.write(f"Foram encontrados {total_resultados} resultados. Os nomes dos arquivos são:\n")
@@ -878,9 +891,9 @@ def executar_busca():
             results_excedentes = results[limite_envio:]
 
             # Processar e enviar os primeiros X resultados
-            for result in results_para_envio:
+            for i, result in enumerate(results_para_envio, 1):
                 with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                    arquivo.write(f"\t{result['title']}\n")
+                    arquivo.write(f"\t{i}º: {result['title']}\n")
                 url_documento = f"https://doe.sp.gov.br/{result['slug']}"
                 nome_arquivo = baixar_pdf(url_documento)
                 enviar_email(result['title'], nome_arquivo, termo, url_documento)
@@ -891,7 +904,6 @@ def executar_busca():
 
                 # Registrar os resultados excedentes no arquivo de log
                 with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                    arquivo.write(f"\n--- RESULTADOS EXCEDENTES (não enviados por email) ---\n")
                     for i, result in enumerate(results_excedentes, limite_envio + 1):
                         arquivo.write(f"\t{i}º: {result['title']}\n")
 
