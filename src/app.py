@@ -713,6 +713,7 @@ def aguardar_download(download_dir, timeout=120):
 def baixar_pdf(url):
     download_dir = os.path.abspath("downloads")
     os.makedirs(download_dir, exist_ok=True)
+    nome_arquivo = None
 
     # Configurações Chrome otimizadas para AWS/Linux headless
     chrome_options = Options()
