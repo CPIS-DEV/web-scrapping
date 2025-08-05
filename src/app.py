@@ -160,14 +160,18 @@ def atualizar_ultima_execucao():
 # Lock para operações com arquivos
 file_lock = threading.Lock()
 
-def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None, deletar_apos_envio=True):
+def enviar_email(assunto, anexo=None, termo_busca=None, url_original=None, deletar_apos_envio=True, destinatario=None):
     """
     Envia email com anexo PDF se o arquivo tiver até 25MB.
     Se o arquivo for maior, envia apenas o link do documento.
     """
     config = load_config()
     email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
-    msg = Message(assunto, recipients=[email_principal])
+    if destinatario:
+        destinatarios = [destinatario]
+    else:
+        destinatarios = [config.get('email_principal', 'leonardo.pereira@cpis.com.br')]
+    msg = Message(assunto, recipients=destinatarios)
     data_atual = datetime.now().strftime("%d/%m/%Y")
 
     anexo_path = f"./downloads/{anexo}" if anexo else None
@@ -567,9 +571,11 @@ def trigger_search(search_query, from_date, to_date):
                         break
                 if job_encontrado:
                     from_date, to_date = get_dates_for_job(job_encontrado)
+                    email_envio = job_encontrado.get("email_envio")
                 else:
                     today = datetime.now().strftime("%Y-%m-%d")
                     from_date, to_date = today, today
+                    email_envio = None 
 
             data_atual_str = datetime.now().strftime("%d-%m-%Y")
             tz_brasilia = pytz.timezone("America/Sao_Paulo")
@@ -595,7 +601,7 @@ def trigger_search(search_query, from_date, to_date):
                     nome_arquivo = baixar_pdf(url_documento)
                     if not nome_arquivo:
                         logging.warning(f"Não foi possível baixar ou renomear o PDF para: {url_documento}")
-                    enviar_email(result['title'], nome_arquivo, termo, url_documento)
+                    enviar_email(result['title'], nome_arquivo, termo, url_documento, destinatario=email_envio)
 
                 if results_excedentes:
                     enviar_email_excesso_resultados(termo, total_resultados, results, limite_envio)

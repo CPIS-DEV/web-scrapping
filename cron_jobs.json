@@ -12,7 +12,8 @@
     "active": false,
     "atualizado_por": "leonardo",
     "atualizado_em": "2025-07-25T18:38:19.820481Z",
-    "quant_dias": 0
+    "quant_dias": 0,
+    "email_envio": "leonardo.pereira@cpis.com.br"
   },
   {
     "id": 5,
@@ -22,7 +23,8 @@
       "tuesday"
     ],
     "active": true,
-    "quant_dias": 0
+    "quant_dias": 0,
+    "email_envio": "ti@cpis.com.br"
   },
   {
     "search_query": [
@@ -39,6 +41,7 @@
     "criado_em": "2025-07-25T17:55:28.332702Z",
     "atualizado_por": "leonardo",
     "atualizado_em": "2025-07-25T18:38:09.210896Z",
-    "quant_dias": 0
+    "quant_dias": 0,
+    "email_envio": "leonardo.pereira@cpis.com.br"
   }
 ]
