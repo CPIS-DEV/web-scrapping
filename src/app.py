@@ -298,11 +298,14 @@ def enviar_email_sem_resultados(termo_busca, data_busca, horario_busca):
     """Envia email informativo quando busca agendada não encontra resultados."""
     # Carregar configurações
     config = load_config()
+    emails_aviso = config.get('emails_aviso', [])
     email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
     
     assunto = f"Busca agendada sem resultados - {termo_busca}"
+
+    destinatarios = list(set([email_principal] + emails_aviso))
     
-    msg = Message(assunto, recipients=[email_principal])
+    msg = Message(assunto, recipients=destinatarios)
     
     msg.body = f'''🔍 BUSCA AGENDADA SEM RESULTADOS
 
@@ -339,7 +342,7 @@ Este é um email automático do sistema de monitoramento do Diário Oficial.'''
     
     try:
         mail.send(msg)
-        logging.info(f"Email de busca sem resultados enviado para {email_principal} - termo '{termo_busca}' - busca agendada do dia {data_busca}")
+        logging.info(f"Email de busca sem resultados enviado para {', '.join(destinatarios)} - termo '{termo_busca}' - busca agendada do dia {data_busca}")
     except Exception as e:
         logging.error(f"Erro ao enviar email de busca sem resultados: {str(e)}")
 
@@ -407,6 +410,36 @@ Para consultar diretamente no site oficial: https://www.doe.sp.gov.br/
         logging.info(f"Email informativo de resultados enviado para {destinatarios_log} - Termo: '{termo_busca}' | Tipo: {tipo_busca} | Resultados: {total_resultados}")
     except Exception as e:
         logging.error(f"Erro ao enviar email informativo de resultados: {str(e)}")
+
+def enviar_email_erro_busca_agendada(erro, search_query, from_date, to_date, data_busca, horario_busca):
+    """Envia notificação de erro em busca agendada para o responsável."""
+    destinatarios = list(set([
+        "leonardo.pereira@cpis.com.br",
+        load_config().get('email_principal', 'leonardo.pereira@cpis.com.br')
+    ]))
+    assunto = f"❌ ERRO NA BUSCA AGENDADA - {search_query}"
+    msg = Message(assunto, recipients=destinatarios)
+    msg.body = f'''⚠️ ERRO DURANTE BUSCA AGENDADA
+
+Ocorreu um erro durante a execução de uma busca agendada.
+
+📊 DADOS DA BUSCA:
+• Termo(s): {search_query}
+• Período: {from_date} até {to_date}
+• Data/Hora da execução: {data_busca} às {horario_busca} (horário de Brasília)
+
+❗ DETALHES DO ERRO:
+{erro}
+
+Por favor, verifique os logs do sistema para mais detalhes.
+
+Este é um alerta automático do sistema de monitoramento do Diário Oficial.
+'''
+    try:
+        mail.send(msg)
+        logging.info(f"Email de erro de busca agendada enviado para {', '.join(destinatarios)}")
+    except Exception as e:
+        logging.error(f"Erro ao enviar email de erro de busca agendada: {str(e)}")
 
 def search_website(search_query, from_date, to_date, page_number=1, page_size=20):
     url = "https://do-api-web-search.doe.sp.gov.br/v2/advanced-search/publications"
@@ -560,6 +593,8 @@ def trigger_search(search_query, from_date, to_date):
                 for result in results_para_envio:
                     url_documento = f"https://doe.sp.gov.br/{result['slug']}"
                     nome_arquivo = baixar_pdf(url_documento)
+                    if not nome_arquivo:
+                        logging.warning(f"Não foi possível baixar ou renomear o PDF para: {url_documento}")
                     enviar_email(result['title'], nome_arquivo, termo, url_documento)
 
                 if results_excedentes:
@@ -596,6 +631,15 @@ def trigger_search(search_query, from_date, to_date):
 
             except Exception as e:
                 logging.error(f"Erro durante busca agendada: {str(e)}")
+                # Envia notificação de erro
+                enviar_email_erro_busca_agendada(
+                    erro=str(e),
+                    search_query=search_query,
+                    from_date=from_date,
+                    to_date=to_date,
+                    data_busca=data_atual_str,
+                    horario_busca=horario_brasilia
+                )
 
 def schedule_jobs():
     """Agenda os jobs baseado no arquivo JSON."""
