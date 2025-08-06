@@ -366,7 +366,7 @@ def enviar_email_informativo_resultados(termo_busca, total_resultados, data_busc
         recipients.append(destinatario_principal)
     if total_resultados <= limite_envio and destinatario_extra and destinatario_extra not in recipients and destinatario_extra not in emails_cc:
         recipients.append(destinatario_extra)
-    if total_resultados > limite_envio:
+    if total_resultados <= limite_envio:
         recipients.append(email_principal)
     
     
