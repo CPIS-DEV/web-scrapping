@@ -353,6 +353,7 @@ def enviar_email_informativo_resultados(termo_busca, total_resultados, data_busc
     """Envia email informativo quando são encontrados resultados em qualquer busca, incluindo os links dos resultados."""
     config = load_config()
     emails_aviso = config.get('emails_aviso', [])
+    email_principal = config.get('email_principal', 'leonardo.pereira@cpis.com.br')
 
     if not emails_aviso and not destinatario_extra:
         logging.info(f"Nenhum email de aviso configurado - email informativo não enviado para termo '{termo_busca}'")
@@ -365,6 +366,8 @@ def enviar_email_informativo_resultados(termo_busca, total_resultados, data_busc
         recipients.append(destinatario_principal)
     if total_resultados <= limite_envio and destinatario_extra and destinatario_extra not in recipients and destinatario_extra not in emails_cc:
         recipients.append(destinatario_extra)
+    if total_resultados > limite_envio:
+        recipients.append(email_principal)
     
     
     tipo_texto = "agendada" if tipo_busca == "agendada" else "manual"
@@ -634,7 +637,7 @@ def trigger_search(search_query, from_date, to_date):
                             arquivo.write(f"\t{i}º: {result['title']}\n")
                 else:
                     with open("registro.txt", "a", encoding="utf-8") as arquivo:
-                        arquivo.write("Nenhum resultado foi encontrado essa busca.\n\n")
+                        arquivo.write("Nenhum resultado foi encontrado para essa busca.\n\n")
                     enviar_email_sem_resultados(
                         termo_formatado,
                         data_atual_str,
@@ -912,6 +915,7 @@ def executar_busca():
         search_query = data.get('search_query')
         from_date = data.get('from_date')
         to_date = data.get('to_date')
+        email_envio = data.get('email_envio')
 
         if not search_query or not from_date or not to_date:
             return jsonify({
@@ -934,8 +938,12 @@ def executar_busca():
             arquivo.write(f"\n\n\nBusca realizada no dia {data_atual} às {horario_brasilia} (horário de Brasília):\n")
             arquivo.write(f"Executada por usuário: {current_user}\n\n")
 
+        # Realiza a busca apenas uma vez, já associando o termo ao resultado
         for termo in search_query:
-            results += search_website(termo, from_date, to_date)
+            resultados_termo = search_website(termo, from_date, to_date)
+            for r in resultados_termo:
+                r['termo_busca'] = termo
+            results += resultados_termo
 
         if results:
             total_resultados = len(results)
@@ -950,15 +958,17 @@ def executar_busca():
 
             # Processar e enviar os primeiros X resultados
             for i, result in enumerate(results_para_envio, 1):
+                termo_resultado = result.get('termo_busca', '')
                 with open("registro.txt", "a", encoding="utf-8") as arquivo:
                     arquivo.write(f"\t{i}º: {result['title']}\n")
                 url_documento = f"https://doe.sp.gov.br/{result['slug']}"
                 nome_arquivo = baixar_pdf(url_documento)
-                enviar_email(result['title'], nome_arquivo, termo, url_documento)
+                enviar_email(result['title'], nome_arquivo, termo_resultado, url_documento, destinatario=email_envio)
 
             # Enviar email informativo sobre excesso (agora com TODOS os resultados)
+            termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
             if results_excedentes:
-                enviar_email_excesso_resultados(termo, total_resultados, results, limite_envio)
+                enviar_email_excesso_resultados(termo_formatado, total_resultados, results, limite_envio, destinatario_extra=email_envio)
 
                 # Registrar os resultados excedentes no arquivo de log
                 with open("registro.txt", "a", encoding="utf-8") as arquivo:
@@ -966,8 +976,10 @@ def executar_busca():
                         arquivo.write(f"\t{i}º: {result['title']}\n")
 
             # Email informativo de resultados encontrados para busca manual
-            termo_formatado = ", ".join(search_query) if isinstance(search_query, list) else search_query
-            enviar_email_informativo_resultados(termo_formatado, total_resultados, data_atual, horario_brasilia, "manual", limite_envio, resultados=results)
+            enviar_email_informativo_resultados(
+                termo_formatado, total_resultados, data_atual, horario_brasilia,
+                "manual", limite_envio, resultados=results, destinatario_extra=email_envio
+            )
 
             if results_excedentes:
                 return jsonify({
